@@ -1,36 +1,43 @@
+%PREAMBULO MEMORIA
 \documentclass[a4paper, 12pt]{book}
-%\usepackage[T1]{fontenc}
-
-\usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm]{geometry}
-\usepackage{times}
-\usepackage[latin1]{inputenc}
-\usepackage[spanish]{babel} % Comenta esta l�nea si tu memoria es en ingl�s
-\usepackage{url}
-%\usepackage[dvipdfm]{graphicx}
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=2cm, bottom=3cm]{geometry}
+\usepackage[utf8]{inputenc} %Para introducir tildes
+\usepackage{url} %Para introducir urls
+\usepackage{tocbibind} %Bibliografía en el indice
+\usepackage[spanish]{babel}
+\usepackage[toc]{blindtext}
+\usepackage{tocbibind}
+\usepackage{float} %Para posicionar figuras
 \usepackage{graphicx}
-\usepackage{float}  %% H para posicionar figuras
-\usepackage[nottoc, notlot, notlof, notindex]{tocbibind} %% Opciones de �ndice
-\usepackage{latexsym}  %% Logo LaTeX
+\usepackage{fancyhdr}
+\usepackage{hyperref}
 \usepackage{titlesec, blindtext, color}
-\titleformat{\chapter}[hang]{}
+%%Estilo de fuente
+\usepackage{lmodern}
+\usepackage[OT1]{fontenc}
+
+
+% Personalización de Formato de Capítulo
+\usepackage[Lenny]{fncychap}
+
+% Personalización del tipo de fuente
+
+
 
 \title{Memoria del Proyecto}
-\author{Nombre del autor}
+\author{Javier Fernández Morata}
 
-\renewcommand{\baselinestretch}{1.5}  %% Interlineado
+\renewcommand{\baselinestretch}{1.5}
 
 \begin{document}
 
-\renewcommand{\refname}{Bibliograf�a}  %% Renombrando
-\renewcommand{\appendixname}{Ap�ndice}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\refname}{Bibliografía}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % PORTADA
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{titlepage}
 \begin{center}
 \begin{tabular}[c]{c c}
-%\includegraphics[bb=0 0 194 352, scale=0.25]{logo} &
 \includegraphics[scale=0.25]{img/logo_vect.png} &
 \begin{tabular}[b]{l}
 \Huge
@@ -42,62 +49,53 @@
 \end{tabular}
 
 \vspace{3cm}
-
 \Large
-INGENIER\'IA EN TECNLOG\'IAS DE LA TELECOMUNICACI\'ON
+INGENIERÍA EN TECNOLOGÍAS DE LA TELECOMUNICACIÓN
 
 \vspace{0.4cm}
-
-\large
-Curso Acad\'emico 2018/2019
+\Large
+Curso Acádemico 2018/2019
 
 \vspace{0.8cm}
-
 Trabajo Fin de Grado
 
 \vspace{2.5cm}
-
-\LARGE
-{{TITULO DE TRABAJO}}
+\Large
+{{ TÍTULO DE TRABAJO }}
 
 \vspace{4cm}
-
 \large
 Autor : Javier Fern\'andez Morata \\
-Tutor : Dr. Jos\'e Felipe Ortega
+Tutor : Dr. Felipe Ortega
 \end{center}
 \end{titlepage}
 
 \newpage
-\mbox{}
-\thispagestyle{empty} % para que no se numere esta pagina
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% Para firmar
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PARA FIRMAR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \pagenumbering{gobble}
 \chapter*{}
 
 \vspace{-4cm}
 \begin{center}
-\LARGE
-\textbf{Trabajo Fin de Grado}
+  \large
+  \textbf{Trabajo Fin de Grado}
 
-\vspace{1cm}
-\large
-{{T\'itulo del Trabajo con Letras Capitales para Sustantivos y Adjetivos}}
+  \vspace{1cm}
+  \large
+  \{\{Título del Trabjo con Letras Capitales para Sustantivos y Adjetivos\}\}
 
-\vspace{1cm}
-\large
-\textbf{Autor :} Javier Fern\'andez Morata \\
-\textbf{Tutor :} Dr. Jos\'e Felipe Ortega
-
+  \vspace{1cm}
+  \large
+  \textbf{Autor :} Javier Fernández Morata \\
+  \textbf{Tutor :} Dr. Felipe Ortega
 \end{center}
 
 \vspace{1cm}
-La defensa del presente Proyecto Fin de Carrera se realiza el d\'ia \qquad$\;\,$ de \qquad\qquad\qquad\qquad \newline de 20XX, siendo calificada por el siguiente tribunal:
-
+La defensa del presente Proyecto Fin de Carrera se realiza el día \qquad$\;\,$ de \qquad\qquad\qquad\qquad \newline de 20XX, siendo calificada por el siguiente tribunal:
 
 \vspace{0.5cm}
 \textbf{Presidente:}
@@ -108,373 +106,144 @@ La defensa del presente Proyecto Fin de Carrera se realiza el d\'ia \qquad$\;\,$
 \vspace{1.2cm}
 \textbf{Vocal:}
 
-
 \vspace{1.2cm}
-y habiendo obtenido la siguiente calificaci\'on:
+y habiendo obtenido la siguiente calificación:
 
 \vspace{1cm}
-\textbf{Calificaci\'on:}
-
+\textbf{Calificación:}
 
 \vspace{1cm}
-\begin{flushright}
-Fuenlabrada, a \qquad$\;\,$ de \qquad\qquad\qquad\qquad de 20XX
+\begin{flushright} Fuenlabrada, a \qquad$\;\,$ de
+  \qquad\qquad\qquad\qquad de 20XX
 \end{flushright}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% Dedicatoria
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DEDICATORIA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{}
 \begin{flushright}
-\textit{Dedicado a \\
-mi familia / mi abuelo / mi abuela}
+  \textit{\_Escribimos Dedicatoria\_}
 \end{flushright}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% Agradecimientos
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AGRADECIMIENTOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Agradecimientos}
-%\addcontentsline{toc}{chapter}{Agradecimientos} % si queremos que aparezca en el �ndice
-\markboth{AGRADECIMIENTOS}{AGRADECIMIENTOS} % encabezado
 
-{{AQU\'I VAN LOS AGREDICIMIENTOS}}.
+[ AQUÍ VAN LOS AGRADECIMIENTOS ]
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% Resumen
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% RESUMEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Resumen}
-%\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el �ndice
-\markboth{RESUMEN}{RESUMEN} % encabezado
 
-Aqu\'i viene un resumen del proyecto. Ha de constar de tres o cuatro p\'arrafos, donde se presente de manera clara y concisa de qu\'e va el proyecto.
+Aquí viene un resumen del proyecto.Ha de constar de tres o cuatro párrafors, donde se presente de manera clara y concisa de qué va el proyecto.
 Han de quedar respondidas las siguientes preguntas:
-
 \begin{itemize}
-  \item¿De qu\'e va este proyecto? ¿Cu\'al es su objetivo principal?
-  \item¿C\'omo se ha realizado? ¿Qu\'e tecnolog\'ias est\'an involucradas?
-  \item¿En qu\'e contexto se ha realizado el proyecto? Es un proyecto
-dentro de un marco general?
+  \item ¿De qué va este proyecto? ¿Cuál es el objetivo principal?
+  \item ¿Cómo se ha realizado? ¿Qué tecnologías están involucradas?
+  \item ¿En qué contexto se ha realizado el Proyecto? Es un proyecto dentro de un marco general?
 \end{itemize}
 
-Lo mejor es escribir el resumen al final.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% Resumen en ingl�s
-
-% \chapter*{Summary}
-% %\addcontentsline{toc}{chapter}{Summary} % si queremos que aparezca en el �ndice
-% \markboth{SUMMARY}{SUMMARY} % encabezado
-%
-% Here comes a translation of the ``Resumen'' into English. Please, double check it for correct grammar and spelling.
-% As it is the translation of the ``Resumen'', which is supposed to be written at the end, this as well should be filled out
-% just before submitting.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ÌNDICES %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%% Índice de contenidos
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % ÍNDICE
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% contenidos
 \tableofcontents
-%%%% Índice de figuras
-\cleardoublepage
-%\addcontentsline{toc}{chapter}{Lista de figuras} % para que aparezca en el indice de contenidos
-\listoffigures % indice de figuras
-%%%% Índice de tablas
-%\cleardoublepage
-%\addcontentsline{toc}{chapter}{Lista de tablas} % para que aparezca en el indice de contenidos
-%\listoftables % indice de tablas
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CAPÍTULO 1 - INTRODUCCIÓN Y OBJETIVOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introducción y objetivos}
+\label{chap:intro}
+\pagenumbering{arabic}
+En este proyecto tratamos la importancia de seguir unas buenas pautas para la gestión y distribución de código. Donde de todas ellas ahondaremos en la creación de documentación web, donde nos ayudaremos de varias tecnologías. \\
+El objetivo por tanto de este proyecto, es presentar las pautas a seguir para facilitar las contribuciones futuras en proyectos de software libre y mostrar una de ellas como, la documentación. \\
+Por tanto, la intención de este capítulo es mostrar el contexto, la motivación que  me ha llevado para realizar dicho proyecto, objetivos de este, y la estructura que vamos a seguir para mostrar lo realizado.
+
+\section{Contexto}
+\label{sec:contex}
+A los largos de los años, el software ha pasado por varias etapas en cuanto a su privatización. Antes del \emph{boom} de la informática, los que hacían uso de ella, compartían \emph{software} sin ninguna restricción, pero cuando llegaron los años 80 las compañías que vendían las computadoras comercializaban estas usando sistemas operativos privados, forzando al usuario a aceptar restricciones legales de modificar dicho \emph{software}. \\
+Por estos años y debido a un error con un dispositivo, Richard Stallman fundó el proyecto GNU e introdujo la definición de \emph{software libre}. ¿Qué es software libre? Software libre es la cuestión de libertad de ejecutar, copiar, distribuir, estudiar, cambiar y mejorar el software. \\ \\ \\ 
+Es decir, significa que los usuarios de dicho software disponemos de las cuatro libertades esenciales: 
+\begin{itemize}
+    \item Libertad 0, libertad para ejecutar el \emph{software} con cualquier propósito
+    \item Libertad 1, acceso al código fuente; por lo que podemos modificar dicho \emph{software} para hacer lo que el usuario quiera
+    \item Libertad 2, redistribuir copias 
+    \item Libertad 3, redistribución de versiones modificadas.
+\end{itemize}
+
+Y por tanto, uno de los objetivos de este proyecto es facilitar las contribuciones futuras para unos módulos sobre ingeniería biomédica desarrollados en la Universidad Rey Juan Carlos I, donde para ello, se creara una documentación web, usando tecnologías como Jekyll, que es un generador de contenido estático, o herramientas como ReadTheDocs o Sphinx, que facilitan la creación de documentación de \emph{software} 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% CAPÍTULO 1 - INTRODUCCIÓN%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivación Personal}
+\label{sec:mot}
+Desde que empecé el instituto siempre me he decantado por una manera de trabajar más práctica que teórica. Si algo tengo que destacar de la carrera es el descubrir la programación, algo que sabía que era, pero que nunca había practicado, es decir, no había programado nunca un "Hola Mundo". \\
+Una de las asignaturas que más me entusiasmo cursar, fue la de \emph{"Servicios y Aplicaciones Telemáticas"}, en la que desarrollamos aplicaciones web a través del \emph{framework} Django. En este proyecto además de un desarrollo web, con distintas tecnologías que utilice en dicha asignatura, hay otro objetivo, que es el más interesante para mi, que es seguir unas pautas de escribir código para proyectos de \emph{Software libre}.
+\newpage
 
-\cleardoublepage
-\chapter{Introducci\'on y objetivos.}
-\label{sec:intro} % etiqueta para poder referenciar luego en el texto con ~\ref{sec:intro}
-\pagenumbering{arabic} % para empezar la numeraci�n de p�gina con n�meros
-
-En este cap�tulo se introduce el proyeto. Deber�a tener informaci�n general sobre el mismo, dando la informaci�n sobre el contexto en el que se ha desarrollado.
-
-No te olvides de echarle un ojo a la p�gina con los cinco errores de escritura m�s frecuentes\footnote{\url{http://www.tallerdeescritores.com/errores-de-escritura-frecuentes}}.
-
-Aconsejo a todo el mundo que mire y se inspire en memorias pasadas. Las m�as est�n todas almacenadas en mi web del GSyC\footnote{\url{https://gsyc.urjc.es/~grex/pfcs/}}.
-
-\section{Secci�n}
-\label{sec:seccion}
-
-Esto es una secci�n, que es una estructura menor que un cap�tulo.
-
-Por cierto, a veces me coment�is que no os compila por las tildes.
-Eso es un problema de codificaci�n.
-Cambiad de ``UTF-8'' a ``ISO-Latin-1'' (o vicecersa) y funcionar�.
-
-\subsection{Estilo}
-\label{subsec:estilo}
-
-Recomiendo leer los consejos pr�cticos sobre LaTeX de Diomidos
-Spinellis\footnote{\url{https://github.com/dspinellis/latex-advice}}.
-
-Sobre el uso de las comas\footnote{\url{http://narrativabreve.com/2015/02/opiniones-de-un-corrector-de-estilo-11-recetas-para-escribir-correctamente-la-coma.html}}
-
-A continuaci�n, viene una figura, la Figura~\ref{figura:foro_hilos}.
-Observar�s que el texto dentro del a referencia es el identificador de la figura (que se corresponden con el ``label'' dentro de la misma).
-Tambi�n habr�s tomado nota de c�mo se ponen las ``comillas dobles'' para que se muestren correctamente.
-Volviendo a las referencias, nota que al compilar, la primera vez se crea un diccionario con las referencias, y en la segunda compilaci�n se ``rellenan'' estas referencias.
-Por eso hay que compilar dos veces.
-
- \begin{figure}
-    \centering
-    \includegraphics[bb=0 0 800 600, width=12cm, keepaspectratio]{img/foro1}
-    \caption{P�gina con enlaces a hilos}
-    \label{figura:foro_hilos}
- \end{figure}
-
-{\footnotesize
-\begin{verbatim}
-    From gaurav at gold-solutions.co.uk  Fri Jan 14 14:51:11 2005
-    From: gaurav at gold-solutions.co.uk (gaurav_gold)
-    Date: Fri Jan 14 19:25:51 2005
-    Subject: [Mailman-Users] mailman issues
-    Message-ID: <003c01c4fa40$1d99b4c0$94592252@gaurav7klgnyif>
-
-    Dear Sir/Madam,
-    How can people reply to the mailing list?  How do i turn off
-    this feature? How can i also enable a feature where if someone
-    replies the newsletter the email gets deleted?
-    Thanks
-
-    From msapiro at value.net  Fri Jan 14 19:48:51 2005
-    From: msapiro at value.net (Mark Sapiro)
-    Date: Fri Jan 14 19:49:04 2005
-    Subject: [Mailman-Users] mailman issues
-    In-Reply-To: <003c01c4fa40$1d99b4c0$94592252@gaurav7klgnyif>
-    Message-ID: <PC173020050114104851057801b04d55@msapiro>
-
-    gaurav_gold wrote:
-    >How can people reply to the mailing list?  How do i turn off
-    this feature? How can i also enable a feature where if someone
-    replies the newsletter the email gets deleted?
-
-    See the FAQ
-    >Mailman FAQ: http://www.python.org/cgi-bin/faqw-mm.py
-    article 3.11
-\end{verbatim}
-}
+\section{Objetivos}
+\label{sec:objetivos}
+El objetivo principal, por tanto, es la creación de un sitio web, para dar a conocer la librería python \emph{pyCardio}. Dicha librería ha sido desarrollada por varios alumnos y profesores de esta Universidad. Donde con esta web lo que se propone es dar a conocer los módulos de la librería y mostrar su documentación. \\
+Otro propósito de dicha web, al ser un proyecto de \emph{Software libre}, es facilitar la contribución al código de este paquete. Para alcanzar dichos fines, han sido abordados las siguientes metas secundarias :
+\begin{itemize}
+    \item Aprendizaje de nuevas tecnologías usadas en el proyecto.
+    \item Publicar contenido mediante Jekyll 
+    \item Crear la docWeb en GitHub Pages
+    \item Aprender a usar Liquid, para optimizar el desarrollo del contenido
+\end{itemize}
 
 \section{Estructura de la memoria}
-\label{sec:estructura}
+\label{sec:estruc}
+Para finalizar la introducción, se explica como va a ir estructurada la memoria seguida de un breve resumen del contenido que trata cada sección: 
+\begin{enumerate}
+    \item En el capítulo uno, como ya hemos visto, se introduce el por qué de este proyecto así como los objetivos que se tratan en él.
+    \item En el segundo, \emph{Soluciones tecnológicas}, se explican las tecnologías usadas en el proyecto tanto en la generación del sitio web, como de gestión y documentación de proyectos Python.
+    \item En el tercer capítulo, \emph{Gestión de código}, trataremos sobre la gestión de código en python y sobre el paquete que centramos el objetivo de este proyecto \emph{pyCardio}.
+    \item En este cuarto capítulo, \emph{Propuesta del diseño web del proyecto}, presentamos la web del proyecto donde se incluirá la documentación del módulo, guía de instalación, así como una guía para futuras contribuciones.
+    \item En el quinto y último capítulo, \emph{Conclusiones y trabajo futuro}, exponemos las conclusiones sacadas así como el trabajo que se debería realizar tras la finalización de este mismo.
+\end{enumerate}
 
-En esta secci�n se deber�a introducir la esctura de la memoria. As�:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CAPÍTULO 2 - ARQUITECTURA GENERAL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Soluciones tecnológicas}
+\label{chap:Arqui}
+Este capítulo constará de dos partes. Una primera donde se expone todas las tecnologías utilizadas en la creación del sitio web del proyecto, y una segunda donde hablamos sobre las tecnologías de gestión de proyecto y documentación en Python.
 
-\begin{itemize}
-  \item En el primer cap�tulo se hace una intro al proyecto.
-
-  \item En el cap�tulo~\ref{chap:objetivos} (ojo, otra referencia autom�tica) se muestran los objetivos del proyecto.
-
-  \item A continuaci�n se presenta el estado del arte.
-
-  \item \ldots
-\end{itemize}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% OBJETIVOS %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\cleardoublepage % empezamos en p�gina impar
-\chapter{Objetivos} % t�tulo del cap�tulo (se muestra)
-\label{chap:objetivos} % identificador del cap�tulo (no se muestra, es para poder referenciarlo)
-
-\section{Objetivo general} % t�tulo de secci�n (se muestra)
-\label{sec:objetivo-general} % identificador de secci�n (no se muestra, es para poder referenciarla)
-
-Aqu� vendr�a el objetivo general en una frase:
-Mi trabajo fin de grado consiste en crear de una herramienta de an�lisis de los comentarios jocosos en repositorios de software libre alojados en la plataforma GitHub.
-
-Recuerda que los objetivos siempre vienen en infinitivo.
-
-
-\section{Objetivos espec�ficos}
-\label{sec:objetivos-especificos}
-
-Los objetivos espec�ficos se pueden entender como las tareas en las que se ha desglosado el objetivo general.
-Y, s�, tambi�n vienen en infinitivo.
-
-
-\section{Planificaci�n temporal}
-\label{sec:planificacion-temporal}
-
-A m� me gusta que aqu� pong�is una descripci�n de lo que os ha llevado realizar el trabajo.
-Hay gente que a�ade un diagrama de GANTT.
-Lo importante es que quede claro cu�nto tiempo llevas (tiempo natural, p.ej., 6 meses) y a qu� nivel de esfuerzo (p.ej., principalmente los fines de semana).
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ESTADO DEL ARTE %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\cleardoublepage
-\chapter{Estado del arte}
-
-Descripci�n de las tecnolog�as que utilizas en tu trabajo.
-Con dos o tres p�rrafos por cada tecnolog�a, vale.
-Se supone que aqu� viene todo lo que no has hecho t�.
-
-Puedes citar libros, como el de Bonabeau et al. sobre procesos estigm�rgicos~\cite{bonabeau:_swarm}. % Nota que el ~ a�ade un espacio en blanco, pero no deja que exista un salto de l�nea. Imprescindible ponerlo para las citas.
-
-Tambi�n existe la posibilidad de poner notas al pie de p�gina, por ejemplo, una para indicarte que visite la p�gina de LibreSoft\footnote{\url{http://www.libresoft.es}}.
-
-\section{Secci�n 1}
-\label{sec:seccion1}
-
-Hemos hablado de c�mo incluir figuras.
-Pero no hemos dicho nada de tablas.
-A m� me gustan las tablas.
-Mucho.
-Aqu� un ejemplo de tabla, la Tabla~\ref{tabla:ejemplo}.
-
-\begin{table}
- \begin{center}
-  \begin{tabular}{ | l | c | r |} % tenemos tres colummnas, la primera alineada a la izquierda (l), la segunda al centro (c) y la tercera a la derecha (r). El | indica que entre las columnas habr� una l�nea separadora.
-    \hline
-    1 & 2 & 3 \\ \hline % el hline nos da una l�nea vertical
-    4 & 5 & 6 \\ \hline
-    7 & 8 & 9 \\
-    \hline
-  \end{tabular}
-  \label{tabla:ejemplo}
-  \caption{Ejemplo de tabla}
- \end{center}
-\end{table}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DISE�O E IMPLEMENTACI�N %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\cleardoublepage
-\chapter{Dise�o e implementaci�n}
-
-Aqu� viene todo lo que has hecho t� (tecnol�gicamente).
-Puedes entrar hasta el detalle.
-Es la parte m�s importante de la memoria, porque describe lo que has hecho t�.
-Eso s�, normalmente aconsejo no poner c�digo, sino diagramas.
 
 \section{Arquitectura general}
-\label{sec:arquitectura}
+\label{sec:arqui}
+[[  PREGUNTAR TUTOR, COMO QUEREMOS REDACTAR ESTA PARTE]
 
-Si tu proyecto es un software, siempre es bueno poner la arquitectura (que es c�mo se estructura tu programa a ``vista de p�jaro'').
-
-Por ejemplo, puedes verlo en la figura~\ref{fig:arquitectura}.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=9cm, keepaspectratio]{img/arquitectura}
-  \caption{Estructura del parser b�sico}
-  \label{fig:arquitectura}
-\end{figure}
-
-Si utilizas una base de datos, no te olvides de incluir tambi�n un diagrama de entidad-relaci�n.
+\section{Control de versiones con Git. GitHub}
+\label{sec:git}
+Este proyecto al ser un trabajo de \emph{software libre}, significa que el código sufrirá cambios de distintos autores, por lo que es necesario un sistema de control de versiones. Para que un sistema sea de control de versiones debe proporcionar un mecanismo de almacenamiento de los elementos que se desea gestionar, posibilidad de realizar cambios sobre los elementos almacenados y un registro histórico de las acciones realizadas con cada elemento o conjunto de elementos. \\
+El sistema que se ha escogido debido a nuestra arquitectura de almacenamiento de código y por su seguridad, comodidad y velocidad, es \emph{Git}. Una gran diferencia de \emph{Git} respecto a los demás sistemas de control de versiones es la manera de llevar el registro de cambios sobre sus datos, mientras que la mayoría de sistemas almacenan la información como una lista de cambios, en \emph{Git}, cada vez que se realiza un cambio sobre un archivo \emph{Git} hace una instantánea, y guarda una referencia sobre el archivo sin estos cambios. Para ser mas eficiente, si los archivos no han sido modificados, \emph{Git} no almacena el archivo de nuevo, esta distinción influye en uno de los mayores beneficios de \emph{Git}, las ramificaciones, tema que trataremos a continuación, viendo como funciona este sistema de control de versiones. \\
+\textbf{¿Cómo funciona \emph{Git}?}\\
+Todo el funcionamiento de este sistema de control de versiones es mayoritariamente local, es decir, no se necesita información de ningún servidor haciendo así que este sistema sea muy rápido respecto a otros que necesitan información remota para sus operaciones. 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% RESULTADOS %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\cleardoublepage
-\chapter{Resultados}
-
-En este cap�tulo se incluyen los resultados de tu trabajo fin de grado.
-
-Si es una herramienta de an�lisis lo que has realizado, aqu� puedes poner ejemplos de haberla utilizado para que se vea su utilidad.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% CONCLUSIONES %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\cleardoublepage
-\chapter{Conclusiones}
-\label{chap:conclusiones}
-
-
-\section{Consecuci�n de objetivos}
-\label{sec:consecucion-objetivos}
-
-Esta secci�n es la secci�n espejo de las dos primeras del cap�tulo de objetivos, donde se planteaba el objetivo general y se elaboraban los espec�ficos.
-
-Es aqu� donde hay que debatir qu� se ha conseguido y qu� no.
-Cuando algo no se ha conseguido, se ha de justificar, en t�rminos de qu� problemas se han encontrado y qu� medidas se han tomado para mitigar esos problemas.
-
-
-\section{Aplicaci�n de lo aprendido}
-\label{sec:aplicacion}
-
-Aqu� viene lo que has aprendido durante el Grado/M�ster y que has aplicado en el TFG/TFM. Una buena idea es poner las asignaturas m�s relacionadas y comentar en un p�rrafo los conocimientos y habilidades puestos en pr�ctica.
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DUDAS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Dudas}
 \begin{enumerate}
-  \item a
-  \item b
+    \item ¿Cuantos objetivos debo poner?¿Los puestos son suficientes?
+    \item ¿La figura para la Arquitectura General, es solo sobre el procedimiento para crear la web, o solo para la DOC?
 \end{enumerate}
 
-
-\section{Lecciones aprendidas}
-\label{sec:lecciones_aprendidas}
-
-Aqu� viene lo que has aprendido en el Trabajo Fin de Grado/M�ster.
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NOTAS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Notas}
 \begin{enumerate}
-  \item a
-  \item b
+    \item Empezar introducción con una frase del que creo el software Libre
+    \item Revisar comas.
 \end{enumerate}
 
-
-\section{Trabajos futuros}
-\label{sec:trabajos_futuros}
-
-Ning�n software se termina, as� que aqu� vienen ideas y funcionalidades que estar�a bien tener implementadas en el futuro.
-
-Es un apartado que sirve para dar ideas de cara a futuros TFGs/TFMs.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% AP�NDICE(S) %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\cleardoublepage
-\appendix
-\chapter{Manual de usuario}
-\label{app:manual}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BIBLIOGRAFIA %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\cleardoublepage
-
-% Las siguientes dos instrucciones es todo lo que necesitas
-% para incluir las citas en la memoria
-\bibliographystyle{abbrv}
-\bibliography{memoria}  % memoria.bib es el nombre del fichero que contiene
-% las referencias bibliogr�ficas. Abre ese fichero y mira el formato que tiene,
-% que se conoce como BibTeX. Hay muchos sitios que exportan referencias en
-% formato BibTeX. Prueba a buscar en http://scholar.google.com por referencias
-% y ver�s que lo puedes hacer de manera sencilla.
-% M�s informaci�n:
-% http://texblog.org/2014/04/22/using-google-scholar-to-download-bibtex-citations/
 
 \end{document}
