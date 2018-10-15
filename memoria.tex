@@ -222,10 +222,23 @@ Este capítulo constará de dos partes. Una primera donde se expone todas las te
 \section{Control de versiones con Git. GitHub}
 \label{sec:git}
 Este proyecto al ser un trabajo de \emph{software libre}, significa que el código sufrirá cambios de distintos autores, por lo que es necesario un sistema de control de versiones. Para que un sistema sea de control de versiones debe proporcionar un mecanismo de almacenamiento de los elementos que se desea gestionar, posibilidad de realizar cambios sobre los elementos almacenados y un registro histórico de las acciones realizadas con cada elemento o conjunto de elementos. \\
-El sistema que se ha escogido debido a nuestra arquitectura de almacenamiento de código y por su seguridad, comodidad y velocidad, es \emph{Git}. Una gran diferencia de \emph{Git} respecto a los demás sistemas de control de versiones es la manera de llevar el registro de cambios sobre sus datos, mientras que la mayoría de sistemas almacenan la información como una lista de cambios, en \emph{Git}, cada vez que se realiza un cambio sobre un archivo \emph{Git} hace una instantánea, y guarda una referencia sobre el archivo sin estos cambios. Para ser mas eficiente, si los archivos no han sido modificados, \emph{Git} no almacena el archivo de nuevo, esta distinción influye en uno de los mayores beneficios de \emph{Git}, las ramificaciones, tema que trataremos a continuación, viendo como funciona este sistema de control de versiones. \\
+El sistema que se ha escogido debido a nuestra arquitectura de almacenamiento de código y por su seguridad, comodidad y velocidad, es \emph{Git}. Una gran diferencia de \emph{Git} respecto a los demás sistemas de control de versiones es la manera de llevar el registro de cambios sobre sus datos, mientras que la mayoría de sistemas almacenan la información como una lista de cambios, en \emph{Git}, cada vez que se realiza un cambio sobre un archivo \emph{Git} hace una instantánea, y guarda una referencia sobre el archivo sin estos cambios. Para ser mas eficiente, si los archivos no han sido modificados, \emph{Git} no almacena el archivo de nuevo. % esta distinción influye en uno de los mayores beneficios de \emph{Git}, las ramificaciones, tema que trataremos a continuación, viendo como funciona este sistema de control de versiones. \\
 \textbf{¿Cómo funciona \emph{Git}?}\\
-Todo el funcionamiento de este sistema de control de versiones es mayoritariamente local, es decir, no se necesita información de ningún servidor haciendo así que este sistema sea muy rápido respecto a otros que necesitan información remota para sus operaciones. 
-
+Todo el funcionamiento de este sistema de control de versiones es mayoritariamente local, es decir, no se necesita información de ningún servidor haciendo así que este sistema sea muy rápido respecto a otros que necesitan información remota para sus operaciones. \\
+\emph{Git} tiene tres estados para los archivos que trabajamos:
+\begin{itemize}
+    \item \textbf{Committed}: Este estado indica que los archivos que han sido modificados, se han almacenado de manera segura en la base de datos local.
+    \item \textbf{Modified}: Indica que los archivos que han sido modificados, no han sido confirmados, es decir, los archivos no se han almacenado de forma segura en la base de datos local.
+    \item \textbf{Staged}: Estado que marca archivos modificados para la siguiente confirmación. 
+\end{itemize}
+Estos tres estados nos lleva a diferenciar las siguientes áreas de trabajo: 
+\begin{itemize}
+    \item \textbf{Working Directory}: Este área es donde obtenemos la copia del proyecto, lista para usarse o modificarse, sin influir en la copia original.
+    \item \textbf{Staged Area}: Área en la que se recoge los cambios que van a realizarse sobre los archivos antes de confirmarse.
+    \item \textbf{Git Directory}: Estado de los archivos originales del proyecto, incluidos metadatos. Cuando se confirma un archivo, \emph{Git} toma los cambios del área de preparación (Staged Área) y almacena los cambios nuevos en el directorio \emph{Git}.
+\end{itemize}
+Por tanto, el flujo que hay que seguir para trabajar con este sistema de control de versiones es el representado en la figura ((INTRODUCIMOS IMAGEN-> AQUI REFERENCIA)), donde como vemos tras modificar una serie de archivos en el directorio de trabajo preparamos los archivos añadiéndolos al staged area, se confirman los cambios realizados sobre estos, añadiendo así las instantáneas (copias de los archivos con los cambios confirmados) en el directorio \emph{Git}. \\
+{{EMPEZAMOS CON GITHUB}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DUDAS
@@ -234,6 +247,7 @@ Todo el funcionamiento de este sistema de control de versiones es mayoritariamen
 \begin{enumerate}
     \item ¿Cuantos objetivos debo poner?¿Los puestos son suficientes?
     \item ¿La figura para la Arquitectura General, es solo sobre el procedimiento para crear la web, o solo para la DOC?
+    \item ¿En \ref{sec:git} hablamos de las ramificaciones?. Si es así quitar comentario.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -242,7 +256,6 @@ Todo el funcionamiento de este sistema de control de versiones es mayoritariamen
 \chapter*{Notas}
 \begin{enumerate}
     \item Empezar introducción con una frase del que creo el software Libre
-    \item Revisar comas.
 \end{enumerate}
 
 
