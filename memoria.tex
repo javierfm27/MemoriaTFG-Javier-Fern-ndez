@@ -214,11 +214,16 @@ Para finalizar la introducción, se explica como va a ir estructurada la memoria
 \label{chap:Arqui}
 Este capítulo constará de dos partes. Una primera donde se expone todas las tecnologías utilizadas en la creación del sitio web del proyecto, y una segunda donde hablamos sobre las tecnologías de gestión de proyecto y documentación en Python.
 
-
-\section{Arquitectura general}a
+    %%
+    % 2.1 - ARQUITECTURA
+    %%
+\section{Arquitectura general}
 \label{sec:arqui}
 [[  PREGUNTAR TUTOR, COMO QUEREMOS REDACTAR ESTA PARTE]
 
+    %%
+    % 2.2 - CONTROL DE VERSIONES CON GIT. GITHUB
+    %%
 \section{Control de versiones con Git. GitHub}
 \label{sec:git}
 Este proyecto al ser un trabajo de \emph{software libre}, significa que el código sufrirá cambios de distintos autores, por lo que es necesario un sistema de control de versiones. Para que un sistema sea de control de versiones debe proporcionar un mecanismo de almacenamiento de los elementos que se desea gestionar, posibilidad de realizar cambios sobre los elementos almacenados y un registro histórico de las acciones realizadas con cada elemento o conjunto de elementos. \\
@@ -238,7 +243,29 @@ Estos tres estados nos lleva a diferenciar las siguientes áreas de trabajo:
     \item \textbf{Git Directory}: Estado de los archivos originales del proyecto, incluidos metadatos. Cuando se confirma un archivo, \emph{Git} toma los cambios del área de preparación (Staged Área) y almacena los cambios nuevos en el directorio \emph{Git}.
 \end{itemize}
 Por tanto, el flujo que hay que seguir para trabajar con este sistema de control de versiones es el representado en la figura ((INTRODUCIMOS IMAGEN-> AQUI REFERENCIA)), donde como vemos tras modificar una serie de archivos en el directorio de trabajo preparamos los archivos añadiéndolos al staged area, se confirman los cambios realizados sobre estos, añadiendo así las instantáneas (copias de los archivos con los cambios confirmados) en el directorio \emph{Git}. \\
-{{EMPEZAMOS CON GITHUB}}
+((IMAGEN GITHUB))
+Una vez que hemos visto como trabaja \emph{Git} nos queda responder la pregunta de \textit{¿Qué es GitHub?} \emph{GitHub} es una plataforma de desarrollo colaborativo de software para alojar proyectos utilizando los mencionados repositorios \emph{Git}, es decir, aloja el código en la nube y brinda herramientas para el trabajo de equipo en el proyecto. Otra de las características de \emph{GitHub} es el poder contribuir en el desarrollo de software de los demás, algo esencial en cualquier proyecto de software libre. \textit{¿Qué herramientas proporciona para el trabajo en equipo?} \emph{GitHub} proporciona un amplio abanico de funcionalidades para ello, pero entre ellas, destaca una wiki para el mantenimiento de las versiones de las paǵinas, un sistema de seguimiento de problemas permitiendo al equipo detallar los problemas con lo desarrollado y una herramienta de revisión de código \\ %Si hablamos de ramas incluir otra cosa\\
+Así, el uso que daremos de \emph{GitHub} es el de construir un repositorio donde alojaremos el código de nuestro paquete, permitiendo así que cualquiera pueda aportar ideas al proyecto o mejorar el software.\\
+
+    %%
+    % 2.3 - GITHUB PAGES
+    %%
+\section{GitHub Pages y Jekyll}
+\label{sec:githubJekyll}
+\emph{GitHub Pages} y \emph{Jekyll} se usan conjuntamente para generar sitios web estáticos , donde \emph{Jekyll} se encarga de generar los sitios web y \emph{GitHub Pages} de servicio de alojamiento. Ambos servicios están integrados. Para explicar como trabajan ambos servicios, vamos a tratarlos primero por separado.
+
+\subsection{GitHub Pages}
+\label{subsec:githubpages}
+Es un servicio de alojamiento web que ofrece \emph{GitHub}, se usa para alojar sitios web estáticos usando directamente un repositorio \emph{Git}. Para aclarar la principal ventaja de \emph{GitHub Pages} frente a otros servidores vamos a definir que es una pagina web estática y que se diferencia respecto a una página web dinámica. \\
+\textbf{¿Qué es una página web estática?}\\
+Una página web estática es aquel documento web que muestra el mismo contenido para todos los usuarios, es decir, que no es personalizable o no hay elección de interactuar con ella para ordenar, ocultar o modificar contenido (páginas dinámicas). Una de las ventajas principales de este tipo de páginas es lo económico que resulta crearlas, sin tener que usar ningún tipo de programación especial. Estas páginas son útiles para el objetivo de simplemente mostrar contenido. Hay que destacar que la mayor desventaja de generar sitios web estáticos son su actualización haciendo de esta algo tedioso. \\ \\
+Una vez aclarado, la ventaja principal, a parte de todas las proporcionadas por ser un repositorio \emph{Git}, es que al no necesitar base de datos para servir el contenido, solo se requiere un servidor web que vaya sirviendo el contenido que se solicita.
+
+\subsection{Jekyll}
+\label{subsec:jekyll}
+\emph{Jekyll} es un generador de sitios web estáticos, en vez de trabajar con base de datos, \emph{Jekyll} trabaja con texto plano (MarkDown o Textile) y lenguaje de plantilla (Liquid)  generando la página web. La principal ventaja que podemos inferir de \emph{Jekyll} es que no necesitamos saber HTML, para generar nuestro contenido web, ventaja que contra resta sobre lo tedioso que es tener actualizado un sitio web estático.   \\
+(( DISEÑAR UNA FIGURA DEL PROCESO MARKDOWN; PLANTILLA; HTML ))\\
+(( TRATAR COMO FUNCIONA CON PLANTILLAS , PROFUNDIZAR UN POCO CON OPCIONES QUE OFRECE))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DUDAS
@@ -246,8 +273,19 @@ Por tanto, el flujo que hay que seguir para trabajar con este sistema de control
 \chapter*{Dudas}
 \begin{enumerate}
     \item ¿Cuantos objetivos debo poner?¿Los puestos son suficientes?
-    \item ¿La figura para la Arquitectura General, es solo sobre el procedimiento para crear la web, o solo para la DOC?
+    \item ¿La figura para la Arquitectura General, es solo sobre el procedimiento para crear la web, o solo para la DOC?. \\
     \item ¿En \ref{sec:git} hablamos de las ramificaciones?. Si es así quitar comentario.
+    \item ¿Introduzco como colaborar en un proyecto de Github?
+    \item ¿Trato Liquid y MarkDown? y a la hora de tratarlos, los trato con una sección para ellos o dentro de alguna de las escritas.
+    \item Para la primera estructura que tratamos, me incluiste hablar de gestión de proyecto en Python, no veo el sentido de esta parte en este capítulo.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SUGERENCIAS TUTOR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Sugerencias Tutor}
+\begin{enumerate}
+    \item 
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
