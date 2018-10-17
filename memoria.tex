@@ -15,14 +15,123 @@
 %%Estilo de fuente
 \usepackage{lmodern}
 \usepackage[OT1]{fontenc}
-
-
 % Personalización de Formato de Capítulo
 \usepackage[Lenny]{fncychap}
+%Declaración de lenguaje HTML5 para paquete listings
+\usepackage{color}
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{editorOcher}{rgb}{1, 0.5, 0} % #FF7F00 -> rgb(239, 169, 0)
+\definecolor{editorGreen}{rgb}{0, 0.5, 0} % #007C00 -> rgb(0, 124, 0)
+\definecolor{orange}{rgb}{1,0.45,0.13}		
+\definecolor{olive}{rgb}{0.17,0.59,0.20}
+\definecolor{brown}{rgb}{0.69,0.31,0.31}
+\definecolor{purple}{rgb}{0.38,0.18,0.81}
+\definecolor{lightblue}{rgb}{0.1,0.57,0.7}
+\definecolor{lightred}{rgb}{1,0.4,0.5}
+\usepackage{upquote}
+\usepackage{listings}
+\lstset{backgroundcolor=\color{editorGray}}
+% CSS
+\lstdefinelanguage{CSS}{
+  keywords={color,background-image:,margin,padding,font,weight,display,position,top,left,right,bottom,list,style,border,size,white,space,min,width, transition:, transform:, transition-property, transition-duration, transition-timing-function},	
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  alsoletter={:},
+  alsodigit={-}
+}
 
-% Personalización del tipo de fuente
+% JavaScript
+\lstdefinelanguage{JavaScript}{
+  morekeywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]//,
+  morestring=[b]",
+  morestring=[b]'
+}
 
+\lstdefinelanguage{HTML5}{
+  language=html,
+  sensitive=true,	
+  alsoletter={<>=-},	
+  morecomment=[s]{<!-}{-->},
+  tag=[s],
+  otherkeywords={
+  % General
+  >,
+  % Standard tags
+	<!DOCTYPE,
+  </html, <html, <head, <title, </title, <style, </style, <link, </head, <meta, />, <footer, </footer,
+	% body
+	</body, <body,
+	% Divs
+	</div, <div, </div>, <section, </section
+	% Paragraphs
+	</p, <p, </p>,
+	% scripts
+	</script, <script,
+  % More tags...
+  <canvas, /canvas>, <svg, <rect, <animateTransform, </rect>, </svg>, <video, <source, <iframe, </iframe>, </video>, <image, </image>, <header, </header, <article, </article, </nav, <nav, <h1, </h1
+  },
+  ndkeywords={
+  % General
+  =,
+  % HTML attributes
+  charset=, src=, id=, width=, height=, style=, type=, rel=, href=,
+  % SVG attributes
+  fill=, attributeName=, begin=, dur=, from=, to=, poster=, controls=, x=, y=, repeatCount=, xlink:href=,
+  % properties
+  margin:, padding:, background-image:, border:, top:, left:, position:, width:, height:, margin-top:, margin-bottom:, font-size:, line-height:,
+	% CSS3 properties
+  transform:, -moz-transform:, -webkit-transform:,
+  animation:, -webkit-animation:,
+  transition:,  transition-duration:, transition-property:, transition-timing-function:,
+  }
+}
 
+\lstdefinestyle{htmlcssjs} {%
+  % General design
+%  backgroundcolor=\color{editorGray},
+  basicstyle={\footnotesize\ttfamily},   
+  frame=b,
+  % line-numbers
+  xleftmargin={0.75cm},
+  numbers=left,
+  stepnumber=1,
+  firstnumber=1,
+  numberfirstline=true,	
+  % Code design
+  identifierstyle=\color{black},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywordstyle=\color{editorGreen}\bfseries,
+  stringstyle=\color{editorOcher}\ttfamily,
+  commentstyle=\color{brown}\ttfamily,
+  % Code
+  language=HTML5,
+  alsolanguage=JavaScript,
+  alsodigit={.:;},	
+  tabsize=2,
+  showtabs=false,
+  showspaces=false,
+  showstringspaces=false,
+  extendedchars=true,
+  breaklines=true,
+  % German umlauts
+  literate=%
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}1
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
+}
+%
 
 \title{Memoria del Proyecto}
 \author{Javier Fernández Morata}
@@ -265,7 +374,62 @@ Una vez aclarado, la ventaja principal, a parte de todas las proporcionadas por 
 \label{subsec:jekyll}
 \emph{Jekyll} es un generador de sitios web estáticos, en vez de trabajar con base de datos, \emph{Jekyll} trabaja con texto plano (MarkDown o Textile) y lenguaje de plantilla (Liquid)  generando la página web. La principal ventaja que podemos inferir de \emph{Jekyll} es que no necesitamos saber HTML, para generar nuestro contenido web, ventaja que contra resta sobre lo tedioso que es tener actualizado un sitio web estático.   \\
 (( DISEÑAR UNA FIGURA DEL PROCESO MARKDOWN; PLANTILLA; HTML ))\\
-(( TRATAR COMO FUNCIONA CON PLANTILLAS , PROFUNDIZAR UN POCO CON OPCIONES QUE OFRECE))
+Tal y como observamos la figura (( REFERENCIA A LA FIGURA)) el proceso de trabajo para construir webs con \emph{Jekyll} es:
+\begin{enumerate}
+    \item Creamos un layout o diseño de nuestra página HTML que incluirá  código del lenguaje de programación \emph{Liquid}.
+    \item Escribimos nuestro contenido en texto plano (\emph{MarkDown} o \emph{Textile}) donde tendremos un preámbulo indicando el diseño a utilizar para ese post, así como otras características para nuestro contenido HTML.
+    \item Ejecutamos \emph{Jekyll} generando nuestro sitio web estático.
+\end{enumerate}
+
+Para entender como funcionan estos tres pasos vamos a tratar cada uno por separado dando un  breve resumen apoyado en ejemplos sencillos. Antes de empezar hay que destacar que cuando ejecutamos \emph{Jekyll} sobre nuestro directorio , cuyo fin será el que contenga los archivos de nuestro sitio web estático, establece una estructura creando en nuestra raíz del proyecto una serie de directorios, cuya función son las siguientes:\\
+\begin{itemize}
+    \item[] \textbf{\_includes:} En el irán las porciones de código que se repetirán para todos el sitio web (p.ej. footer), se incluirán en nuestro layouts con includes.
+    \item[] \textbf{\_layouts:} Directorio que contendrá todas las plantillas creadas para el sitio web.
+    \item[] \textbf{\_posts:} Lugar donde irán todos los artículos que iremos escribiendo en texto plano. 
+    \item[] \textbf{\_drafts:} En esta carpeta guardaremos los borradores de nuestros artículos, es decir, se utiliza para la prueba de código.
+    \item[] \textbf{\_site:} Está se genera no al crear el proyecto \emph{Jekyll}, si no al lanzar el servidor, está contendrá todos los HTML montados así como un \textit{index.html} (archivo principal de un sitio web).
+    \item[] \textbf{\_config.yml:} Esto no es un directorio, es una archivo, pero también es generado al crear un proyecto \emph{Jekyll} donde en él encontraremos datos de configuración así como indicaciones de qué directorio obtener los datos.
+\end{itemize}
+Una vez que tenemos claro a que corresponde cada directorio en nuestro proyecto , tratamos a continucación lo mencionando anteriormente, los pasos  de un proyecto \emph{Jekyll}. \\
+
+\textbf{\large{Diseño de Layout}} \\
+Layout es una plantilla donde \emph{Jekyll} incrustará el contenido escrito en texto plano. Tal y como hemos comentado antes, estas plantillas deberán almacenarse en el directorio \texttt{\_layout}. En ellas  haremos uso de nuestro código guardado en \texttt{\_include}, un ejemplo como el de incluir un footer al final de mi plantilla \texttt{default.html} es el siguiente: 
+
+\begin{lstlisting}[style=htmlcssjs,title=default.html]
+<!-- default.html -->
+<footer>
+    {{include footer.html}}
+</footer>
+\end{lstlisting}
+\begin{lstlisting}[style=htmlcssjs,title=footer.html]
+<!-- footer.html -->
+<p>Posted by: Hege Refsnes</p>
+<p>Contact information: <a href="mailto:someone@example.com">
+  someone@example.com</a>.</p>
+\end{lstlisting}
+\newpage
+La herramienta que mas optimiza el trabajo a la hora de elaborar estas plantillas de la que hace uso \emph{Jekyll} es \emph{Liquid}. Este lenguaje que trataremos en el siguiente punto hace uso de variables, donde estas son etiquetas, objetos y filtros. Además cualquier archivo \emph{Jekyll} es accesible mediante variables via \emph{Liquid}. Estas variables pueden ser el título del sitio web (establecido en \texttt{\_config.yml}). La variable más importante es \texttt{\{\{content\}\}}, ya que en ella es donde \emph{Jekyll} incrustará el contenido escrito en texto plano. Un ejemplo sencillo de un layout sería el siguiente:
+\begin{lstlisting}[style=htmlcssjs,title=default.html]
+<!doctype html>
+<html lang="en">
+  <head>
+    {{include head.html}}
+  </head>
+  <body>
+    <nav>
+        {{include nav.html}}
+    </nav>
+    <h1>{{ page.title }}</h1>
+    <section>
+      {{ content }}
+    </section>
+    <footer>
+        {{ include footer.html }}
+    </footer>
+  </body>
+</html>
+\end{lstlisting}
+\textbf{\large{Escribiendo contenido}} \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DUDAS
@@ -278,6 +442,7 @@ Una vez aclarado, la ventaja principal, a parte de todas las proporcionadas por 
     \item ¿Introduzco como colaborar en un proyecto de Github?
     \item ¿Trato Liquid y MarkDown? y a la hora de tratarlos, los trato con una sección para ellos o dentro de alguna de las escritas.
     \item Para la primera estructura que tratamos, me incluiste hablar de gestión de proyecto en Python, no veo el sentido de esta parte en este capítulo.
+    \item Al código que incluyo también le tengo que indicar poner pie de foto
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
