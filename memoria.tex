@@ -408,7 +408,7 @@ Layout es una plantilla donde \emph{Jekyll} incrustará el contenido escrito en 
   someone@example.com</a>.</p>
 \end{lstlisting}
 \newpage
-La herramienta que mas optimiza el trabajo a la hora de elaborar estas plantillas de la que hace uso \emph{Jekyll} es \emph{Liquid}. Este lenguaje que trataremos en el siguiente punto hace uso de variables, donde estas son etiquetas, objetos y filtros. Además cualquier archivo \emph{Jekyll} es accesible mediante variables via \emph{Liquid}. Estas variables pueden ser el título del sitio web (establecido en \texttt{\_config.yml}). La variable más importante es \texttt{\{\{content\}\}}, ya que en ella es donde \emph{Jekyll} incrustará el contenido escrito en texto plano. Un ejemplo sencillo de un layout sería el siguiente:
+La herramienta que mas optimiza el trabajo a la hora de elaborar estas plantillas de la que hace uso \emph{Jekyll} es \emph{Liquid}. Este lenguaje que trataremos en el siguiente punto hace uso de variables, donde estas son etiquetas, objetos y filtros. Además cualquier archivo \emph{Jekyll} es accesible mediante variables vía \emph{Liquid}. Estas variables pueden ser el título del sitio web (establecido en \texttt{\_config.yml}). La variable más importante es \texttt{\{\{content\}\}}, ya que en ella es donde \emph{Jekyll} incrustará el contenido escrito en texto plano. Un ejemplo sencillo de un layout sería el siguiente:
 \begin{lstlisting}[style=htmlcssjs,title=default.html]
 <!doctype html>
 <html lang="en">
@@ -431,10 +431,29 @@ La herramienta que mas optimiza el trabajo a la hora de elaborar estas plantilla
 \end{lstlisting}
 \textbf{\large{Escribiendo contenido}} \\
 Una vez que ya tenemos nuestro layout, es hora de crear el contenido con el que poder construir nuestro sitio web. Como ya hemos mencionado, no es necesario tener conocimientos de HTML, solo escribir contenido en texto plano. \\
-\{\{ HABLAR SOBRE EL FRONT MATTER; Y LAS REGLAS A SEGUIR A LA HORA DE CREAR POSTS\}\} \\
-
+A la hora de escribirlo la parte más importante es la denominada como \emph{Front Matter}, ya que cualquier documento que lo contenga, \emph{Jekyll} lo tratará como un fichero especial. Esté debe ser el primer elemento de nuestro fichero, y debe seguir la forma de lenguaje \emph{YAML} entre tres guiones. 
+\begin{lstlisting}
+---
+layout: post
+title: Blogging Like a Hacker
+---
+\end{lstlisting}
+Entre los guiones se pueden definir variables personalizadas  o variables ya definidas que son accesibles en el contenido usando etiquetas \emph{Liquid} y lo serán tanto en los layouts como en el contenido que estamos creando. La más importante de las variables globales predefinidas que existen es la denominada como \textbf{layout}, con ella indicamos que plantilla vamos a utilizar para el contenido que se va a crear tras el \emph{Front Matter} \\
+No podemos finalizar esta sección sin mencionar la regla más importante a la hora de crear posts en nuestra sitio web estático. El fichero que creamos con nuestro texto plano debe alojarse en el directorio ya comentado como , \textbf{\_layout}, el nombre de éste debe seguir una regla de formato, que vendrá dada por: \texttt{YEAR-MONTH-DAY-title.MARKUP}, ya que para organizar el contenido de nuestra web \emph{Jekyll} lo organizará por un sistema de directorios con orden cronólogico.  \\
 \textbf{\large{Generando la web}}\\
-\{\{ PARA ESTA PARTE; HABLAR SOBRE LOS COMANDOS BÁSICOS PARA MONTAR EL SITIO WEB \}\}
+Creada la plantilla y creado el contenido solo queda generar el sitio web, para ello basta con ejecutar \emph{Jekyll}.\\
+Una vez que creamos un directorio como nuestro proyecto \emph{Jekyll}, cada vez que queramos generar el contenido HTML, se ejecuta el comando con la opción de lanzar el sitio localmente o solo construirlo teniendo así nuestro sitio web estático. \{\{ INSERTAR FIGURA(EJEMPLO DE PLANTILLA CON LAYOUT, CONTENIDO FRONT MATTER Y RESULTADO FINAL\}\}\\
+\begin{lstlisting}[language=sh]
+jekyll new #Crea un proyecto Jekyll
+jekyll serve #Construye el sitio web y lo sirve localmente en     
+             #"localhost:1400"
+jekyll build #Genera el contenido web
+\end{lstlisting}
+\subsection{Jekyll en repositorio GitHub}
+\label{subsec:jekandGit}
+Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el contenido \emph{Jekyll}, pero ¿Cómo actualizamos nuestra web?¿Cada vez que creamos contenido es necesario actualizar repositorio y ejecutar \emph{Jekyll} por separado?. \\
+\emph{GitHub} funciona con Jekyll, lo que quiere decir que cuando creamos contenido y este lo comprometemos (committed), \emph{Jekyll} se encargaŕa de generar el contenido tal y como hemos mencionado.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DUDAS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -449,6 +468,9 @@ Una vez que ya tenemos nuestro layout, es hora de crear el contenido con el que 
     \item Al código que incluyo también le tengo que indicar poner pie de foto, cuando digo pie de foto, me refiero a incluirlo como figura.
     \item ¿El título se discute ahora, o una vez que el proyecto está acabado?
     \item ¿El resumen debo ponerlo al principio de la memoria o al final?
+    \item ¿Defino un estilo para el código del Font Matter?
+    \item ¿Herramienta para el diseño de figuras gráficas?
+    \item ¿Qué es una Gem Ruby?
     \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -466,6 +488,8 @@ Una vez que ya tenemos nuestro layout, es hora de crear el contenido con el que 
 \begin{enumerate}
     \item Empezar introducción con una frase del que creo el software Libre
     \item Si hablo de las ramificiaciones -> Debo incluir y quitar el comentario que hay 
+    \item Recordad Título
+    \item Recordad añadir pie de fotos a las partes con código si al final es necesario
 \end{enumerate}
 
 
