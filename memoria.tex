@@ -11,6 +11,7 @@
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
+\usepackage{subfig} %Para insertar varias figuras
 \usepackage{titlesec, blindtext, color}
 %%Estilo de fuente
 \usepackage{lmodern}
@@ -294,7 +295,6 @@ Y por tanto, uno de los objetivos de este proyecto es facilitar las contribucion
 \label{sec:mot}
 Desde que empecé el instituto siempre me he decantado por una manera de trabajar más práctica que teórica. Si algo tengo que destacar de la carrera es el descubrir la programación, algo que sabía que era, pero que nunca había practicado, es decir, no había programado nunca un "Hola Mundo". \\
 Una de las asignaturas que más me entusiasmo cursar, fue la de \emph{"Servicios y Aplicaciones Telemáticas"}, en la que desarrollamos aplicaciones web a través del \emph{framework} Django. En este proyecto además de un desarrollo web, con distintas tecnologías que utilice en dicha asignatura, hay otro objetivo, que es el más interesante para mi, que es seguir unas pautas de escribir código para proyectos de \emph{Software libre}.
-\newpage
 
 \section{Objetivos}
 \label{sec:objetivos}
@@ -339,8 +339,14 @@ Este capítulo constará de dos partes. Una primera donde se expone todas las te
 \label{sec:git}
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.7]{img/logo_git.png}
-    \label{fig:logoGit}
+    \subfloat{
+        \includegraphics[scale=0.7]{img/logo_git.png}
+        \label{img:logoGit}
+    } \hspace{30mm}
+    \subfloat{
+        \includegraphics{img/logo_github.png}
+        \label{img:logoGithub}
+    }
 \end{figure}
 Este proyecto al ser un trabajo de \emph{software libre}, significa que el código sufrirá cambios de distintos autores, por lo que es necesario un sistema de control de versiones. Para que un sistema sea de control de versiones debe proporcionar un mecanismo de almacenamiento de los elementos que se desea gestionar, posibilidad de realizar cambios sobre los elementos almacenados y un registro histórico de las acciones realizadas con cada elemento o conjunto de elementos. \\
 El sistema que se ha escogido debido a nuestra arquitectura de almacenamiento de código y por su seguridad, comodidad y velocidad, es \emph{Git}. Una gran diferencia de \emph{Git} respecto a los demás sistemas de control de versiones es la manera de llevar el registro de cambios sobre sus datos, mientras que la mayoría de sistemas almacenan la información como una lista de cambios, en \emph{Git}, cada vez que se realiza un cambio sobre un archivo \emph{Git} hace una instantánea, y guarda una referencia sobre el archivo sin estos cambios. Para ser mas eficiente, si los archivos no han sido modificados, \emph{Git} no almacena el archivo de nuevo. % esta distinción influye en uno de los mayores beneficios de \emph{Git}, las ramificaciones, tema que trataremos a continuación, viendo como funciona este sistema de control de versiones. \\
@@ -353,10 +359,10 @@ Todo el funcionamiento de este sistema de control de versiones es mayoritariamen
     \item \textbf{Staged}: Estado que marca archivos modificados para la siguiente confirmación. 
 \end{itemize}
 Estos tres estados nos lleva a diferenciar las siguientes áreas de trabajo: 
-\begin{figure}[htbp]
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{img/git_states.png}
     \label{fig:gitStates}
+    \includegraphics[width=\textwidth]{img/git_states.png}
     \caption{ Esquema de los estados de un repositorio Git}
 \end{figure}
 \begin{itemize}
@@ -385,9 +391,19 @@ Una vez aclarado, la ventaja principal, a parte de todas las proporcionadas por 
 
 \subsection{Jekyll}
 \label{subsec:jekyll}
-\emph{Jekyll} es un generador de sitios web estáticos, en vez de trabajar con base de datos, \emph{Jekyll} trabaja con texto plano (MarkDown o Textile) y lenguaje de plantilla (Liquid)  generando la página web. La principal ventaja que podemos inferir de \emph{Jekyll} es que no necesitamos saber HTML, para generar nuestro contenido web, ventaja que contra resta sobre lo tedioso que es tener actualizado un sitio web estático.   \\
-(( DISEÑAR UNA FIGURA DEL PROCESO MARKDOWN; PLANTILLA; HTML ))\\
-Tal y como observamos la figura (( REFERENCIA A LA FIGURA)) el proceso de trabajo para construir webs con \emph{Jekyll} es:
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{img/logo_jekyll.png}
+    \label{img:logoJekyll}
+\end{figure}
+\emph{Jekyll} es un generador de sitios web estáticos, en vez de trabajar con base de datos, \emph{Jekyll} trabaja con texto plano (MarkDown o Textile) y lenguaje de plantilla (Liquid)  generando la página web. La principal ventaja que podemos inferir de \emph{Jekyll} es que no necesitamos saber HTML, para generar nuestro contenido web, ventaja que contra resta sobre lo tedioso que es tener actualizado un sitio web estático. \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/jeyll_process.png}
+    \caption{Proceso para web básica con Jekyll}
+    \label{fig:jekyllProc}
+\end{figure}
+Tal y como observamos la figura \ref{fig:jekyllProc} el proceso de trabajo para construir webs con \emph{Jekyll} es:
 \begin{enumerate}
     \item Creamos un layout o diseño de nuestra página HTML que incluirá  código del lenguaje de programación \emph{Liquid}.
     \item Escribimos nuestro contenido en texto plano (\emph{MarkDown} o \emph{Textile}) donde tendremos un preámbulo indicando el diseño a utilizar para ese post, así como otras características para nuestro contenido HTML.
@@ -420,7 +436,6 @@ Layout es una plantilla donde \emph{Jekyll} incrustará el contenido escrito en 
 <p>Contact information: <a href="mailto:someone@example.com">
   someone@example.com</a>.</p>
 \end{lstlisting}
-\newpage
 La herramienta que mas optimiza el trabajo a la hora de elaborar estas plantillas de la que hace uso \emph{Jekyll} es \emph{Liquid}. Este lenguaje que trataremos en el siguiente punto hace uso de variables, donde estas son etiquetas, objetos y filtros. Además cualquier archivo \emph{Jekyll} es accesible mediante variables vía \emph{Liquid}. Estas variables pueden ser el título del sitio web (establecido en \texttt{\_config.yml}). La variable más importante es \texttt{\{\{content\}\}}, ya que en ella es donde \emph{Jekyll} incrustará el contenido escrito en texto plano. Un ejemplo sencillo de un layout sería el siguiente:
 \begin{lstlisting}[style=htmlcssjs,title=default.html]
 <!doctype html>
@@ -455,7 +470,13 @@ Entre los guiones se pueden definir variables personalizadas  o variables ya def
 No podemos finalizar esta sección sin mencionar la regla más importante a la hora de crear posts en nuestra sitio web estático. El fichero que creamos con nuestro texto plano debe alojarse en el directorio ya comentado como , \textbf{\_layout}, el nombre de éste debe seguir una regla de formato, que vendrá dada por: \texttt{YEAR-MONTH-DAY-title.MARKUP}, ya que para organizar el contenido de nuestra web \emph{Jekyll} lo organizará por un sistema de directorios con orden cronólogico.  \\
 \textbf{\large{Generando la web}}\\
 Creada la plantilla y creado el contenido solo queda generar el sitio web, para ello basta con ejecutar \emph{Jekyll}.\\
-Una vez que creamos un directorio como nuestro proyecto \emph{Jekyll}, cada vez que queramos generar el contenido HTML, se ejecuta el comando con la opción de lanzar el sitio localmente o solo construirlo teniendo así nuestro sitio web estático. \{\{ INSERTAR FIGURA(EJEMPLO DE PLANTILLA CON LAYOUT, CONTENIDO FRONT MATTER Y RESULTADO FINAL\}\}\\
+Una vez que creamos un directorio como nuestro proyecto \emph{Jekyll}, cada vez que queramos generar el contenido HTML, se ejecuta el comando con la opción de lanzar el sitio localmente o solo construirlo teniendo así nuestro sitio web estático. 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{img/jekyll_process2.png}
+    \caption{Proceso de Contenido en Jekyll}
+    \label{fig:jekyllProc2}
+\end{figure}
 \begin{lstlisting}[language=sh]
 jekyll new #Crea un proyecto Jekyll
 jekyll serve #Construye el sitio web y lo sirve localmente en     
@@ -472,7 +493,8 @@ Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Dudas}
 \begin{enumerate}
-    \item ¿Como puedo suprimir el espacio en blanco tras la figura \ref{fig:gitStates}
+    \item ¿Por qué los warning de etiquetar?
+    \item ¿Como usamos los espaciados?
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -490,17 +512,16 @@ Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el 
 \begin{enumerate}
     \item Empezar introducción con una frase del que creo el software Libre
     \item Si hablo de las ramificiaciones -> Debo incluir y quitar el comentario que hay 
-    \item Recordad Título
     \item Recordad añadir pie de fotos a las partes con código
     \item Figura de Arquitectura general en Imagen.
     \item Dividir Dos secciones-> Front End y Back End
     \item ¿Hablo de ramificaciones? Si y de GitFlow -> Incluir
     \item Liquid lo trato en una sección y MarkDown con poco al igual que HTML
-    \item Gestión de proyecto de Python -> Cap 3 (Cuando acabe el 2)
     \item Resumen al principio (Se hace al acabar el proyecto)
     \item Crear estilo para Front Matter
-    \item Para cuando incluimos código, cambiar el tipo de fuente, de manera que haya una para el documento y otra para la parte de incluir código
     \item Hablar de gh-pages y de ruby bundle
+    \item Gestión de proyecto de Python -> Cap 3 (Cuando acabe el 2)
+    \item Para cuando incluimos código, cambiar el tipo de fuente, de manera que haya una para el documento y otra para la parte de incluir código
 \end{enumerate}
 
 
