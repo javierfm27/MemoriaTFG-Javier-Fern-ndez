@@ -111,6 +111,7 @@
   ndkeywordstyle=\color{editorGreen}\bfseries,
   stringstyle=\color{editorOcher}\ttfamily,
   commentstyle=\color{brown}\ttfamily,
+  basicstyle=\footnotesize\fontfamily{fvm}\selectfont, % use Bera    Mono  
   % Code
   language=HTML5,
   alsolanguage=JavaScript,
@@ -170,7 +171,7 @@ Trabajo Fin de Grado
 
 \vspace{2.5cm}
 \Large
-{{ TÍTULO DE TRABAJO }}
+PYCARDIO: PAQUETE PARA ANÁLISIS DE SEÑALES CARDIACAS
 
 \vspace{4cm}
 \large
@@ -275,8 +276,9 @@ Por tanto, la intención de este capítulo es mostrar el contexto, la motivació
 
 \section{Contexto}
 \label{sec:contex}
-A los largos de los años, el software ha pasado por varias etapas en cuanto a su privatización. Antes del \emph{boom} de la informática, los que hacían uso de ella, compartían \emph{software} sin ninguna restricción, pero cuando llegaron los años 80 las compañías que vendían las computadoras comercializaban estas usando sistemas operativos privados, forzando al usuario a aceptar restricciones legales de modificar dicho \emph{software}. \\
-Por estos años y debido a un error con un dispositivo, Richard Stallman fundó el proyecto GNU e introdujo la definición de \emph{software libre}. ¿Qué es software libre? Software libre es la cuestión de libertad de ejecutar, copiar, distribuir, estudiar, cambiar y mejorar el software. \\ \\ \\ 
+A los largos de los años, el software ha pasado por varias etapas en cuanto a su privatización. Antes del \emph{boom} de la informática, los que hacían uso de ella, compartían \emph{software} sin ninguna restricción, pero cuando llegaron los años 80 las compañías que vendían las computadoras comercializaban estas usando sistemas operativos privados, forzando al usuario a aceptar restricciones legales de modificar dicho \emph{software}.\\ 
+Por estos años y debido a un error con un dispositivo, Richard Stallman fundó el proyecto GNU e introdujo la definición de \emph{software libre}. ¿Qué es software libre? Software libre es la cuestión de libertad de ejecutar, copiar, distribuir, estudiar, cambiar y mejorar el software.
+\newpage
 Es decir, significa que los usuarios de dicho software disponemos de las cuatro libertades esenciales: 
 \begin{itemize}
     \item Libertad 0, libertad para ejecutar el \emph{software} con cualquier propósito
@@ -335,6 +337,11 @@ Este capítulo constará de dos partes. Una primera donde se expone todas las te
     %%
 \section{Control de versiones con Git. GitHub}
 \label{sec:git}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.7]{img/logo_git.png}
+    \label{fig:logoGit}
+\end{figure}
 Este proyecto al ser un trabajo de \emph{software libre}, significa que el código sufrirá cambios de distintos autores, por lo que es necesario un sistema de control de versiones. Para que un sistema sea de control de versiones debe proporcionar un mecanismo de almacenamiento de los elementos que se desea gestionar, posibilidad de realizar cambios sobre los elementos almacenados y un registro histórico de las acciones realizadas con cada elemento o conjunto de elementos. \\
 El sistema que se ha escogido debido a nuestra arquitectura de almacenamiento de código y por su seguridad, comodidad y velocidad, es \emph{Git}. Una gran diferencia de \emph{Git} respecto a los demás sistemas de control de versiones es la manera de llevar el registro de cambios sobre sus datos, mientras que la mayoría de sistemas almacenan la información como una lista de cambios, en \emph{Git}, cada vez que se realiza un cambio sobre un archivo \emph{Git} hace una instantánea, y guarda una referencia sobre el archivo sin estos cambios. Para ser mas eficiente, si los archivos no han sido modificados, \emph{Git} no almacena el archivo de nuevo. % esta distinción influye en uno de los mayores beneficios de \emph{Git}, las ramificaciones, tema que trataremos a continuación, viendo como funciona este sistema de control de versiones. \\
 \textbf{¿Cómo funciona \emph{Git}?}\\
@@ -346,15 +353,21 @@ Todo el funcionamiento de este sistema de control de versiones es mayoritariamen
     \item \textbf{Staged}: Estado que marca archivos modificados para la siguiente confirmación. 
 \end{itemize}
 Estos tres estados nos lleva a diferenciar las siguientes áreas de trabajo: 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{img/git_states.png}
+    \label{fig:gitStates}
+    \caption{ Esquema de los estados de un repositorio Git}
+\end{figure}
 \begin{itemize}
     \item \textbf{Working Directory}: Este área es donde obtenemos la copia del proyecto, lista para usarse o modificarse, sin influir en la copia original.
     \item \textbf{Staged Area}: Área en la que se recoge los cambios que van a realizarse sobre los archivos antes de confirmarse.
     \item \textbf{Git Directory}: Estado de los archivos originales del proyecto, incluidos metadatos. Cuando se confirma un archivo, \emph{Git} toma los cambios del área de preparación (Staged Área) y almacena los cambios nuevos en el directorio \emph{Git}.
 \end{itemize}
-Por tanto, el flujo que hay que seguir para trabajar con este sistema de control de versiones es el representado en la figura ((INTRODUCIMOS IMAGEN-> AQUI REFERENCIA)), donde como vemos tras modificar una serie de archivos en el directorio de trabajo preparamos los archivos añadiéndolos al staged area, se confirman los cambios realizados sobre estos, añadiendo así las instantáneas (copias de los archivos con los cambios confirmados) en el directorio \emph{Git}. \\
-((IMAGEN GITHUB))
+Por tanto, el flujo que hay que seguir para trabajar con este sistema de control de versiones es el representado en la figura \ref{fig:gitStates}, donde como vemos tras modificar una serie de archivos en el directorio de trabajo preparamos los archivos añadiéndolos al staged area, se confirman los cambios realizados sobre estos, añadiendo así las instantáneas (copias de los archivos con los cambios confirmados) en el directorio \emph{Git}. 
+
 Una vez que hemos visto como trabaja \emph{Git} nos queda responder la pregunta de \textit{¿Qué es GitHub?} \emph{GitHub} es una plataforma de desarrollo colaborativo de software para alojar proyectos utilizando los mencionados repositorios \emph{Git}, es decir, aloja el código en la nube y brinda herramientas para el trabajo de equipo en el proyecto. Otra de las características de \emph{GitHub} es el poder contribuir en el desarrollo de software de los demás, algo esencial en cualquier proyecto de software libre. \textit{¿Qué herramientas proporciona para el trabajo en equipo?} \emph{GitHub} proporciona un amplio abanico de funcionalidades para ello, pero entre ellas, destaca una wiki para el mantenimiento de las versiones de las paǵinas, un sistema de seguimiento de problemas permitiendo al equipo detallar los problemas con lo desarrollado y una herramienta de revisión de código \\ %Si hablamos de ramas incluir otra cosa\\
-Así, el uso que daremos de \emph{GitHub} es el de construir un repositorio donde alojaremos el código de nuestro paquete, permitiendo así que cualquiera pueda aportar ideas al proyecto o mejorar el software.\\
+Así, el uso que daremos de \emph{GitHub} es el de construir un repositorio donde alojaremos el código de nuestro paquete, permitiendo así que cualquiera pueda aportar ideas al proyecto o mejorar el software.
 
     %%
     % 2.3 - GITHUB PAGES
@@ -367,7 +380,7 @@ Así, el uso que daremos de \emph{GitHub} es el de construir un repositorio dond
 \label{subsec:githubpages}
 Es un servicio de alojamiento web que ofrece \emph{GitHub}, se usa para alojar sitios web estáticos usando directamente un repositorio \emph{Git}. Para aclarar la principal ventaja de \emph{GitHub Pages} frente a otros servidores vamos a definir que es una pagina web estática y que se diferencia respecto a una página web dinámica. \\
 \textbf{¿Qué es una página web estática?}\\
-Una página web estática es aquel documento web que muestra el mismo contenido para todos los usuarios, es decir, que no es personalizable o no hay elección de interactuar con ella para ordenar, ocultar o modificar contenido (páginas dinámicas). Una de las ventajas principales de este tipo de páginas es lo económico que resulta crearlas, sin tener que usar ningún tipo de programación especial. Estas páginas son útiles para el objetivo de simplemente mostrar contenido. Hay que destacar que la mayor desventaja de generar sitios web estáticos son su actualización haciendo de esta algo tedioso. \\ \\
+Una página web estática es aquel documento web que muestra el mismo contenido para todos los usuarios, es decir, que no es personalizable o no hay elección de interactuar con ella para ordenar, ocultar o modificar contenido (páginas dinámicas). Una de las ventajas principales de este tipo de páginas es lo económico que resulta crearlas, sin tener que usar ningún tipo de programación especial. Estas páginas son útiles para el objetivo de simplemente mostrar contenido. Hay que destacar que la mayor desventaja de generar sitios web estáticos son su actualización haciendo de esta algo tedioso. \\ 
 Una vez aclarado, la ventaja principal, a parte de todas las proporcionadas por ser un repositorio \emph{Git}, es que al no necesitar base de datos para servir el contenido, solo se requiere un servidor web que vaya sirviendo el contenido que se solicita.
 
 \subsection{Jekyll}
@@ -459,19 +472,8 @@ Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Dudas}
 \begin{enumerate}
-    \item ¿Cuantos objetivos debo poner?¿Los puestos son suficientes?
-    \item ¿La figura para la Arquitectura General, es solo sobre el procedimiento para crear la web, o solo para la DOC?. 
-    \item ¿En \ref{sec:git} hablamos de las ramificaciones?.
-    \item ¿Introduzco como colaborar en un proyecto de Github?
-    \item ¿Trato Liquid y MarkDown? y a la hora de tratarlos, los trato con una sección para ellos o dentro de alguna de las escritas.
-    \item Para la primera estructura que tratamos, me incluiste hablar de gestión de proyecto en Python, no veo el sentido de esta parte en este capítulo.
-    \item Al código que incluyo también le tengo que indicar poner pie de foto, cuando digo pie de foto, me refiero a incluirlo como figura.
-    \item ¿El título se discute ahora, o una vez que el proyecto está acabado?
-    \item ¿El resumen debo ponerlo al principio de la memoria o al final?
-    \item ¿Defino un estilo para el código del Font Matter?
-    \item ¿Herramienta para el diseño de figuras gráficas?
-    \item ¿Qué es una Gem Ruby?
-    \end{enumerate}
+    \item ¿Como puedo suprimir el espacio en blanco tras la figura \ref{fig:gitStates}
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SUGERENCIAS TUTOR
@@ -489,7 +491,16 @@ Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el 
     \item Empezar introducción con una frase del que creo el software Libre
     \item Si hablo de las ramificiaciones -> Debo incluir y quitar el comentario que hay 
     \item Recordad Título
-    \item Recordad añadir pie de fotos a las partes con código si al final es necesario
+    \item Recordad añadir pie de fotos a las partes con código
+    \item Figura de Arquitectura general en Imagen.
+    \item Dividir Dos secciones-> Front End y Back End
+    \item ¿Hablo de ramificaciones? Si y de GitFlow -> Incluir
+    \item Liquid lo trato en una sección y MarkDown con poco al igual que HTML
+    \item Gestión de proyecto de Python -> Cap 3 (Cuando acabe el 2)
+    \item Resumen al principio (Se hace al acabar el proyecto)
+    \item Crear estilo para Front Matter
+    \item Para cuando incluimos código, cambiar el tipo de fuente, de manera que haya una para el documento y otra para la parte de incluir código
+    \item Hablar de gh-pages y de ruby bundle
 \end{enumerate}
 
 
