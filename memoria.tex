@@ -323,15 +323,26 @@ Para finalizar la introducción, se explica como va a ir estructurada la memoria
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Soluciones tecnológicas}
 \label{chap:Arqui}
-Este capítulo constará de dos partes. Una primera donde se expone todas las tecnologías utilizadas en la creación del sitio web del proyecto, y una segunda donde hablamos sobre las tecnologías de gestión de proyecto y documentación en Python.
+Este capítulo constará de dos partes. Una primera donde se muestra una visión general de las tecnologías que usaremos para la creación de la página web, y una segunda donde explicamos brevemente cada tecnología utilizada.
 
     %%
     % 2.1 - ARQUITECTURA
     %%
 \section{Arquitectura general}
 \label{sec:arqui}
-[[  PREGUNTAR TUTOR, COMO QUEREMOS REDACTAR ESTA PARTE]
-
+En cualquier proyecto de desarrollo web existen dos tipos de tecnologías, BackEnd y FrontEnd. Por tanto, antes de exponer la visión general de nuestra web. ¿Qué significan estos dos términos?:
+\begin{itemize}
+    \item \textbf{BackEnd:} Tecnologías que trabajan en el lado del servidor,es decir, tecnologías en toma de datos, procesarlos, envío al usuario. Sin estas, las tecnologías del \emph{frontEnd} no tendrían nada que mostrar.
+    \item \textbf{FrontEnd:} Tal y como hemos comentado, son las tecnologías que se encargan de mostrar el contenido, es decir, tecnologías centradas en el lado de la aplicación como CSS, HTML5, JavaScript.
+\end{itemize}
+Una vez diferenciada estas capas, en nuestro \emph{BackEnd} podemos diferencias tecnología donde se alojara tanto nuestro contenido web como nuestro código fuente en \emph{GitHub}, tecnología que además proporcionará otras como soporte de problemas (ITS), tecnologías sobre cobertura de código. \\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{img/arqui_general.png}
+    \caption{Arquitectura General de la Web}
+    \label{fig:arquiGeneral}
+\end{figure}
+En la capa \emph{FrontEnd} observamos como todas las tecnologías que colaborarán son aquellas ya conocidascomo HTML5, CSS; donde cuyo objetivo es mostrar contenido y otras nuevas como \emph{Jekyll}. Observando la figura \ref{fig:arquiGeneral} vemos que otras dos tecnologías nos apoyarán en mostrar el funcionamiento del módulo \emph{PyCardio}, una para mostrar la documentación de los módulos(\emph{ReadTheDocs}) y otra donde también se alojará el código fuente siendo así una aplicación de terceros de Python(PyPI).
     %%
     % 2.2 - CONTROL DE VERSIONES CON GIT. GITHUB
     %%
@@ -465,13 +476,13 @@ A la hora de escribirlo la parte más importante es la denominada como \emph{Fro
 layout: post
 title: Blogging Like a Hacker
 ---
-\end{lstlisting}
+\end{lstlisting} 
 Entre los guiones se pueden definir variables personalizadas  o variables ya definidas que son accesibles en el contenido usando etiquetas \emph{Liquid} y lo serán tanto en los layouts como en el contenido que estamos creando. La más importante de las variables globales predefinidas que existen es la denominada como \textbf{layout}, con ella indicamos que plantilla vamos a utilizar para el contenido que se va a crear tras el \emph{Front Matter} \\
 No podemos finalizar esta sección sin mencionar la regla más importante a la hora de crear posts en nuestra sitio web estático. El fichero que creamos con nuestro texto plano debe alojarse en el directorio ya comentado como , \textbf{\_layout}, el nombre de éste debe seguir una regla de formato, que vendrá dada por: \texttt{YEAR-MONTH-DAY-title.MARKUP}, ya que para organizar el contenido de nuestra web \emph{Jekyll} lo organizará por un sistema de directorios con orden cronólogico.  \\
 \textbf{\large{Generando la web}}\\
 Creada la plantilla y creado el contenido solo queda generar el sitio web, para ello basta con ejecutar \emph{Jekyll}.\\
 Una vez que creamos un directorio como nuestro proyecto \emph{Jekyll}, cada vez que queramos generar el contenido HTML, se ejecuta el comando con la opción de lanzar el sitio localmente o solo construirlo teniendo así nuestro sitio web estático. 
-\begin{figure}[ht]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{img/jekyll_process2.png}
     \caption{Proceso de Contenido en Jekyll}
