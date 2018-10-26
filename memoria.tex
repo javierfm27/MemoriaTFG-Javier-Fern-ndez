@@ -343,11 +343,17 @@ Una vez diferenciada estas capas, en nuestro \emph{BackEnd} podemos diferencias 
     \label{fig:arquiGeneral}
 \end{figure}
 En la capa \emph{FrontEnd} observamos como todas las tecnologías que colaborarán son aquellas ya conocidascomo HTML5, CSS; donde cuyo objetivo es mostrar contenido y otras nuevas como \emph{Jekyll}. Observando la figura \ref{fig:arquiGeneral} vemos que otras dos tecnologías nos apoyarán en mostrar el funcionamiento del módulo \emph{PyCardio}, una para mostrar la documentación de los módulos(\emph{ReadTheDocs}) y otra donde también se alojará el código fuente siendo así una aplicación de terceros de Python(PyPI).
+    
     %%
-    % 2.2 - CONTROL DE VERSIONES CON GIT. GITHUB
+    % 2.2 - BackEnd
     %%
-\section{Control de versiones con Git. GitHub}
-\label{sec:git}
+\section{BackEnd}
+\label{sec:backend}
+        %%
+        % 2.2.1 - CONTROL DE VERSIONES CON GIT. GITHUB
+        %%
+\subsection{Control de versiones con Git. GitHub}
+\label{subsec:git}
 \begin{figure}[h]
     \centering
     \subfloat{
@@ -360,7 +366,7 @@ En la capa \emph{FrontEnd} observamos como todas las tecnologías que colaborar�
     }
 \end{figure}
 Este proyecto al ser un trabajo de \emph{software libre}, significa que el código sufrirá cambios de distintos autores, por lo que es necesario un sistema de control de versiones. Para que un sistema sea de control de versiones debe proporcionar un mecanismo de almacenamiento de los elementos que se desea gestionar, posibilidad de realizar cambios sobre los elementos almacenados y un registro histórico de las acciones realizadas con cada elemento o conjunto de elementos. \\
-El sistema que se ha escogido debido a nuestra arquitectura de almacenamiento de código y por su seguridad, comodidad y velocidad, es \emph{Git}. Una gran diferencia de \emph{Git} respecto a los demás sistemas de control de versiones es la manera de llevar el registro de cambios sobre sus datos, mientras que la mayoría de sistemas almacenan la información como una lista de cambios, en \emph{Git}, cada vez que se realiza un cambio sobre un archivo \emph{Git} hace una instantánea, y guarda una referencia sobre el archivo sin estos cambios. Para ser mas eficiente, si los archivos no han sido modificados, \emph{Git} no almacena el archivo de nuevo. % esta distinción influye en uno de los mayores beneficios de \emph{Git}, las ramificaciones, tema que trataremos a continuación, viendo como funciona este sistema de control de versiones. \\
+El sistema que se ha escogido debido a nuestra arquitectura de almacenamiento de código y por su seguridad, comodidad y velocidad, es \emph{Git}. Una gran diferencia de \emph{Git} respecto a los demás sistemas de control de versiones es la manera de llevar el registro de cambios sobre sus datos, mientras que la mayoría de sistemas almacenan la información como una lista de cambios, en \emph{Git}, cada vez que se realiza un cambio sobre un archivo \emph{Git} hace una instantánea, y guarda una referencia sobre el archivo sin estos cambios. Para ser mas eficiente, si los archivos no han sido modificados, \emph{Git} no almacena el archivo de nuevo. Esta distinción influye en uno de los mayores beneficios de \emph{Git}, las ramificaciones, tema que trataremos a continuación, viendo como trabajar en un proyecto siguiendo una serie de reglas impuestas por \emph{GitFlow}. \\
 \textbf{¿Cómo funciona \emph{Git}?}\\
 Todo el funcionamiento de este sistema de control de versiones es mayoritariamente local, es decir, no se necesita información de ningún servidor haciendo así que este sistema sea muy rápido respecto a otros que necesitan información remota para sus operaciones. \\
 \emph{Git} tiene tres estados para los archivos que trabajamos:
@@ -383,24 +389,48 @@ Estos tres estados nos lleva a diferenciar las siguientes áreas de trabajo:
 \end{itemize}
 Por tanto, el flujo que hay que seguir para trabajar con este sistema de control de versiones es el representado en la figura \ref{fig:gitStates}, donde como vemos tras modificar una serie de archivos en el directorio de trabajo preparamos los archivos añadiéndolos al staged area, se confirman los cambios realizados sobre estos, añadiendo así las instantáneas (copias de los archivos con los cambios confirmados) en el directorio \emph{Git}. 
 
-Una vez que hemos visto como trabaja \emph{Git} nos queda responder la pregunta de \textit{¿Qué es GitHub?} \emph{GitHub} es una plataforma de desarrollo colaborativo de software para alojar proyectos utilizando los mencionados repositorios \emph{Git}, es decir, aloja el código en la nube y brinda herramientas para el trabajo de equipo en el proyecto. Otra de las características de \emph{GitHub} es el poder contribuir en el desarrollo de software de los demás, algo esencial en cualquier proyecto de software libre. \textit{¿Qué herramientas proporciona para el trabajo en equipo?} \emph{GitHub} proporciona un amplio abanico de funcionalidades para ello, pero entre ellas, destaca una wiki para el mantenimiento de las versiones de las paǵinas, un sistema de seguimiento de problemas permitiendo al equipo detallar los problemas con lo desarrollado y una herramienta de revisión de código \\ %Si hablamos de ramas incluir otra cosa\\
-Así, el uso que daremos de \emph{GitHub} es el de construir un repositorio donde alojaremos el código de nuestro paquete, permitiendo así que cualquiera pueda aportar ideas al proyecto o mejorar el software.
-
+Una vez que hemos visto como trabaja \emph{Git} nos queda responder la pregunta de \textit{¿Qué es GitHub?} \emph{GitHub} es una plataforma de desarrollo colaborativo de software para alojar proyectos utilizando los mencionados repositorios \emph{Git}, es decir, aloja el código en la nube y brinda herramientas para el trabajo de equipo en el proyecto. Otra de las características de \emph{GitHub} es el poder contribuir en el desarrollo de software de los demás, algo esencial en cualquier proyecto de software libre. \textit{¿Qué herramientas proporciona para el trabajo en equipo?} \emph{GitHub} proporciona un amplio abanico de funcionalidades , entre ellas, destaca una wiki para el mantenimiento de las versiones de las paǵinas, un sistema de seguimiento de problemas permitiendo al equipo detallar los problemas con lo desarrollado y una herramienta de revisión de código. \\ 
+Antes de dar por finalizada la sección sobre \emph{Git}, debemos hablar sobre \emph{GitFlow}, extensión de \emph{GitHub} que permite un mantenimiento y estrategia para las ramificicaciones en un proyecto de desarrollo. Esta estrategia y mantenimiento se basa en una serie de reglas, donde se destacan dos ramas principales: rama \textit{master}, y rama \textit{develop}.La \textit{master} se usa cada vez que tengamos código para producción y la rama \textit{develop} para el código que conformará la nueva versión del proyecto \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{img/git_flow.png}
+    \caption{WorkFlow impuesto por la estrategia y mantenimiento de \emph{GitFlow}}
+    \label{fig:gitFlow}
+\end{figure}
+Por tanto, cada vez que se incorpora código a la rama \textit{master}, tenemos nueva versión. A parte de las ramas principales, observando la figura \ref{fig:gitFlow} podemos distinguir tres tipos de ramas auxiliares, donde cada una sigue sus propias reglas:
+\begin{itemize}
+    \item \textbf{Feature:} Se originan a partir de la rama \textit{develop}, y  se utilizan para incorporar nuevas características a la aplicación.
+    \item \textbf{Release:} Rama que se crea al igual que \textit{feature}, a partir de la rama \textit{develop}. En ellas se depura el código el cual se va a pasar a la producción, es decir, a la rama \textit{master}. 
+    \item \textbf{Hotfix:} Rama cuyo objetivo es parecido al de la rama \textit{feature}, pero esta se origina a partir de la \emph{master}, y los errores que corregimos en esta rama no están planificados a diferencia de la rama \emph{feature}, que sí lo están. 
+\end{itemize}
+De esta manera el uso que daremos de \emph{GitHub} es el de construir un repositorio donde alojaremos el código de nuestro paquete, permitiendo así que cualquiera pueda aportar ideas al proyecto o mejorar el software.
+        
+        %%
+        % 2.2.2 - Issue Tracking System
+        %%
+\subsection{ITS (Issue Tracking System)}
+\label{subsec:issue}
+\emph{GitHub} proporciona un sistema de seguimiento de incidentes (en inglés \textit{issue tracking system}, funcionalidad que permite administrar y mantener una lista de incidentes, al tratar de \emph{software}, una incidencia será una solicitud de modificación, corrección o mejora
     %%
-    % 2.3 - GITHUB PAGES
-    %%
-\section{GitHub Pages y Jekyll}
-\label{sec:githubJekyll}
+    % 2.3 - FRONTEND
+    %%F
+\section{FrontEnd}
+\label{sec:frontEnd}
+        %%
+        % 2.3.1 - GITHUB PAGES & Jekyll
+        %%
+\subsection{GitHub Pages y Jekyll}
+\label{subsec:githubJekyll}
 \emph{GitHub Pages} y \emph{Jekyll} se usan conjuntamente para generar sitios web estáticos , donde \emph{Jekyll} se encarga de generar los sitios web y \emph{GitHub Pages} de servicio de alojamiento. Ambos servicios están integrados. Para explicar como trabajan ambos servicios, vamos a tratarlos primero por separado.
 
-\subsection{GitHub Pages}
+\subsection*{GitHub Pages}
 \label{subsec:githubpages}
 Es un servicio de alojamiento web que ofrece \emph{GitHub}, se usa para alojar sitios web estáticos usando directamente un repositorio \emph{Git}. Para aclarar la principal ventaja de \emph{GitHub Pages} frente a otros servidores vamos a definir que es una pagina web estática y que se diferencia respecto a una página web dinámica. \\
 \textbf{¿Qué es una página web estática?}\\
 Una página web estática es aquel documento web que muestra el mismo contenido para todos los usuarios, es decir, que no es personalizable o no hay elección de interactuar con ella para ordenar, ocultar o modificar contenido (páginas dinámicas). Una de las ventajas principales de este tipo de páginas es lo económico que resulta crearlas, sin tener que usar ningún tipo de programación especial. Estas páginas son útiles para el objetivo de simplemente mostrar contenido. Hay que destacar que la mayor desventaja de generar sitios web estáticos son su actualización haciendo de esta algo tedioso. \\ 
 Una vez aclarado, la ventaja principal, a parte de todas las proporcionadas por ser un repositorio \emph{Git}, es que al no necesitar base de datos para servir el contenido, solo se requiere un servidor web que vaya sirviendo el contenido que se solicita.
 
-\subsection{Jekyll}
+\subsection*{Jekyll}
 \label{subsec:jekyll}
 \begin{figure}[h]
     \centering
@@ -494,7 +524,7 @@ jekyll serve #Construye el sitio web y lo sirve localmente en
              #"localhost:1400"
 jekyll build #Genera el contenido web
 \end{lstlisting}
-\subsection{Jekyll en repositorio GitHub}
+\subsection*{Jekyll en repositorio GitHub}
 \label{subsec:jekandGit}
 Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el contenido \emph{Jekyll}, pero ¿Cómo actualizamos nuestra web?¿Cada vez que creamos contenido es necesario actualizar repositorio y ejecutar \emph{Jekyll} por separado?. \\
 \emph{GitHub} funciona con Jekyll, lo que quiere decir que cuando creamos contenido y este lo comprometemos (committed), \emph{Jekyll} se encargaŕa de generar el contenido tal y como hemos mencionado.
@@ -505,7 +535,7 @@ Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el 
 \chapter*{Dudas}
 \begin{enumerate}
     \item ¿Por qué los warning de etiquetar?
-    \item ¿Como usamos los espaciados?
+    \item A la hora de crear los pie de código, hay un problema y es que no permite tener título y pie de foto a la vez, por tanto, ¿dejo el título o dejo el pie de foto?.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -521,13 +551,9 @@ Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Notas para modificar en la memoria}
 \begin{enumerate}
-    \item Empezar introducción con una frase del que creo el software Libre
-    \item Si hablo de las ramificiaciones -> Debo incluir y quitar el comentario que hay 
-    \item Recordad añadir pie de fotos a las partes con código
-    \item Figura de Arquitectura general en Imagen.
-    \item Dividir Dos secciones-> Front End y Back End
-    \item ¿Hablo de ramificaciones? Si y de GitFlow -> Incluir
     \item Liquid lo trato en una sección y MarkDown con poco al igual que HTML
+    \item ==========================================================
+    \item Empezar introducción con una frase del que creo el software Libre
     \item Resumen al principio (Se hace al acabar el proyecto)
     \item Crear estilo para Front Matter
     \item Hablar de gh-pages y de ruby bundle
