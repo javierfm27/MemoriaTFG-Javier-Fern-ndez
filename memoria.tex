@@ -172,7 +172,7 @@ Trabajo Fin de Grado
 
 \vspace{2.5cm}
 \Large
-PYCARDIO: PAQUETE PARA ANÁLISIS DE SEÑALES CARDIACAS
+PYCARDIO: PAQUETE PARA ANÁLISIS DE SEÑALES CARDÍACAS
 
 \vspace{4cm}
 \large
@@ -197,7 +197,7 @@ Tutor : Dr. Felipe Ortega
 
   \vspace{1cm}
   \large
-  \{\{Título del Trabjo con Letras Capitales para Sustantivos y Adjetivos\}\}
+  PYCARDIO: PAQUETE PARA ANÁLISIS DE SEÑALES CARDÍACAS
 
   \vspace{1cm}
   \large
@@ -410,14 +410,57 @@ De esta manera el uso que daremos de \emph{GitHub} es el de construir un reposit
         %%
 \subsection{ITS (Issue Tracking System)}
 \label{subsec:issue}
-\emph{GitHub} proporciona un sistema de seguimiento de incidentes (en inglés \textit{issue tracking system}, funcionalidad que permite administrar y mantener una lista de incidentes, al tratar de \emph{software}, una incidencia será una solicitud de modificación, corrección o mejora
+\emph{GitHub} proporciona un sistema de seguimiento de incidencias (en inglés \textit{issue tracking system}), funcionalidad que permite administrar y mantener una lista de incidentes, al tratarse de \emph{software}, una incidencia será una solicitud de modificación, corrección o mejora. Esta herramienta integrada en \emph{GitHub} permite a cualquier usuario (si el repositorio es público) agregar una incidencia mediante un \emph{ticket}. Estos, se crean mediante una interfaz gráfica que permite escribir la incidencia en texto plano y etiquetar esta según de donde provenga (bug,error de sintaxis,etc). Cualquier usuario puede editar estos \emph{tickets}, pudiendo así cerrarlos, añadir etiquetas. \\
+Las ventajas de incorporar un ITS  en un proyecto de \emph{software} son las siguientes: 
+\begin{itemize}
+    \item Tener un único lugar para observar tanto las incidencias creadas por los colaboradores del proyecto como las creadas por los usuarios del \emph{software}.
+    \item Categorizar las incidencias, como ya hemos mencionado, mediante etiquetas.
+    \item Tener un acceso rápido sobre el historial de una incidencia. Además, herramientas como \emph{GitHub} incorpora un cuadro de búsqueda, permitiendo así que una incidencia no se repita.
+\end{itemize}
+Así, esta herramienta nos proporcionará corregir aquellos errores o bugs detectados por usuarios de pyCardio, donde estos nos informaran mediante la apertura de \emph{tickets}.
+        %%
+        % WIKI
+        %%
+\subsection{Wiki}
+\label{sucsec:wiki}
+Aunque en nuestro proyecto para la creación de documentación usaremos otra herramienta, no hay que dejar pasar por alto, la que nos proporciona \emph{GitHub}.\\
+Todo repositorio de \emph{GitHub} viene equipado con una sección para alojar documentación, llamado wiki.\footnote{Wiki alude al nombre que recibe una comunidad virtual, cuyas páginas pueden ser editadas directamente desde el navegador, donde los mismos usuarios crean, modifican, corrigen o eliminan contenidos que, generalmente, comparten}.Estas wikis se generan mediante texto de marcado o cualquier otro formato que soporte la creación de wikis. El objetivo por tanto de esta sección es informar de como se ha diseñado, cómo instalar, manifiestos sobre sus principios básicos, objetivos y como usar detalladamente el código al cual pertenece el repositorio, escribir una buena documentación ayuda a otros a usar y a que se extienda dicho proyecto.
+
+        %%%%%%%
+        % AUTOMATED TOOLS
+        %%%%%%%%
+        
     %%
     % 2.3 - FRONTEND
-    %%F
+    %%
 \section{FrontEnd}
 \label{sec:frontEnd}
+        %%%%%%%%%%%%%%%%%%%%%%%
+        % HTML5
+        %%%%%%%%%%%%%%%%%%%%%%%
+\subsection{HTML5}
+\label{sec:html}
+HTML (Hiper Text Markup Language) hace referencia al lenguaje de marcado para la elaboración de páginas web. Es un estándar que sirve de referencia para creación de páginas web. Este estándar está a cargo de la W3C, organización dedicada a la estandarización de casi todas las tecnologías ligadas al desarrollo web, sobre todo, referente a la escritura y su interpretación. Es un lenguaje sencillo, basado en utilizar etiquetas , que definen el contenido que se mostrará al usuario, a parte de tener estas etiquetas con su respectivo contenido, tenemos  que destacar otro elemento en este lenguaje y son los atributos de etiquetas, que nos permitirán configurar los elementos o ajustar su comportamiento. Los atributos más importantes son \emph{class} e \emph{id}, que se usarán para darle estilo al contenido web mediante CSS y Bootstrap. \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{img/logo_html5.png}
+\end{figure}
+HTML5 es la quinta revisión importante de HTML. Lo más importante de esta revisión es que se especifican dos variantes de sintaxis: HTML y XHTML que esta estará servida como lenguaje XML. Las principales novedades que podemos destacar de la nueva revisión son:
+\begin{itemize}
+    \item Se mejora el elemento \emph{canvas}
+    \item API que permite almacenar datos en el lado del cliente.
+    \item Mejora de formularios.
+    \item API para la geolocalización.
+    \item Nuevos elementos como \texttt{<video>} y \texttt{<audio>} que permite la inclusión de contenido multimedia.
+\end{itemize}
+    
+        %%%%%%%%%%%%%%%%%%%%%%%%
+        % CSS
+        %%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{CSS}
+\label{subsec:css}
         %%
-        % 2.3.1 - GITHUB PAGES & Jekyll
+        % GITHUB PAGES & Jekyll
         %%
 \subsection{GitHub Pages y Jekyll}
 \label{subsec:githubJekyll}
@@ -536,6 +579,8 @@ Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el 
 \begin{enumerate}
     \item ¿Por qué los warning de etiquetar?
     \item A la hora de crear los pie de código, hay un problema y es que no permite tener título y pie de foto a la vez, por tanto, ¿dejo el título o dejo el pie de foto?.
+    \item ¿Cómo puedo introducir la parte de herramientas automatizadas?
+    \item ¿La parte en la que hablo sobre wiki esta bien o hace falta extenderse más?
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
