@@ -487,7 +487,63 @@ Cascading Style Sheets (hojas de estilo en español) es un lenguaje usado para d
     \includegraphics[scale=0.6]{img/logo_markdown.png}
     \label{fig:logoMd}
 \end{figure}
-\{\{RELLENAR\}\}
+\emph{MarkDown} es un lenguaje de marcado que facilita la aplicación de formato a un texto empleando una serie de caracteres de una forma especial. En principio fue diseñado para elaborar sitios web haciendo que elaborarlos sea más rápido y sencillo que si estuviésemos empleando directamente HTML, pero hoy en día se utiliza para cualquier tipo de texto independientemente de cual vaya a ser su destino, ya que el principal objetivo de la sintaxis de \emph{MarkDown} es hacerla lo más legible posible. \\
+Esto hace que \emph{MarkDown} sea realmente dos cosas, por un lado, un lenguaje y por otro, una herramienta de software tal y como dice "Jhon Gruber" (uno de los creadores) en su web oficial \footnote{\url{https://daringfireball.net/projects/markdown/}}. 
+Las ventajas de usar \emph{MarkDown} son las siguientes:
+\begin{itemize}
+    \item Escribir webs es más rápido y cómodo. Ventaja que aprovecharemos bastante a la hora de crear actualizar la web del proyecto.
+    \item Es más difícil cometer errores de sintaxis.
+    \item Perfecto para usarlo con editores de textos minimalistas.    
+\end{itemize}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%
+        % LIQUID
+        %%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Liquid}
+\label{subse:liquid}
+\emph{Liquid} es un lenguaje de plantillas de código abierto creado por Shopify y escrito en Ruby. Se utiliza para cargar contenido dinámico en los contenidos de las páginas web. 
+
+\subsection*{¿Cómo funciona \emph{Liquid?}} 
+El código de  \emph{Liquid} se puede categorizar en tres partes:
+\begin{itemize}
+    \item \textbf{Objetos:} estos objetos indican donde mostrar el contenido en una página. Los objetos y variables estarán denotados por \texttt{\{\{ \}\}}
+    \begin{lstlisting}[title=Input]
+    {{ page.title }}
+    \end{lstlisting}
+    \begin{lstlisting}[title=Output]
+    {{ Liquid Basics }}
+    \end{lstlisting}
+    \item \textbf{Etiquetas:} Crean la lógica y el control de flujo para las plantillas, vendrán entre llaves y el caracter de porcentaje ( \texttt{\{\%  \%\}} ). El lenguaje utilizado en las etiquetas no produce ningún texto visible, esto significa que puede asignar variables y crear condiciones o bucles sin mostrar nada en la página. 
+    \begin{lstlisting}[title=Input]
+        {% if user %}
+            Hello {{ user.name }}!
+        {% endif %}
+    \end{lstlisting}
+    \begin{lstlisting}[title=Output]
+        Hello Adam
+    \end{lstlisting}
+    \item \textbf{Filtros:} Los filtros cambian la salida de un objeto de \emph{Liquid}. Se utilizan dentro de una salida, es decir, entre la doble llave ( \texttt{\{\{ \}\}} ), y vienen separados por \texttt{|}.     
+    \begin{lstlisting}[title=Input]
+    {{ "/my/fancy/url" | append: ".html" }}
+    \end{lstlisting}
+    \begin{lstlisting}[title=Output]
+    /my/fancy/url.html
+    \end{lstlisting}
+\end{itemize}
+
+Como ya hemos mencionado \emph{Liquid} es usado en diversos \emph{frameworks} de contenido web. En nuestro caso, para \emph{Jekyll}, se crearon sus propios objetos, etiquetas y filtros, estableciendo así \emph{Jekyll Liquid}. Para conocer estos, vienen detalladamente explicados  en la página web de  documentación sobre sus plantillas \footnote{\url{https://jekyllrb.com/docs/liquid/}}. 
+        
+        %%%%%%%%%%%%%%%%%%%%%%%%%%
+        % READTHEDOCS
+        %%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Read the Docs}
+\label{subsec:readthedocs}
+\begin{figure}
+    \centering
+    
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % GITHUB PAGES & Jekyll
         %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -609,7 +665,7 @@ Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el 
 \begin{enumerate}
     \item ¿Por qué los warning de etiquetar?
     \item A la hora de crear los pie de código, hay un problema y es que no permite tener título y pie de foto a la vez, por tanto, ¿dejo el título o dejo el pie de foto?.
-    \item ¿Cómo puedo introducir la parte de herramientas automatizadas?
+    \item ¿Cómo puedo introducir la parte de herramientas automatizadas? Es decir, ¿como las introduzco y de cuál hablo? ¿De CodeCover?
     \item ¿La parte en la que hablo sobre wiki esta bien o hace falta extenderse más?
 \end{enumerate}
 
@@ -626,11 +682,11 @@ Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Notas para modificar en la memoria}
 \begin{enumerate}
-    \item Liquid lo trato en una sección y MarkDown con poco al igual que HTML
     \item ==========================================================
     \item Empezar introducción con una frase del que creo el software Libre
     \item Resumen al principio (Se hace al acabar el proyecto)
     \item Crear estilo para Front Matter
+    \item Crear estilo para Liquid
     \item Hablar de gh-pages y de ruby bundle
     \item Gestión de proyecto de Python -> Cap 3 (Cuando acabe el 2)
     \item Para cuando incluimos código, cambiar el tipo de fuente, de manera que haya una para el documento y otra para la parte de incluir código
