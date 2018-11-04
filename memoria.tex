@@ -7,6 +7,7 @@
 \usepackage[spanish]{babel}
 \usepackage[toc]{blindtext}
 \usepackage{tocbibind}
+\usepackage{verbatim} %Para comentar capítulos
 \usepackage{float} %Para posicionar figuras
 \usepackage{graphicx}
 \usepackage{fancyhdr}
@@ -267,7 +268,7 @@ Han de quedar respondidas las siguientes preguntas:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CAPÍTULO 1 - INTRODUCCIÓN Y OBJETIVOS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\begin{comment}
 \chapter{Introducción y objetivos}
 \label{chap:intro}
 \pagenumbering{arabic}
@@ -317,17 +318,18 @@ Para finalizar la introducción, se explica como va a ir estructurada la memoria
     \item En este cuarto capítulo, \emph{Propuesta del diseño web del proyecto}, presentamos la web del proyecto donde se incluirá la documentación del módulo, guía de instalación, así como una guía para futuras contribuciones.
     \item En el quinto y último capítulo, \emph{Conclusiones y trabajo futuro}, exponemos las conclusiones sacadas así como el trabajo que se debería realizar tras la finalización de este mismo.
 \end{enumerate}
-
+\end{comment} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CAPÍTULO 2 - ARQUITECTURA GENERAL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment} 
 \chapter{Soluciones tecnológicas}
 \label{chap:Arqui}
 Este capítulo constará de dos partes. Una primera donde se muestra una visión general de las tecnologías que usaremos para la creación de la página web, y una segunda donde explicamos brevemente cada tecnología utilizada.
 
-    %%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%
     % 2.1 - ARQUITECTURA
-    %%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Arquitectura general}
 \label{sec:arqui}
 En cualquier proyecto de desarrollo web existen dos tipos de tecnologías, BackEnd y FrontEnd. Por tanto, antes de exponer la visión general de nuestra web. ¿Qué significan estos dos términos?:
@@ -343,15 +345,14 @@ Una vez diferenciada estas capas, en nuestro \emph{BackEnd} podemos diferencias 
     \label{fig:arquiGeneral}
 \end{figure}
 En la capa \emph{FrontEnd} observamos como todas las tecnologías que colaborarán son aquellas ya conocidascomo HTML5, CSS; donde cuyo objetivo es mostrar contenido y otras nuevas como \emph{Jekyll}. Observando la figura \ref{fig:arquiGeneral} vemos que otras dos tecnologías nos apoyarán en mostrar el funcionamiento del módulo \emph{PyCardio}, una para mostrar la documentación de los módulos(\emph{ReadTheDocs}) y otra donde también se alojará el código fuente siendo así una aplicación de terceros de Python(PyPI).
-    
-    %%
+    %%%%%%%%%%%%%%%%%%%%
     % 2.2 - BackEnd
-    %%
+    %%%%%%%%%%%%%%%%%%%%%
 \section{BackEnd}
 \label{sec:backend}
-        %%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % 2.2.1 - CONTROL DE VERSIONES CON GIT. GITHUB
-        %%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Control de versiones con Git. GitHub}
 \label{subsec:git}
 \begin{figure}[h]
@@ -378,9 +379,9 @@ Todo el funcionamiento de este sistema de control de versiones es mayoritariamen
 Estos tres estados nos lleva a diferenciar las siguientes áreas de trabajo: 
 \begin{figure}[ht]
     \centering
-    \label{fig:gitStates}
     \includegraphics[width=\textwidth]{img/git_states.png}
     \caption{ Esquema de los estados de un repositorio Git}
+    \label{fig:gitStates}
 \end{figure}
 \begin{itemize}
     \item \textbf{Working Directory}: Este área es donde obtenemos la copia del proyecto, lista para usarse o modificarse, sin influir en la copia original.
@@ -404,10 +405,9 @@ Por tanto, cada vez que se incorpora código a la rama \textit{master}, tenemos 
     \item \textbf{Hotfix:} Rama cuyo objetivo es parecido al de la rama \textit{feature}, pero esta se origina a partir de la \emph{master}, y los errores que corregimos en esta rama no están planificados a diferencia de la rama \emph{feature}, que sí lo están. 
 \end{itemize}
 De esta manera el uso que daremos de \emph{GitHub} es el de construir un repositorio donde alojaremos el código de nuestro paquete, permitiendo así que cualquiera pueda aportar ideas al proyecto o mejorar el software.
-        
-        %%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % 2.2.2 - Issue Tracking System
-        %%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{ITS (Issue Tracking System)}
 \label{subsec:issue}
 \emph{GitHub} proporciona un sistema de seguimiento de incidencias (en inglés \textit{issue tracking system}), funcionalidad que permite administrar y mantener una lista de incidentes, al tratarse de \emph{software}, una incidencia será una solicitud de modificación, corrección o mejora. Esta herramienta integrada en \emph{GitHub} permite a cualquier usuario (si el repositorio es público) agregar una incidencia mediante un \emph{ticket}. Estos, se crean mediante una interfaz gráfica que permite escribir la incidencia en texto plano y etiquetar esta según de donde provenga (bug,error de sintaxis,etc). Cualquier usuario puede editar estos \emph{tickets}, pudiendo así cerrarlos, añadir etiquetas. \\
@@ -418,21 +418,50 @@ Las ventajas de incorporar un ITS  en un proyecto de \emph{software} son las sig
     \item Tener un acceso rápido sobre el historial de una incidencia. Además, herramientas como \emph{GitHub} incorpora un cuadro de búsqueda, permitiendo así que una incidencia no se repita.
 \end{itemize}
 Así, esta herramienta nos proporcionará corregir aquellos errores o bugs detectados por usuarios de pyCardio, donde estos nos informaran mediante la apertura de \emph{tickets}.
-        %%
-        % WIKI
-        %%
-\subsection{Wiki}
-\label{sucsec:wiki}
-Aunque en nuestro proyecto para la creación de documentación usaremos otra herramienta, no hay que dejar pasar por alto, la que nos proporciona \emph{GitHub}.\\
-Todo repositorio de \emph{GitHub} viene equipado con una sección para alojar documentación, llamado wiki.\footnote{Wiki alude al nombre que recibe una comunidad virtual, cuyas páginas pueden ser editadas directamente desde el navegador, donde los mismos usuarios crean, modifican, corrigen o eliminan contenidos que, generalmente, comparten}.Estas wikis se generan mediante texto de marcado o cualquier otro formato que soporte la creación de wikis. El objetivo por tanto de esta sección es informar de como se ha diseñado, cómo instalar, manifiestos sobre sus principios básicos, objetivos y como usar detalladamente el código al cual pertenece el repositorio, escribir una buena documentación ayuda a otros a usar y a que se extienda dicho proyecto.
 
-        %%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%
+        % WIKI
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Wiki}
+\label{subsec:wiki}
+Aunque en nuestro proyecto para la creación de documentación usaremos otra herramienta, no hay que dejar pasar por alto, la que nos proporciona \emph{GitHub}.\\
+Todo repositorio de \emph{GitHub} viene equipado con una sección para alojar documentación, llamado wiki.\footnote{Wiki alude al nombre que recibe una comunidad virtual, cuyas páginas pueden ser editadas directamente desde el navegador, donde los mismos usuarios crean, modifican, corrigen o eliminan contenidos que, generalmente, comparten}.Estas wikis se generan mediante texto de marcado \footnote{Este lenguaje puede ser \emph{MarkDown}, lenguaje utilizado para la escritura de ficheros de documentación como \texttt{README.md}} o cualquier otro formato que soporte la creación de wikis. El objetivo por tanto de esta sección es informar de como se ha diseñado, cómo instalar, manifiestos sobre sus principios básicos, objetivos y como usar detalladamente el código al cual pertenece el repositorio, escribir una buena documentación ayuda a otros a usar y a que se extienda dicho proyecto.
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%
         % AUTOMATED TOOLS
-        %%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Automated tools}
+\label{subsec:autotools}
+\emph{GitHub} además de las funcionalidades que hemos tratado, este ofrece un gran abanico de APIs para la gestión de proyecto, donde estas son automáticas. \emph{GitHub} ofrece estas de manera categórica, cada categoría se centra en una funcionalidad distinta aunque más de una herramienta ofrece diversos servicios, las más importantes son las siguientes:
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{| l | l |}
+        \hline
+        \textbf{Categoría} & \textbf{Descripción}  \\ \hline
+        Code quality & Automatiza revisión de código con revisión de estilos y coberturas de pruebas . \\ \hline
+        Code review & Herramientas que aseguran que el código sigue un estandár de calidad adecuado \\ \hline
+        Continuous Integration & Para construir y probar el código para cada push que se realiza, evitando errores en la producción \\ \hline
+        Dependency management & Protege y gestiona las dependencias de terceros \\ \hline
+        Monitoring & Monitoiza el impacto de los cambios en el código, mide rendimiento y errores \\ \hline
+        Security & Para encontrar, arreglar y prevenir  \\ \hline
+    \end{tabular}
+    }
+    \caption{Categorías de herramientas para la gestión de proyectos en \emph{GitHub}}
+    \label{tab:cagGitHub}
+\end{table}
+Una herramienta que engloba varias de estas funcionalidades es Code Coverage (\emph{CodeCov}). Es una herramienta que nos permite medir la cobertura de código, es decir, mide en que grado el código fuente de un programa ha sido comprobado (testeado). Además esta cobertura es mostrada mediante representaciones visuales y gráficos de evolución. Cuando usamos \emph{CodeCov} usa un porcentaje indicando cuanto código está cubierto. Para el cálculo de esta medida \emph{CodeCov} se distinguen tres terminos que influyen de manera distinta en el cálculo de este:
+\begin{itemize}
+    \item \textbf{Hit: } Indica que código fuente ha sido ejecutado por pruebas de test.
+    \item \textbf{Partial: } Parte del código fuente que no es comprobado (\emph{testeado}) por un bloque de pruebas, es decir, ramificaciones de código (p.ej. sentencia \emph{if-else}).
+    \item \textbf{Miss: } Código no comprobado por un bloque de pruebas.
+\end{itemize}
+Así el cálculo de cobertura es la relación: $coverage = hits / (sum\ of\ hit + partial + miss)$ \\
+Tras este cálculo tal y como hemos mencionado, \emph{CodeCov} ofrece una medida visual de esta cobertura, con la interfaz el desarrollador puede ver que parte de código debe cubrir en sus siguientes bloques de pruebas.
         
-    %%
+    %%%%%%%%%%%%%%%%%%%%
     % 2.3 - FRONTEND
-    %%
+    %%%%%%%%%%%%%%%%%%%
 \section{FrontEnd}
 \label{sec:frontEnd}
         %%%%%%%%%%%%%%%%%%%%%%%
@@ -495,7 +524,6 @@ Las ventajas de usar \emph{MarkDown} son las siguientes:
     \item Es más difícil cometer errores de sintaxis.
     \item Perfecto para usarlo con editores de textos minimalistas.    
 \end{itemize}
-
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % LIQUID
         %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -507,43 +535,100 @@ Las ventajas de usar \emph{MarkDown} son las siguientes:
 El código de  \emph{Liquid} se puede categorizar en tres partes:
 \begin{itemize}
     \item \textbf{Objetos:} estos objetos indican donde mostrar el contenido en una página. Los objetos y variables estarán denotados por \texttt{\{\{ \}\}}
-    \begin{lstlisting}[title=Input]
+    \begin{lstlisting}[title=Código 1: Input. Objetos]
     {{ page.title }}
     \end{lstlisting}
-    \begin{lstlisting}[title=Output]
+    \begin{lstlisting}[title=Código 2: Output. Objetos]
     {{ Liquid Basics }}
     \end{lstlisting}
     \item \textbf{Etiquetas:} Crean la lógica y el control de flujo para las plantillas, vendrán entre llaves y el caracter de porcentaje ( \texttt{\{\%  \%\}} ). El lenguaje utilizado en las etiquetas no produce ningún texto visible, esto significa que puede asignar variables y crear condiciones o bucles sin mostrar nada en la página. 
-    \begin{lstlisting}[title=Input]
+    \begin{lstlisting}[title=Código 3: Input. Etiquetas]
         {% if user %}
             Hello {{ user.name }}!
         {% endif %}
     \end{lstlisting}
-    \begin{lstlisting}[title=Output]
+    \begin{lstlisting}[title=Código 4: Output. Etiquetas]
         Hello Adam
     \end{lstlisting}
     \item \textbf{Filtros:} Los filtros cambian la salida de un objeto de \emph{Liquid}. Se utilizan dentro de una salida, es decir, entre la doble llave ( \texttt{\{\{ \}\}} ), y vienen separados por \texttt{|}.     
-    \begin{lstlisting}[title=Input]
+    \begin{lstlisting}[title=Código 5: Input. Filtros]
     {{ "/my/fancy/url" | append: ".html" }}
     \end{lstlisting}
-    \begin{lstlisting}[title=Output]
+    \begin{lstlisting}[title=Código 6: Output. Filtros]
     /my/fancy/url.html
     \end{lstlisting}
 \end{itemize}
 
 Como ya hemos mencionado \emph{Liquid} es usado en diversos \emph{frameworks} de contenido web. En nuestro caso, para \emph{Jekyll}, se crearon sus propios objetos, etiquetas y filtros, estableciendo así \emph{Jekyll Liquid}. Para conocer estos, vienen detalladamente explicados  en la página web de  documentación sobre sus plantillas \footnote{\url{https://jekyllrb.com/docs/liquid/}}. 
-        
+       
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % READTHEDOCS
         %%%%%%%%%%%%%%%%%%%%%%%%%%
+        \end{comment}
 \subsection{Read the Docs}
 \label{subsec:readthedocs}
-\begin{figure}
+\begin{figure}[h]
     \centering
-    
-    \caption{Caption}
-    \label{fig:my_label}
+    \includegraphics[scale=0.6]{img/logo_readthedocs.png}
+    \label{fig:logoReadThe}
 \end{figure}
+\emph{Read the Docs} es un portal web gratuito que permite alojar la documentación de un proyecto (principalmente para proyectos \emph{Python}) haciéndola fácil de encontrar y ofreciendo una opción de búsqueda. Simplifica la documentación de manera que este portal te permite generarla, versionar, y alojarla.\\
+Las dos principales ventajas que proporciona \emph{Read the Docs} son que nunca estaremos desincronizados con nuestro código y que permite alojar distintas versiones de nuestra documentación. Estas dos ventajas se aprovechan del sistema de control de versiones, donde para la primera, cuando hacemos un 'push' de nuestro código se genera automáticamente la documentación, estando así la documentación actualizada y para la segunda ventaja es tan fácil como tener una rama para cada versión nueva de la documentación. \\
+Para ver como generar nuestra propia documentación con \emph{Read The Docs} vamos a seguir los siguientes pasos:
+\begin{enumerate}
+    \item Vamos a ver que tecnología usaremos para la generación de documentación.
+    \item Como importar nuestra documentación.
+    \item Como versionar la documentación. 
+    \item Como conectar nuestro repositorio del proyecto.
+\end{enumerate}
+\textbf{Generadores de Documentación} \\
+\emph{Read the Docs} usa para generar la documentación \emph{Sphinx} y/o \emph{MkDocs}. \emph{MkDocs} es un generador que se centra en la simplicidad y la rapidez, permite una personalización  sencilla mediante extensiones y temas, utiliza  \emph{MarkDown} \footnote{¿Qué es \emph{MarkDown} \ref{subsec:markdo}}. \emph{Sphinx} en cambio te permite generar páginas web, PDFs, documentos para e-readers, además de la propia documentación; utiliza \emph{ReStructuredText}(otro lenguaje de marcado).\\
+\begin{figure}[H]
+    \centering
+    \subfloat[MkDocs Example]{
+        \label{fig:mkdocs}
+        \includegraphics[scale=0.85]{img/mkdocs_example.jpeg}
+    }
+    \subfloat[Sphinx Example]{
+        \label{fig:sphinx}
+        \includegraphics[scale=0.4]{img/sphinx_example.png}
+    }
+    \caption{Ejemplos de los generadores de la documentación}
+\end{figure}
+\textbf{Importar nuestra Documentación}\\
+        \begin{comment}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%
+        % PYPI
+        %%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{PyPi}
+\label{subsec:pypi}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{img/logo_pypi.jpg}
+    \label{fig:logoPypi}
+\end{figure}
+\emph{PyPI} ( o Python Package Index) es el repositorio de \emph{software} oficial  para aplicaciones de terceros. Los desarrolladores de Python pretenden que sea un catálogo de exhaustivo de todos los paquetes de código abierto que hay de Python. Normalmente, si un proyecto escrito en Python no está empaquetado o almacenado en \emph{PyPI}  es difícil que este sea encontrado por otros desarrolladores y que este se utilice en sus proyectos, es más, si un proyecto no se encuentra en esta plataforma puede considerarse como una sospecha sustancial de estar mal gestionado, no estar listo para su puesta en libertad o que ha sido abandonado.  \\
+Para poder alojar un proyecto en \emph{PyPI} hay que seguir unas ciertos pasos a la hora de crear  el módulo python. Estas pasos consisten en añadir los archivos necesarios, una estructura necesaria para crear el módulo y finalmente subirlo al repositorio \emph{PyPI}. Se pueden resumir en lo siguiente:
+\begin{enumerate}
+    \item Se crea una estructura de archivos, donde \texttt{example_pkg} es mi proyecto de ejemplo: 
+    \begin{lstlisting}[language=python]
+        /example_pkg
+            /example_pkg
+                __init__.py
+                module.py
+        setup.py
+        LICENSE
+        README.md
+    \end{lstlisting}
+    Donde \texttt{\_\_init\_\_.py} es utilizado para marcar que el  es un paquete de Python. Es decir, que puedo realizar un \texttt{import module.py}. 
+    \item Se crea el archivo \texttt{setup.py}. Este archivo es el script de compilación para \emph{setuptools}. 
+    \item Creación de \texttt{README.md}, dando una breve descripción del proyecto y en qué consiste. 
+    \item Creación de una Licencia, ya que es importante indicar a los usuarios que instalan el módulo bajo que condiciones pueden usar el paquete. 
+    \item El siguiente paso es generar paquetes de distribución para el paquete. 
+    \item El último paso por tanto es la carga de los archivos de distribución.
+\end{enumerate}
+Al ser nuestro proyecto un módulo de código libre, deberemos seguir estos pasos para tener \emph{pyCardio} en el repositorio oficial. 
+
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % GITHUB PAGES & Jekyll
         %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -594,20 +679,20 @@ Una vez que tenemos claro a que corresponde cada directorio en nuestro proyecto 
 \textbf{\large{Diseño de Layout}} \\
 Layout es una plantilla donde \emph{Jekyll} incrustará el contenido escrito en texto plano. Tal y como hemos comentado antes, estas plantillas deberán almacenarse en el directorio \texttt{\_layout}. En ellas  haremos uso de nuestro código guardado en \texttt{\_include}, un ejemplo como el de incluir un footer al final de mi plantilla \texttt{default.html} es el siguiente: 
 
-\begin{lstlisting}[style=htmlcssjs,title=default.html]
+\begin{lstlisting}[style=htmlcssjs,title=Código 1: default.html]
 <!-- default.html -->
 <footer>
     {{include footer.html}}
 </footer>
 \end{lstlisting}
-\begin{lstlisting}[style=htmlcssjs,title=footer.html]
+\begin{lstlisting}[style=htmlcssjs,title=Código 2: footer.html]
 <!-- footer.html -->
 <p>Posted by: Hege Refsnes</p>
 <p>Contact information: <a href="mailto:someone@example.com">
   someone@example.com</a>.</p>
 \end{lstlisting}
 La herramienta que mas optimiza el trabajo a la hora de elaborar estas plantillas de la que hace uso \emph{Jekyll} es \emph{Liquid}. Este lenguaje que trataremos en el siguiente punto hace uso de variables, donde estas son etiquetas, objetos y filtros. Además cualquier archivo \emph{Jekyll} es accesible mediante variables vía \emph{Liquid}. Estas variables pueden ser el título del sitio web (establecido en \texttt{\_config.yml}). La variable más importante es \texttt{\{\{content\}\}}, ya que en ella es donde \emph{Jekyll} incrustará el contenido escrito en texto plano. Un ejemplo sencillo de un layout sería el siguiente:
-\begin{lstlisting}[style=htmlcssjs,title=default.html]
+\begin{lstlisting}[style=htmlcssjs,title=Código 3: Layout Básico]
 <!doctype html>
 <html lang="en">
   <head>
@@ -658,17 +743,17 @@ jekyll build #Genera el contenido web
 Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el contenido \emph{Jekyll}, pero ¿Cómo actualizamos nuestra web?¿Cada vez que creamos contenido es necesario actualizar repositorio y ejecutar \emph{Jekyll} por separado?. \\
 \emph{GitHub} funciona con Jekyll, lo que quiere decir que cuando creamos contenido y este lo comprometemos (committed), \emph{Jekyll} se encargaŕa de generar el contenido tal y como hemos mencionado.
 
+\end{comment}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DUDAS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Dudas}
 \begin{enumerate}
-    \item ¿Por qué los warning de etiquetar?
-    \item A la hora de crear los pie de código, hay un problema y es que no permite tener título y pie de foto a la vez, por tanto, ¿dejo el título o dejo el pie de foto?.
     \item ¿Cómo puedo introducir la parte de herramientas automatizadas? Es decir, ¿como las introduzco y de cuál hablo? ¿De CodeCover?
     \item ¿La parte en la que hablo sobre wiki esta bien o hace falta extenderse más?
+    \item read the docs: ¿cuaanto hablo de ello? ¿trato el como generarlo a partir de GitHub?
 \end{enumerate}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SUGERENCIAS TUTOR
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
