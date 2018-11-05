@@ -268,7 +268,6 @@ Han de quedar respondidas las siguientes preguntas:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CAPÍTULO 1 - INTRODUCCIÓN Y OBJETIVOS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
 \chapter{Introducción y objetivos}
 \label{chap:intro}
 \pagenumbering{arabic}
@@ -318,11 +317,10 @@ Para finalizar la introducción, se explica como va a ir estructurada la memoria
     \item En este cuarto capítulo, \emph{Propuesta del diseño web del proyecto}, presentamos la web del proyecto donde se incluirá la documentación del módulo, guía de instalación, así como una guía para futuras contribuciones.
     \item En el quinto y último capítulo, \emph{Conclusiones y trabajo futuro}, exponemos las conclusiones sacadas así como el trabajo que se debería realizar tras la finalización de este mismo.
 \end{enumerate}
-\end{comment} 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CAPÍTULO 2 - ARQUITECTURA GENERAL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment} 
 \chapter{Soluciones tecnológicas}
 \label{chap:Arqui}
 Este capítulo constará de dos partes. Una primera donde se muestra una visión general de las tecnologías que usaremos para la creación de la página web, y una segunda donde explicamos brevemente cada tecnología utilizada.
@@ -564,7 +562,6 @@ Como ya hemos mencionado \emph{Liquid} es usado en diversos \emph{frameworks} de
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % READTHEDOCS
         %%%%%%%%%%%%%%%%%%%%%%%%%%
-        \end{comment}
 \subsection{Read the Docs}
 \label{subsec:readthedocs}
 \begin{figure}[h]
@@ -579,7 +576,6 @@ Para ver como generar nuestra propia documentación con \emph{Read The Docs} vam
     \item Vamos a ver que tecnología usaremos para la generación de documentación.
     \item Como importar nuestra documentación.
     \item Como versionar la documentación. 
-    \item Como conectar nuestro repositorio del proyecto.
 \end{enumerate}
 \textbf{Generadores de Documentación} \\
 \emph{Read the Docs} usa para generar la documentación \emph{Sphinx} y/o \emph{MkDocs}. \emph{MkDocs} es un generador que se centra en la simplicidad y la rapidez, permite una personalización  sencilla mediante extensiones y temas, utiliza  \emph{MarkDown} \footnote{¿Qué es \emph{MarkDown} \ref{subsec:markdo}}. \emph{Sphinx} en cambio te permite generar páginas web, PDFs, documentos para e-readers, además de la propia documentación; utiliza \emph{ReStructuredText}(otro lenguaje de marcado).\\
@@ -596,7 +592,27 @@ Para ver como generar nuestra propia documentación con \emph{Read The Docs} vam
     \caption{Ejemplos de los generadores de la documentación}
 \end{figure}
 \textbf{Importar nuestra Documentación}\\
-        \begin{comment}
+A la hora de importar nuestra documentación debemos tener una cuenta , tras ello, podemos vincular dicha cuenta a la de \emph{GitHub} permitiendo así que \emph{Read the Docs} muestre una lista de repositorios que se pueden importar a \emph{Read the Docs}. A la hora de importar uno de nuestros repositorio, es hora de configurar el \emph{webhook}\footnote{Método de alterar una aplicación o página web, con callbacks personalizados.En este caso son gestionados por \emph{GitHub}, con cada commit o merge, este se lo notifica a \emph{Read the Docs}} de nuestro repositorio, se encargaŕa de notificar cuando hay un cambio en nuestro código fuente para generar de nuevo la documentación.\\
+Una vez importado el repositorio y configurado el \emph{webhook}, nuestra documentación se generará automáticamente. ¿Como lo genera \emph{Read the Docs} a partir del repositorio?\\
+Lo primero que hace es mirar dos cosas, el tipo de documentación (\emph{Sphinx} o \emph{MkDocs}) y el repositorio. Dependiendo del tipo \emph{Read the Docs} actuará de una manera u otra.
+\begin{itemize}
+    \item \textbf{Sphinx: } Cuando se escoge este tipo, \emph{Read the Docs} mirará el archivo \texttt{conf.py}, si este no existe, se creará uno. Tras ello, se buscarán archivos con extensión \texttt{.rst} en el directorio \texttt{doc} o \texttt{docs}, si estos no existen, se buscarán en los directorios restantes del proyecto.
+    \item \textbf{MkDocs: } Al optar por este tipo, se lee el archivo \texttt{mkdocs.yml}, archivo que debería encontrarse en la raíz del repositorio, de manera que, si no se encuentra se generará uno. En él se indica el directorio donde se encuentran los archivos con extensión \texttt{.md}, archivos a partir de los cuales se creará la documentación.
+    Cuando este archivo se generá solo, \emph{Read the Docs} busca automáticamente de forma iterativa en los siguientes directorios \texttt{docs, doc, Doc o book}, una vez que se encuentra el archivo con la extensión mencionada, se añade en \texttt{mkdocs.yml} el directorio desde donde se creará la documentación. 
+\end{itemize}
+\textbf{Como versionar la documentación} \\
+Tal y como se mencionó al inicio de este capítulo, \emph{Read the Docs} soporta múltiples versiones de su repositorio. Cuando se importa por primera vez el proyecto se creará la version \emph{latest} apuntando a la rama por defecto de nuestro sistema de control de versiones, en nuestro caso, rama \texttt{master} de nuestro repositorio de \emph{GitHub}. \\
+En los casos normales la versión \emph{latest} apuntará al código más actualizado, si en el proyecto se desarrolla en otra rama, se deberá establecer esta como rama por defecto en la interfaz de configuración de \emph{Read the Docs}. \\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{img/example_RTD.png}
+    \caption{Ejemplo de documentación generada por \emph{Read the Docs}}
+    \label{fig:exampleRTD}
+\end{figure}
+Con todo esto tenemos una manera sencilla de generar la documentación de nuestro proyecto de una manera rápida, sencilla, sincronizada con el desarrollo y automática.
+
+
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % PYPI
         %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -742,8 +758,6 @@ jekyll build #Genera el contenido web
 \label{subsec:jekandGit}
 Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el contenido \emph{Jekyll}, pero ¿Cómo actualizamos nuestra web?¿Cada vez que creamos contenido es necesario actualizar repositorio y ejecutar \emph{Jekyll} por separado?. \\
 \emph{GitHub} funciona con Jekyll, lo que quiere decir que cuando creamos contenido y este lo comprometemos (committed), \emph{Jekyll} se encargaŕa de generar el contenido tal y como hemos mencionado.
-
-\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DUDAS
