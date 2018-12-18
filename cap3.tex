@@ -1,0 +1,41 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CAPÍTULO 3 - GESTIÓN DE CÓDIGO Y PROCESO DE DESARROLLO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Gestión de código y proceso de desarrollo}
+\label{chap:codeManagement}
+\begin{comment}
+Introducción de lo que es el proyecto, lo del libro de Python y luego las tecnologías usadas en el proyecto unidas con la introducción.
+\end{comment}
+En este capítulo trataremos como está compuesto el proyecto y como se ha gestionado este, tanto la parte del código fuente de nuestro paquete \emph{PyCardio} como el código que forma parte de nuestro proyecto web reflejando todo lo que concierne a \emph{PyCardio} como documentación, como usarlo, funcionalidades. \\
+Para ello dividiremos el capítulo en tres secciones:
+\begin{enumerate}
+    \item Explicación de que contiene el proyecto \emph{PyCardio} mediante un resumen y un esbozo de lo que mostraremos en la página web.
+    \item Buenas prácticas de desarrollo en Python y como escribir buen código.
+    \item Identificación de los elementos de nuestro proyecto con las tecnologías descritas en el capítulo \ref{chap:Arqui}, para la gestión de proyecto del Backend.
+\end{enumerate}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %% EXPLICACIÓN DE CONTENIDO
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{¿Que és PyCardio?}
+\label{subsec:explainPyCardio}
+\emph{PyCardio} es un módulo en desarrollo  de Python creado por el Dr. Óscar Barquero. Dicho módulo tiene el objetivo de realizar análisis de las señales cardíacas, es decir:
+\begin{itemize}
+    \item \textbf{ECG Análisis}: Detección del complejo QRS, extracción de series temporales de intervalo RR, delinación completa de ECG.
+    \item \textbf{Análisis de variabilidad de la frecuencia cardíaca}: Un análisis completo de las series temporales de intervalo RR, donde se realiza un preprocesado, análisis en  el dominio del tiempo, análisis en el dominio de la frecuencia, análisis no lineal y un análisis tiempo-frecuencia.
+    \item \textbf{Análisis de la frecuencia cardiaca de turbulencia.}
+    \item \textbf{Análisis de fibrilación auricular.}
+    \item \textbf{Análisis de fibrilación ventricular.}
+    \item \textbf{Análisis de arritmia mediante 24 Holter.}
+\end{itemize}
+
+El objetivo, por tanto, es la creación de una página web que muestre estas funcionalidades, así como una guía de instalación, documentación, y una orientación de como colaborar en el proyecto mediante las tecnologías mencionadas en el capítulo \ref{chap:Arqui}.
+
+[[ESBOZO DE LA WEB]]
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% BUENAS PRÁCTICAS DE DESARROLLO
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Buenas prácticas de desarrollo en Python}
+\label{subsec:bestPracticses}
+En este capítulo tratamos de explicar y mostrar buenas prácticas para el desarrollo de proyectos en Python. Para ello se hará tratará con un breve resumen las más destacadas e intentaremos identificar dicha práctica con el proyecto \emph{PyCardio}.
