@@ -38,4 +38,41 @@ El objetivo, por tanto, es la creación de una página web que muestre estas fun
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Buenas prácticas de desarrollo en Python}
 \label{subsec:bestPracticses}
-En este capítulo tratamos de explicar y mostrar buenas prácticas para el desarrollo de proyectos en Python. Para ello se hará tratará con un breve resumen las más destacadas e intentaremos identificar dicha práctica con el proyecto \emph{PyCardio}.
+En este capítulo tratamos de explicar y mostrar buenas prácticas para el desarrollo de proyectos en Python.\\
+
+\subsection*{Estilo de código}
+\label{subsec:stylePython}
+Para los \emph{pythonistas} (desarrolladores veteranos de Python) el código fuente de un proyecto es mas leído que escrito, por tanto, el corazón de un proyecto Python es la le legibilidad. Una de las razones por las que el código Python es legible es por sus amplias guías de estilo (recogidas en PEP 8 y PEP 20). La comunidad Python intenta hacer lo posible para que sus proyectos se ajusten a estas guías. Tomando como ejemplo uno de los módulos que disponemos en \emph{PyCardio}, podemos ver cuanto sigue nuestro código las reglas de la guía PEP8. Para ello: 
+\begin{lstlisting}[language=sh, caption=Ejemplo de PEP8 con \emph{PyCardio},label=pep8]
+$ pep8 HRV.py
+HRV.py:3:79: W291 trailing whitespace
+HRV.py:5:80: E501 line too long (83 > 79 characters)
+HRV.py:5:84: W291 trailing whitespace
+HRV.py:6:80: E501 line too long (80 > 79 characters)
+HRV.py:18:1: E302 expected 2 blank lines, found 1
+HRV.py:19:1: W293 blank line contains whitespace
+HRV.py:21:34: W291 trailing whitespace
+HRV.py:23:1: W293 blank line contains whitespace
+HRV.py:24:1: W293 blank line contains whitespace
+HRV.py:25:5: E303 too many blank lines (2)
+HRV.py:27:80: E501 line too long (89 > 79 characters)
+\end{lstlisting}
+Estas guías de código suelen integrarse en IDE para facilitarnos su seguimiento,o ejecutar el programa \texttt{autopep8}, que regenera el código siguiendo la guía PEP8.  
+
+\subsection*{Estructurando el proyecto}
+\label{subsec:structurePython}
+Por una \emph{estructura} de proyecto de programación nos referimos a como la lógica y las dependencias del código están implementadas. \\
+Por tanto seguir una buena estructura de empaquetado y de importar los módulos que se utilicen en el proyecto proporcionará un código menos repetitivo y desordenado. No hay una guía de como estructurar un proyecto pero los siguientes errores más comunes pueden ayudar a  como estructurarlo:
+\begin{itemize}
+    \item \textit{Dependencias circulares múltiples y desordenadas:} Ocurre cuando un módulo depende de otro, y este a su vez del mismo inicial. Es decir, \textit{fabrica.py} depende de \textit{trabajadores.py}, que depende de \textit{fabrica.py}.
+    \item \textit{Un abuso en el uso de contextos globales:} Ocurre cuando para dos clases o módulos que hacen uso de la misma variables globales, haciendo así que cualquiera de los dos pueda modificarlo.
+    \item \textit{Código Ravioli:} hace referencia a que el código se refactoriza en demasiados trozos.
+\end{itemize}
+
+Python a veces se describe como un lenguaje orientado a objetos, pero esto puede resultar engañoso ya que a diferencia de Java, no impone este paradigma de programación como principal. Por tanto, no es necesario definir clases para desarrollar un proyecto en Python, pero en algunas ocasiones es necesario mantener un estado o un contexto, es decir, necesitamos variables globales de clase. La recomendación a seguir es cuando nos querramos traer entre manos un código con contexto persistente o estado, debemos usar funciones o procedimientos con contextos implícitos y efectos secundarios \footnote{\textbf{Contexto implícito} refiere a código que necesita acceder a variables globales para su función, mientras que \textbf{efectos secundarios} es cuando una función o procedimiento cambia el valor  o estado de una variable global. } lo mínimo posible. Uno de los objetivos de desarrollar clases personalizadas es aislar funciones con contexto o efectos secundarios, para ello, se aconseja utilizar cuanto más sea posible la programación funcional, es decir, utilizar funciones puras \footnote{Las \textbf{funciones puras} son aquellas funciones que dada una entrada distinta producen la misma salida.}. Las ventajas de usar la programación funcional  a la hora de desarrollar un proyecto son:
+\begin{itemize}
+    \item Funciones puras son más sencillas de cambiar o reemplazar si se necesita una optimización.
+    \item El uso de funciones puras facilita el desarrollo de tests sobre nuestro proyecto.
+    \item El tener funciones puras hace más sencillo la manipulación y decoración de estas.
+\end{itemize}
+Como ya sabemos, Python es un lenguaje dinámicamente tipado, lo que quiere decir que una misma variable puede tomar un valor, e inmediatamente después puede ser una cadena de texto, o una función. Esta característica del lenguaje se considera una debilidad del lenguaje, ya que hace muy difícil trazar código.
