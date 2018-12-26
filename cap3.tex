@@ -38,7 +38,7 @@ El objetivo, por tanto, es la creación de una página web que muestre estas fun
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Buenas prácticas de desarrollo en Python}
 \label{subsec:bestPracticses}
-En este capítulo tratamos de explicar y mostrar buenas prácticas para el desarrollo de proyectos en Python.\\
+En esta sección tratamos de explicar y mostrar buenas prácticas para el desarrollo de proyectos en Python.\\
 
 \subsection*{Estilo de código}
 \label{subsec:stylePython}
@@ -75,4 +75,33 @@ Python a veces se describe como un lenguaje orientado a objetos, pero esto puede
     \item El uso de funciones puras facilita el desarrollo de tests sobre nuestro proyecto.
     \item El tener funciones puras hace más sencillo la manipulación y decoración de estas.
 \end{itemize}
-Como ya sabemos, Python es un lenguaje dinámicamente tipado, lo que quiere decir que una misma variable puede tomar un valor, e inmediatamente después puede ser una cadena de texto, o una función. Esta característica del lenguaje se considera una debilidad del lenguaje, ya que hace muy difícil trazar código.
+Como ya sabemos, Python es un lenguaje dinámicamente tipado, lo que quiere decir que una misma variable puede tomar un valor, e inmediatamente después puede ser una cadena de texto, o una función. Esta característica del lenguaje se considera una debilidad del lenguaje, ya que hace muy difícil trazar código.\\
+
+\subsection*{Documentación}
+Para un proyecto Python no solo se busca la legibilidad en el código, si no también en la documentación. A continuación se presentan unas buenas prácticas para facilitar tanto el uso como la contribución del proyecto. 
+\subsubsection*{Documentación de  Proyecto}
+Para cualquier proyecto de \emph{software} libre suele existir una documentación para usuarios y otra adicional para quien quiera contribuir al proyecto. Los siguientes ficheros que se comentan a continuación hacen referencia a esa documentación adicional y se centran en facilitar la contribución:\\
+\begin{itemize}
+    \item \textit{README}: Tal y como hemos mencionado, cuando creamos un repositorio GitHub es frecuente tener un fichero escrito en \emph{MarkDown} con el propósito de tener un breve resumen del contenido del proyecto o librería, la dirección del código principal. Este fichero es la entrada para cualquier usuario o contribuyente al proyecto. 
+    \item \textit{INSTALL}: Este fichero es menos necesario en Python, ya que se reduce a ejecutar el comando \texttt{pip install [NAME\_MODULE]} o a ejecutar el script \emph{setup.py}. En él se añaden las instrucciones de instalación.
+    \item \textit{LICENSE}: Fichero que todo proyecto debe contener en el que se especifica la licencia bajo la cual ponemos el proyecto disponible al usuario.
+    \item \textit{TODO}: Este fichero es común incluirlo como sección en el fichero \emph{README}, su objetivo es listar los planes de desarrollo para el código.
+    \item \textit{CHANGELOG}: Fichero que debe contener un resumen con los cambios producidos en el código respecto a la última versión.
+\end{itemize}
+
+\subsubsection*{Publicación del Proyecto}
+Una vez que hemos tratado la documentación adicional que debemos incluir, la documentación principal deberá contener algunos o todos los siguientes componentes:
+\begin{itemize}
+    \item Una introducción con el propósito de mostrar de manera breve que podemos hacer con el proyecto.
+    \item Un tutorial que debe enseñar los casos básicos detalladamente.
+    \item Una referencia de la API, que suele generarse a partir del código mediante docstring\footnote{Un \emph{\textbf{docstring}} describe la operación de la función o clase, así como sus parámetros. Esta cadena de texto suele ir a continuación de la declaración de la función o en el fichero \textit{\_\_init\_\_.py} (marca un directorio como paquete) siguiendo unas reglas de escritura. }. 
+    \item Documentación para el desarrollador donde se incluyen convenciones de código y la estrategia a seguir para el desarrollo de código. 
+\end{itemize}
+
+\subsection*{Escogiendo una licencia}
+Al igual que para el software propietario o de autor, necesitamos escoger una licencia para nuestro proyecto. Una de las consecuencias de contribuir o usar un proyecto sin licencia es que es ilegal. Con ella otorgamos las cuatro libertades comentadas al inicio de este trabajo.Podemos distinguir los siguientes tipos como las principales licencias de código libre:
+\begin{itemize}
+    \item Licencias BSD: ejemplo de \textbf{licencia permisiva},centradas en dar una libertad total de distribución, modificación y uso del software. Permite que las versiones de los proyectos bajo esta licencia se distribuyan con otra distinta, incluida como software propietario.
+    \item Licencias GPL: licencia que permite la libre distribución, modificación y uso, conservando los derechos de autor. Todo software que se desarrolle modificando el original y que contenga dicha licencia debe estar bajo esta. Licencia considerada como primera licencia \textit{copyleft}.
+    \item Licencias AGPL: 
+\end{itemize}
