@@ -77,6 +77,16 @@ Python a veces se describe como un lenguaje orientado a objetos, pero esto puede
 \end{itemize}
 Como ya sabemos, Python es un lenguaje dinámicamente tipado, lo que quiere decir que una misma variable puede tomar un valor, e inmediatamente después puede ser una cadena de texto, o una función. Esta característica del lenguaje se considera una debilidad del lenguaje, ya que hace muy difícil trazar código.\\
 
+\subsection*{Pruebas de código}
+A la hora de distribuir software de código libre, una de las prácticas que hacen que el software sea más utilizado o que ayude a que se sumen contribuciones al software es la prueba del código. ¿Por qué es una de las prácticas para el desarrollo de un proyecto más importante?. Las siguientes razones son tanto para el ámbito comercial como para un ámbito práctico de desarrollo: 
+\begin{itemize}
+    \item Porque hasta que una línea de código no es ejecutada, no se puede saber si esta funciona.
+    \item En la mayoría de los casos, el código no se ejecuta de principio a fin a menos que se pruebe con los distintos conjunto de casos que trata el software.
+    \item Cuando el código es modificado por otros usuarios, es propenso a que este deje de funcionar de manera inesperada. La implementación de tests da la confianza de que a partir de estas modificaciones no se ha "roto" el software de manera inesperada.
+    \item Porque ayuda a entender los cambios que se han realizado en el código.
+    
+\end{itemize}
+
 \subsection*{Documentación}
 Para un proyecto Python no solo se busca la legibilidad en el código, si no también en la documentación. A continuación se presentan unas buenas prácticas para facilitar tanto el uso como la contribución del proyecto. 
 \subsubsection*{Documentación de  Proyecto}
@@ -103,5 +113,7 @@ Al igual que para el software propietario o de autor, necesitamos escoger una li
 \begin{itemize}
     \item Licencias BSD: ejemplo de \textbf{licencia permisiva},centradas en dar una libertad total de distribución, modificación y uso del software. Permite que las versiones de los proyectos bajo esta licencia se distribuyan con otra distinta, incluida como software propietario.
     \item Licencias GPL: licencia que permite la libre distribución, modificación y uso, conservando los derechos de autor. Todo software que se desarrolle modificando el original y que contenga dicha licencia debe estar bajo esta. Licencia considerada como primera licencia \textit{copyleft}.
-    \item Licencias AGPL: 
+    \item Licencias Apache: bajo este tipo de licencia se permite al usuario la distribución, modificación y distribuir modificiaciones del software siempre y cuando que se mantenga el \emph{copyright}. Esta licencia no exige que se mantenga las versiones modificadas bajo la misma licencia, solo que se informe a los receptores de las modificaciones que bajo el código se ha utilizado dicha licencia Apache.
+    \item Licencias Creative Commons: El software bajo esta licencia se puede distribuir, exhibir y representar con la condición de reconocer y citar al autor original. Bajo esta licencia no se puede modificar el software. Creative Commons implica también la prohibición de usar el software con dicha licencia bajo fines comerciales. 
+    \item Licencias AGPL: licencias que derivan de las licencias GPL añadiendo una novedad, esta novedad obliga a distribuir el software modificado bajo su libre distribución.
 \end{itemize}
