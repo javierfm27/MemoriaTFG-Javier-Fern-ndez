@@ -84,9 +84,18 @@ A la hora de distribuir software de código libre, una de las prácticas que hac
     \item En la mayoría de los casos, el código no se ejecuta de principio a fin a menos que se pruebe con los distintos conjunto de casos que trata el software.
     \item Cuando el código es modificado por otros usuarios, es propenso a que este deje de funcionar de manera inesperada. La implementación de tests da la confianza de que a partir de estas modificaciones no se ha "roto" el software de manera inesperada.
     \item Porque ayuda a entender los cambios que se han realizado en el código.
-    
+    \item Las pruebas de código ayudan a optimizar tiempo y dinero, ya que uno de los beneficios que aporta el testeo de software es la rentabilidad. El desarrollo de software consiste en un trabajo por etapas, por tanto, cuanto antes se detecten los bugs más sencillo será tratarlos. 
+    \item Uno de los puntos más importantes a la hora de confiar en un software es la seguridad, las pruebas de código ayudan al consumidor a ver que tienen delante un producto fiable, a que los problemas y riesgos del software son tratados de antemano, a obtener un producto libre de vulnerabilidades y a mantener datos personales de usuario seguros.
 \end{itemize}
 
+A raíz de todos los beneficios que trae el incorporar tests en el desarrollo de software, cada vez se adopta más en la ingeniería de software la práctica de programación TDD (Test-Driven Deployment). Esta consiste en escribir pruebas unitarias \footnote{Pruebas centradas en una única pieza de código como objeto, fúncion.} centrando estas pruebas en los requisitos para nuestro software, tras ello, se implementa el código adecuado para que dichas pruebas no fallen. El siguiente paso, una vez que nuestro código ha pasado las pruebas unitarias es refactorizarlo. Tras su refactorización se vuelve al punto de inicio abordando otro requisito de nuestro desarrollo. \\
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.8]{img/TDD__logo.jpg}
+    \caption{Esquema de práctica de programación de TDD (Test-Driven Deployment)}
+    \label{fig:tdd}
+\end{figure}
+Seguir la práctica de programación TDD supone un cambio en la mentalidad de desarrollo, pensamos en qué queremos hacer con nuestro software y tras ello, cómo debe hacerlo. Adoptar esta metodología de trabajo es lenta, pero una vez adoptada el proceso de desarrollo es rápido y ágil. Afrontar el desarrollo mediante esta nueva práctica puede parecer un gasto de recursos debido al aprendizaje que supone adoptarla, pero esta es una inversión a largo plazo, ya que, ahorra recursos en el mantenimiento de nuestro código. Con TDD se garantiza una cobertura de código entre el 90\% y 100\%,lo que nos permite añadir funcionalidades de manera rápida y sencilla. Por último, esta forma de trabajo nos permite entender mejor el código y facilitar las contribuciones futuras en el software aumentando así la calidad del producto. 
 \subsection*{Documentación}
 Para un proyecto Python no solo se busca la legibilidad en el código, si no también en la documentación. A continuación se presentan unas buenas prácticas para facilitar tanto el uso como la contribución del proyecto. 
 \subsubsection*{Documentación de  Proyecto}
