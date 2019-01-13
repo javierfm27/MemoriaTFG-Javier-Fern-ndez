@@ -9,7 +9,7 @@ Introducción de lo que es el proyecto, lo del libro de Python y luego las tecno
 En este capítulo trataremos como está compuesto el proyecto y como se ha gestionado este, tanto la parte del código fuente de nuestro paquete \emph{PyCardio} como el código que forma parte de nuestro proyecto web reflejando todo lo que concierne a \emph{PyCardio} como documentación, como usarlo, funcionalidades. \\
 Para ello dividiremos el capítulo en tres secciones:
 \begin{enumerate}
-    \item Explicación de que contiene el proyecto \emph{PyCardio} mediante un resumen y un esbozo de lo que mostraremos en la página web.
+    \item Explicación de que contiene el proyecto \emph{PyCardio} mediante un breve resumen de los módulos que la componen. 
     \item Buenas prácticas de desarrollo en Python y como escribir buen código.
     \item Identificación de los elementos de nuestro proyecto con las tecnologías descritas en el capítulo \ref{chap:Arqui}, para la gestión de proyecto del Backend.
 \end{enumerate}
@@ -31,8 +31,6 @@ Para ello dividiremos el capítulo en tres secciones:
 
 El objetivo, por tanto, es la creación de una página web que muestre estas funcionalidades, así como una guía de instalación, documentación, y una orientación de como colaborar en el proyecto mediante las tecnologías mencionadas en el capítulo \ref{chap:Arqui}.
 
-[[ESBOZO DE LA WEB]]
-
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% BUENAS PRÁCTICAS DE DESARROLLO
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -42,7 +40,7 @@ En esta sección tratamos de explicar y mostrar buenas prácticas para el desarr
 
 \subsection*{Estilo de código}
 \label{subsec:stylePython}
-Para los \emph{pythonistas} (desarrolladores veteranos de Python) el código fuente de un proyecto es mas leído que escrito, por tanto, el corazón de un proyecto Python es la le legibilidad. Una de las razones por las que el código Python es legible es por sus amplias guías de estilo (recogidas en PEP 8 y PEP 20). La comunidad Python intenta hacer lo posible para que sus proyectos se ajusten a estas guías. Tomando como ejemplo uno de los módulos que disponemos en \emph{PyCardio}, podemos ver cuanto sigue nuestro código las reglas de la guía PEP8. Para ello: 
+Para los \emph{pythonistas} (desarrolladores veteranos de Python) el código fuente de un proyecto es mas leído que escrito, por tanto, el corazón de un proyecto Python es la legibilidad. Una de las razones por las que el código Python es legible es por sus amplias guías de estilo (recogidas en PEP 8 y PEP 20). La comunidad Python intenta hacer lo posible para que sus proyectos se ajusten a estas guías. Tomando como ejemplo uno de los módulos que disponemos en \emph{PyCardio}, podemos ver cuanto sigue nuestro código las reglas de la guía PEP8. Para ello: 
 \begin{lstlisting}[language=sh, caption=Ejemplo de PEP8 con \emph{PyCardio},label=pep8]
 $ pep8 HRV.py
 HRV.py:3:79: W291 trailing whitespace
@@ -57,7 +55,14 @@ HRV.py:24:1: W293 blank line contains whitespace
 HRV.py:25:5: E303 too many blank lines (2)
 HRV.py:27:80: E501 line too long (89 > 79 characters)
 \end{lstlisting}
-Estas guías de código suelen integrarse en IDE para facilitarnos su seguimiento,o ejecutar el programa \texttt{autopep8}, que regenera el código siguiendo la guía PEP8.  
+Estas guías de código suelen integrarse en IDE para facilitarnos su seguimiento,o ejecutar el programa \texttt{autopep8}, que regenera el código siguiendo la guía PEP8. Antes de continuar con las buenas prácticas, no podemos pasar por alto en que consiste PEP y cúal es su propósito. \\
+\subsubsection*{¿Qué es PEP?}
+PEP son las siglas de Proposal Enhancement Python, son documentos de diseño que proporcionan información de nuevas características del lenguaje Python, de sus procesos o adopción de nuevas reglas. Existen tres tipos de PEP:
+\begin{itemize}
+    \item PEP estándar: Describe una nueva funcionalidad o característica para Python. 
+    \item PEP informativo: En ellos se describen problemas de diseño, pautas a seguir o información para la comunidad.
+    \item PEP de proceso: en el se describe procesos que rodean al lenguaje Python o se proponen cambios. Estos cambios que se proponen no son implementaciones al lenguaje base de Python, esos cambios requieren un consenso de la comunidad. 
+\end{itemize}
 
 \subsection*{Estructurando el proyecto}
 \label{subsec:structurePython}
@@ -88,7 +93,7 @@ A la hora de distribuir software de código libre, una de las prácticas que hac
     \item Uno de los puntos más importantes a la hora de confiar en un software es la seguridad, las pruebas de código ayudan al consumidor a ver que tienen delante un producto fiable, a que los problemas y riesgos del software son tratados de antemano, a obtener un producto libre de vulnerabilidades y a mantener datos personales de usuario seguros.
 \end{itemize}
 
-A raíz de todos los beneficios que trae el incorporar tests en el desarrollo de software, cada vez se adopta más en la ingeniería de software la práctica de programación TDD (Test-Driven Deployment). Esta consiste en escribir pruebas unitarias \footnote{Pruebas centradas en una única pieza de código como objeto, fúncion.} centrando estas pruebas en los requisitos para nuestro software, tras ello, se implementa el código adecuado para que dichas pruebas no fallen. El siguiente paso, una vez que nuestro código ha pasado las pruebas unitarias es refactorizarlo. Tras su refactorización se vuelve al punto de inicio abordando otro requisito de nuestro desarrollo. \\
+A raíz de todos los beneficios que trae el incorporar tests en el desarrollo de software, cada vez se adopta más en la ingeniería de software la práctica de programación TDD (Test-Driven Deployment). Esta consiste en escribir pruebas unitarias \footnote{Pruebas centradas en una única pieza de código como objeto o fúncion.} centrando estas pruebas en los requisitos para nuestro software, tras ello, se implementa el código adecuado para que dichas pruebas no fallen. El siguiente paso, una vez que nuestro código ha pasado las pruebas unitarias es refactorizarlo. Tras su refactorización se vuelve al punto de inicio abordando otro requisito de nuestro desarrollo. \\
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.8]{img/TDD__logo.jpg}
@@ -126,3 +131,148 @@ Al igual que para el software propietario o de autor, necesitamos escoger una li
     \item Licencias Creative Commons: El software bajo esta licencia se puede distribuir, exhibir y representar con la condición de reconocer y citar al autor original. Bajo esta licencia no se puede modificar el software. Creative Commons implica también la prohibición de usar el software con dicha licencia bajo fines comerciales. 
     \item Licencias AGPL: licencias que derivan de las licencias GPL añadiendo una novedad, esta novedad obliga a distribuir el software modificado bajo su libre distribución.
 \end{itemize}
+
+[[PARTICULARIZAMOS QUE LICENCIA DEBEMOS ESCOGER]]
+
+\subsection{Gestión de código}
+\label{subsec:}
+Tras tratar con una breve guía de buenas prácticas para desarrollar y contribuir en un proyecto en Python, en este apartado abordaremos algunos de los servicios de gestión de código comentados en el capítulo \ref{chap:Arqui}. Para cada servicio que comentaremos a continuación, se hará una breve guía de utilización particularizándolo para nuestro proyecto PyCardio.
+
+\subsubsection*{Travis}
+\label{subsubsec:Travis}
+Para la parte de integración continua se usará en nuestro proyecto Travis, ya comentado en el \ref{chap:Arqui}. Antes de empezar a integrar Travis en nuestro proyecto debemos tener una cuenta en GitHub y permitir a Travis acceder a ella. El siguiente paso es añadir a la raíz de nuestro proyecto un fichero de configuración \texttt{.travis.yml}, en él, se informa a Travis que tiene que hacer, donde podemos especificar la versión de lenguaje que utilizamos, el lenguaje, donde se encuentra nuestras pruebas de código, y un gran abanico de opciones que pueden variar debido al lenguaje utilizado. \\
+
+\begin{figure}[h]
+\centering
+\framebox[\textwidth]{%
+\begin{minipage}{0.9\textwidth}
+  \dirtree{%
+.1 /PyCardio. 
+.2 docs.
+.2 PyCardio.
+.3 HRV.
+.3 ECG. 
+.3 HRT.
+.3 ReadHolter.
+.3 \_\_init\_\_.py.
+.2 .travis.yml.
+.2 README.md.
+.2 LICENSE.md.
+.2 requirements.txt
+.2 setup.py.
+}
+\end{minipage}
+}
+\caption{Sistema de archivos PyCardio}
+\label{fig:travisDir}
+\end{figure}
+El contenido del fichero \texttt{.travis.yml} para nuestro proyecto es el dado por la extracción de código \ref{travisPyCardio}. 
+\begin{lstlisting}[caption={\texttt{.travis.yml} de PyCardio},label=travisPyCardio]
+language: python
+python:
+  - "2.7"
+install:
+  - pip install -r requirements.txt
+\end{lstlisting}
+Observando el contenido del fichero, podemos diferenciar dos opciones:
+\begin{itemize}
+    \item \textbf{Language}: En esta opción indicamos a Travis el lenguaje del proyecto.
+    \item \textbf{Python}: En este apartado indicamos todas las versiones de Python en la que queremos que se pruebe el proyecto. Para ello Travis creará un entorno virtual por cada versión que le indiquemos en él.
+    \item \textbf{Install}: Con la orden install indicamos los comandos a ejecutar antes de probar, montar o construir el proyecto. En este caso con estos comandos instalaremos las dependencias de nuestro proyecto para el entorno virtual que crea Travis para cada versión. Estas dependencias vienen indicadas mediante el archivo \textit{requirements.txt}. 
+\end{itemize}
+Una de las opciones que no están incluidas en nuestro fichero \texttt{.travis.yml} es la orden \texttt{script}. En ella, se indica el fichero donde Travis puede encontrar los tests, y mediante que comando queremos que estos se ejecuten. Al no tener dichos tests implementados, no podemos incluir dicha orden en nuestro fichero. A parte de la opción comentada, Travis tiene un abanico amplio para poder construir el proyecto de la manera más adecuada.
+
+\subsubsection*{CodeCov}
+\label{subsubsec:CodeCov}
+Para apoyar la integración continua de nuestro proyecto, usaremos CodeCov, nos aportará una medida de la cobertura que tenemos de pruebas de código sobre nuestro proyecto. \\
+Para integrarlo en nuestro proyecto basta con conectarse a dicho servicio mediante GitHub, y modificar nuestro fichero \texttt{.travis.yml} quedando así como el de la figura \ref{travisCodecov}
+
+\begin{lstlisting}[caption={\texttt{.travis.yml} para integrar CodeCov},label=travisCodecov]
+language: python
+python:
+  - "2.7"
+install:
+  - pip install -r requirements.txt
+  - pip install coverage
+script: coverage run tests.py
+after_success:
+    - codecov
+\end{lstlisting}
+
+Al usar Travis para la integración continua, basta con añadir en el archivo que tras la ejecución de las pruebas de código (mediante el comando \texttt{coverage run tests.py}) se ejecute el comando \texttt{codecov} donde se enviará el informe de cobertura a CodeCov. 
+
+\subsubsection*{Read The Docs}
+\label{subusub:rtd}
+Como ya hemos comentado en el capítulo \ref{chap:Arqui} Read The Docs simplifica y automatiza la documentación de un proyecto desarrollado en Python. La documentación la cual read the docs usa para su servicio es la generada por dos herramientas MkDocs o Sphinx. Para PyCardio se ha hecho uso de la herramienta Sphinx. \\
+¿Cómo trabaja Sphinx? La documentación que esta herramienta genera, lo hace a partir de documentos con lenguaje de marcado \textit{restructuredtext}, en estos documentos estan compuestos por el código y documentación el cual Sphinx usará para generar la documentación en HTML, epub o pdf. En nuestro caso, en vez de escribir esta documentación en dichos documentos,usaremos la función \texttt{autodoc} de Sphinx, donde se generará documentación a partir de los \textit{docstrings} contenidos en el código, pero ¿qué es un \textit{docstring} de una clase, módulo o función?. Una de las prácticas que se debe llevar a cabo para un proyecto es la de tener correctamente detallada y documentada la funcionalidad de este. Para un proyecto Python usualmente se usa \textit{docstring}, que no es más que una cadena de texto que precede el código de una función, clase u objeto. Para nuestro ejemplo en la extracción de código \ref{docstring} observamos la documentación realizada al módulo \texttt{HRV.py} donde se muestra docstring del módulo, de la clase \texttt{HRV} y de la función \texttt{beat\_label\_filter}.
+
+\begin{lstlisting}[language=python,caption=HRV.py,label=docstring]
+""" 
+ HRV.py 
+ ====================================================================
+ docstring of a HRV module
+ Calculates from the RR intervals the statistical time domain variables and the geometrical variables to characterize the heart rate variability (HRV).The RR intervals used are all of them previous to valid tachograms according to the conditions evaluated in the characterization of the heart rate turbulence (HRT). 
+ """
+ class HRV(object):
+    """ docstring of a HRV object """
+    def beat_label_filter(self, beat_labels, numBeatsAfterV = 4):
+        """
+        docstring of a function of HRV class
+        Function that identifies non-normal beats, and filters the rr signal to produce a vector identifying the positions where are non-normal beats.
+
+        Input arguments:
+            numBeatsAfterV <= 4
+        Output arguments:
+            ind_not_N:  has 1 in the position where there is a non-sinusal beat as classified by the label information.
+        """
+\end{lstlisting}
+
+Una vez que tenemos nuestra implementación documentada tal y como se ha mostrado con \textit{docstrings} necesitamos indicar en un documento \textit{restructuredtext} las funciones de las cuales vamos a generar su documentación, ya que Sphinx solo procesará aquellos documentos con dicho lenguaje de marcado. En nuestro caso, vamos a mostrar un caso sencillo en el que para la página principal de la documentación se mostrará la breve descripción\footnote{Dicha descripción es la misma que contiene el README.md del proyecto} del paquete de PyCardio y un enlace a la documentación del módulo HRV del paquete, del cual es el único del que disponemos de su documentación. \\
+Este \texttt{index.rst} (página principal de nuestra documentación) esta compuesto por el código \ref{index}
+\begin{lstlisting}[caption=\texttt{index.rst},label=index]
+Welcome to PyCardio's documentation!
+====================================
+
+Python module to perform Cardiac Signal Analysis, namely:
+  * **ECG analysis**: QRS detection, RR-interval time series extraction, ECG complete delineation
+  * **Heart Rate Variability analysis**: Complete analysis from RR-interval time series:
+    * Preprocessing
+    * Time Domain Analysis
+    * Frequency Domain Analysis
+    * Nonlinear Analysis
+    * Time-Frequency analysis
+  * **Heart Rate Turbulence** analysis
+  * **Atrial Fibrillation** analysis: both in ECG and intracavitary electrograms.
+  * **Ventricular Fibrillation** Analysis
+  * **Arrhythmia** analysis on 24 holter
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents:
+
+   HRV
+
+\end{lstlisting}
+En este código observamos a parte de contenido plano, unas directivas, que son funciones del lenguaje \textit{restructuredtext}. La utilizada en esta página principal es \texttt{toctree} donde se indica cuál va a ser el árbol de nuestra documentación, en nuestro ejemplo, indicamos que como máximo sera de un nivel con la opción \texttt{maxdepth} y que tenemos como contenido HRV. Al indicar con la opción \texttt{contents} que tenemos un contenido y que este es HRV, sphinx buscará un documento el cual sea de nombre HRV y de lenguaje \textit{restructuredtext}, es decir, \texttt{HRV.rst}, en el cual se incluirá la estructura o contenido para la sección HRV, en este caso, para la página HTML del módulo HRV. \\
+El contenido de \texttt{HRV.rst} es el dado por el código \ref{hrv}, que como vemos hacemos uso de la opción \texttt{autodoc} de sphinx, para ello, indicamos donde debe hacer el uso de dicha opción con la directiva \texttt{automodule}, indicando de que módulo generamos la documentación. \begin{lstlisting}[caption=\texttt{HRV.rst},label=hrv]
+Module HRV
+==================
+
+.. automodule:: HRV.HRV
+  :members:
+
+\end{lstlisting}
+Una vez que tenemos escrito el esqueleto de nuestra documentación, mediante la ejecución del Makefile que genera Sphinx obtenemos nuestra documentación sobre HTML.
+\begin{figure}[H]
+    \centering
+    \subfloat[Página Principal]{
+        \includegraphics[scale=0.3]{img/sphinx_1.png}}
+    \\
+    \subfloat[Módulo HRV]{
+        \includegraphics[scale=0.3]{img/sphinx_2.png}}
+    \caption{Documentación generada por Sphinx}
+    \label{fig:sphinx}
+\end{figure}
+
+Ya tenemos generada nuestra documentación, ahora podemos integrar esta con Read the docs, importando el repositorio donde se encuentre nuestro proyecto. Para ello Read The Docs localizará el archivo \texttt{conf.py} y generará la documentación y esta se alojará en su servidor. 
