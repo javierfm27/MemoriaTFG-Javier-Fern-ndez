@@ -23,9 +23,7 @@ Una vez diferenciada estas capas, en nuestro \emph{BackEnd} podemos diferencias 
     \label{fig:arquiGeneral}
 \end{figure}
 En la capa \emph{FrontEnd} observamos como todas las tecnologías que colaborarán son aquellas ya conocidascomo HTML5, CSS; donde cuyo objetivo es mostrar contenido y otras nuevas como \emph{Jekyll}. Observando la figura \ref{fig:arquiGeneral} vemos que otras dos tecnologías nos apoyarán en mostrar el funcionamiento del módulo \emph{PyCardio}, una para mostrar la documentación de los módulos(\emph{ReadTheDocs}) y otra donde también se alojará el código fuente siendo así una aplicación de terceros de Python(PyPI).
-    
-    \begin{comment}
-    
+
     %%%%%%%%%%%%%%%%%%%%
     % 2.2 - BackEnd
     %%%%%%%%%%%%%%%%%%%%%
@@ -86,6 +84,7 @@ Por tanto, cada vez que se incorpora código a la rama \textit{master}, tenemos 
     \item \textbf{Hotfix:} Rama cuyo objetivo es parecido al de la rama \textit{feature}, pero esta se origina a partir de la \emph{master}, y los errores que corregimos en esta rama no están planificados a diferencia de la rama \emph{feature}, que sí lo están.
 \end{itemize}
 De esta manera el uso que daremos de \emph{GitHub} es el de construir un repositorio donde alojaremos el código de nuestro paquete, permitiendo así que cualquiera pueda aportar ideas al proyecto o mejorar el software.
+
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % 2.2.2 - Issue Tracking System
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -139,7 +138,9 @@ Una herramienta que engloba varias de estas funcionalidades es Code Coverage (\e
 \end{itemize}
 Así el cálculo de cobertura es la relación: $coverage = hits / (sum\ of\ hit + partial + miss)$ \\
 Tras este cálculo tal y como hemos mencionado, \emph{CodeCov} ofrece una medida visual de esta cobertura, con la interfaz el desarrollador puede ver que parte de código debe cubrir en sus siguientes bloques de pruebas. \\
-Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar por alto es \emph{Travis-CI}, servidor de integración continua en la nube donde podemos vincular nuestra cuenta de GitHub, donde se encarga de realizar las tareas planificadas por cada push & commit que hagamos en alguno de nuestros repositorios de nuestra cuenta. La mayor ventaja que aporta \emph{Travis-CI} es la de probar nuestras librerías y/o aplicaciones con distintas configuraciones sin tener que instalarlas localmente.
+Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar por alto es \emph{Travis-CI}, servidor de integración continua en la nube donde podemos vincular nuestra cuenta de GitHub, donde se encarga de realizar las tareas planificadas por cada push \& commit que hagamos en alguno de nuestros repositorios de nuestra cuenta. La mayor ventaja que aporta \emph{Travis-CI} es la de probar nuestras librerías y/o aplicaciones con distintas configuraciones sin tener que instalarlas localmente.
+
+
     %%%%%%%%%%%%%%%%%%%%
     % 2.3 - FRONTEND
     %%%%%%%%%%%%%%%%%%%
@@ -163,6 +164,7 @@ HTML5 es la quinta revisión importante de HTML. Lo más importante de esta revi
     \item API para la geolocalización.
     \item Nuevos elementos como \texttt{<video>} y \texttt{<audio>} que permite la inclusión de contenido multimedia.
 \end{itemize}
+
 
         %%%%%%%%%%%%%%%%%%%%%%%%
         % CSS
@@ -205,6 +207,7 @@ Las ventajas de usar \emph{MarkDown} son las siguientes:
     \item Es más difícil cometer errores de sintaxis.
     \item Perfecto para usarlo con editores de textos minimalistas.
 \end{itemize}
+
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % LIQUID
         %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -306,28 +309,37 @@ Con todo esto tenemos una manera sencilla de generar la documentación de nuestr
     \includegraphics[scale=0.5]{img/logo_pypi.jpg}
     \label{fig:logoPypi}
 \end{figure}
-\emph{PyPI} ( o Python Package Index) es el repositorio de \emph{software} oficial  para aplicaciones de terceros. Los desarrolladores de Python pretenden que sea un catálogo de exhaustivo de todos los paquetes de código abierto que hay de Python. Normalmente, si un proyecto escrito en Python no está empaquetado o almacenado en \emph{PyPI}  es difícil que este sea encontrado por otros desarrolladores y que este se utilice en sus proyectos, es más, si un proyecto no se encuentra en esta plataforma puede considerarse como una sospecha sustancial de estar mal gestionado, no estar listo para su puesta en libertad o que ha sido abandonado.  \\
+\emph{PyPI} ( o Python Package Index) es el repositorio de \emph{software} oficial  para aplicaciones de terceros. Los desarrolladores de Python pretenden que sea un catálogo exhaustivo de todos los paquetes de código abierto que hay de Python. Normalmente, si un proyecto escrito en Python no está empaquetado o almacenado en \emph{PyPI}  es difícil que este sea encontrado por otros desarrolladores y que este se utilice en sus proyectos, es más, si un proyecto no se encuentra en esta plataforma puede considerarse como una sospecha sustancial de estar mal gestionado, no estar listo para su puesta en libertad o que ha sido abandonado.  \\
 Para poder alojar un proyecto en \emph{PyPI} hay que seguir unas ciertos pasos a la hora de crear  el módulo python. Estas pasos consisten en añadir los archivos necesarios, una estructura necesaria para crear el módulo y finalmente subirlo al repositorio \emph{PyPI}. Se pueden resumir en lo siguiente:
 \begin{enumerate}
-    \item Se crea una estructura de archivos, donde \texttt{example_pkg} es mi proyecto de ejemplo:
-    \begin{lstlisting}[language=python]
-        /example_pkg
-            /example_pkg
-                __init__.py
-                module.py
-        setup.py
-        LICENSE
-        README.md
-    \end{lstlisting}
-    Donde \texttt{\_\_init\_\_.py} es utilizado para marcar que el  es un paquete de Python. Es decir, que puedo realizar un \texttt{import module.py}.
+    \item Se crea una estructura de archivos, donde \texttt{example\_pkg} es mi proyecto de ejemplo:
+     \begin{figure}[h]
+     \centering
+     \framebox[\textwidth]{%
+       \begin{minipage}{0.9\textwidth}
+      \dirtree{%
+       .1 example\_pkg.
+       .2 example\_pkg.
+       .3 \_\_init\_\_py.
+       .3 module.py.
+       .2 README.md.
+       .2 LICENSE.md.
+       .2 setup.py.
+       }
+       \end{minipage}
+     }
+     \caption{Estructura de proyecto para PyPI}
+     \label{fig:dirPyPi}
+     \end{figure}
+      Donde \texttt{$\_\_init\_\_.py$} es utilizado para marcar que  es un paquete de Python. Es decir, que puedo realizar un \texttt{import module.py}.
     \item Se crea el archivo \texttt{setup.py}. Este archivo es el script de compilación para \emph{setuptools}.
     \item Creación de \texttt{README.md}, dando una breve descripción del proyecto y en qué consiste.
     \item Creación de una Licencia, ya que es importante indicar a los usuarios que instalan el módulo bajo que condiciones pueden usar el paquete.
     \item El siguiente paso es generar paquetes de distribución para el paquete.
     \item El último paso por tanto es la carga de los archivos de distribución.
 \end{enumerate}
-Al ser nuestro proyecto un módulo de código libre, deberemos seguir estos pasos para tener \emph{PyCardio} en el repositorio oficial.
-
+Al ser nuestro proyecto un módulo de código libre, deberemos seguir estos pasos para tener \emph{PyCardio} en el repositorio
+oficial.
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % GITHUB PAGES & Jekyll
         %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -336,12 +348,20 @@ Al ser nuestro proyecto un módulo de código libre, deberemos seguir estos paso
 \label{subsec:githubJekyll}
 \emph{GitHub Pages} y \emph{Jekyll} se usan conjuntamente para generar sitios web estáticos , donde \emph{Jekyll} se encarga de generar los sitios web y \emph{GitHub Pages} de servicio de alojamiento. Ambos servicios están integrados. Para explicar como trabajan ambos servicios, vamos a tratarlos primero por separado.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GitHub Pages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection*{GitHub Pages}
 \label{subsec:githubpages}
 Es un servicio de alojamiento web que ofrece \emph{GitHub}, se usa para alojar sitios web estáticos usando directamente un repositorio \emph{Git}. Para aclarar la principal ventaja de \emph{GitHub Pages} frente a otros servidores vamos a definir que es una pagina web estática y que se diferencia respecto a una página web dinámica. \\
 \textbf{¿Qué es una página web estática?}\\
 Una página web estática es aquel documento web que muestra el mismo contenido para todos los usuarios, es decir, que no es personalizable o no hay elección de interactuar con ella para ordenar, ocultar o modificar contenido (páginas dinámicas). Una de las ventajas principales de este tipo de páginas es lo económico que resulta crearlas, sin tener que usar ningún tipo de programación especial. Estas páginas son útiles para el objetivo de simplemente mostrar contenido. Hay que destacar que la mayor desventaja de generar sitios web estáticos son su actualización haciendo de esta algo tedioso. \\
 Una vez aclarado, la ventaja principal, a parte de todas las proporcionadas por ser un repositorio \emph{Git}, es que al no necesitar base de datos para servir el contenido, solo se requiere un servidor web que vaya sirviendo el contenido que se solicita.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jekyll
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection*{Jekyll}
 \label{subsec:jekyll}
@@ -441,5 +461,3 @@ jekyll build #Genera el contenido web
 \label{subsec:jekandGit}
 Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el contenido \emph{Jekyll}, pero ¿Cómo actualizamos nuestra web?¿Cada vez que creamos contenido es necesario actualizar repositorio y ejecutar \emph{Jekyll} por separado?. \\
 \emph{GitHub} funciona con Jekyll, lo que quiere decir que cuando creamos contenido y este lo comprometemos (committed), \emph{Jekyll} se encargaŕa de generar el contenido tal y como hemos mencionado.
-
-    \end{comment}
