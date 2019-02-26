@@ -4,14 +4,14 @@
 \chapter{Introducción y objetivos}
 \label{chap:intro}
 \pagenumbering{arabic}
-En este proyecto tratamos la importancia de seguir unas buenas pautas para la gestión y distribución de código. Donde de todas ellas ahondaremos en la creación de documentación web, donde nos ayudaremos de varias tecnologías. \\
-El objetivo por tanto de este proyecto, es presentar las pautas a seguir para facilitar las contribuciones futuras en proyectos de software libre y mostrar una de ellas como, la documentación. \\
-Por tanto, la intención de este capítulo es mostrar el contexto, la motivación que  me ha llevado para realizar dicho proyecto, objetivos de este, y la estructura que vamos a seguir para mostrar lo realizado.
+En este proyecto tratamos la importancia de seguir unas buenas pautas para la gestión y distribución de código. Ahondaremos en la creación de documentación web y empaquetado de código para ello nos ayudaremos de varias tecnologías. \\
+El objetivo por tanto de este proyecto, es presentar las pautas a seguir para facilitar las contribuciones futuras en proyectos de software libre y mostrarlas. \\
+La intención de este capítulo es mostrar el contexto en el que se va a desarrollar el proyecto, la motivación que  me ha llevado para realizarlo, los objetivos de este, y la estructura que vamos a seguir para mostrar lo realizado.
 
 \section{Contexto}
 \label{sec:contex}
-A los largos de los años, el software ha pasado por varias etapas en cuanto a su privatización. Antes del \emph{boom} de la informática, los que hacían uso de ella, compartían \emph{software} sin ninguna restricción, pero cuando llegaron los años 80 las compañías que vendían las computadoras comercializaban estas usando sistemas operativos privados, forzando al usuario a aceptar restricciones legales de modificar dicho \emph{software}.\\
-Por estos años y debido a un error con un dispositivo, Richard Stallman fundó el proyecto GNU e introdujo la definición de \emph{software libre}. ¿Qué es software libre? Software libre es la cuestión de libertad de ejecutar, copiar, distribuir, estudiar, cambiar y mejorar el software.
+A los largos de los años, el software ha pasado por varias etapas en cuanto a su privatización. Antes del \emph{boom} de la informática, los que hacían uso de ella, compartían \emph{software} sin ninguna restricción, pero cuando llegaron los años 80 las compañías que vendían las computadoras comercializaban estas usando sistemas operativos privados, forzando al usuario a aceptar restricciones legales de modificación de dicho \emph{software}.\\
+En estos años y debido a un error con un dispositivo, Richard Stallman fundó el proyecto GNU e introdujo la definición de \emph{software libre}. ¿Qué es software libre? Software libre es el software que dota de libertad de ejecutar, copiar, distribuir, estudiar, cambiar y mejorar el software.
 \newpage
 Es decir, significa que los usuarios de dicho software disponemos de las cuatro libertades esenciales:
 \begin{itemize}
@@ -21,7 +21,7 @@ Es decir, significa que los usuarios de dicho software disponemos de las cuatro 
     \item Libertad 3, redistribución de versiones modificadas.
 \end{itemize}
 
-Y por tanto, uno de los objetivos de este proyecto es facilitar las contribuciones futuras para unos módulos sobre ingeniería biomédica desarrollados en la Universidad Rey Juan Carlos I, donde para ello, se creara una documentación web, usando tecnologías como Jekyll, que es un generador de contenido estático, o herramientas como ReadTheDocs o Sphinx, que facilitan la creación de documentación de \emph{software}
+Uno de los objetivos de este proyecto es facilitar las contribuciones futuras para unos módulos sobre ingeniería biomédica desarrollados en la Universidad Rey Juan Carlos I, para lo cual, se creara una documentación web, una web asociada a dicho módulo explicando sus funcionalidades y cómo usarlo, empaquetado para su distribución e instalación; usando tecnologías como Jekyll, que es un generador de contenido estático, o herramientas como ReadTheDocs o Sphinx, que facilitan la creación de documentación de \emph{software}
 
 
 \section{Motivación Personal}
@@ -38,6 +38,9 @@ Otro propósito de dicha web, al ser un proyecto de \emph{Software libre}, es fa
     \item Publicar contenido mediante Jekyll.
     \item Crear la docWeb en GitHub Pages.
     \item Aprender a usar Liquid, para optimizar el desarrollo del contenido.
+    \item Familiarizarse con el lenguaje de marcado \emph{ReStructuredText} para la generación automática de documentación de los módulos de \emph{PyCardio} mediante Sphinx.
+    \item Saber distribuir paquetes de Python mediante módulos de Python como \emph{twine} o \emph{conda}.
+    \item Gestionar el software medianto varios servicios como \emph{Travis CI}.
 \end{itemize}
 
 \section{Estructura de la memoria}

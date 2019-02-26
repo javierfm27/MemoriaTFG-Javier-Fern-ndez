@@ -40,7 +40,7 @@ En esta sección tratamos de explicar y mostrar buenas prácticas para el desarr
 
 \subsection*{Estilo de código}
 \label{subsec:stylePython}
-Para los \emph{pythonistas} (desarrolladores veteranos de Python) el código fuente de un proyecto es mas leído que escrito, por tanto, el corazón de un proyecto Python es la legibilidad. Una de las razones por las que el código Python es legible es por sus amplias guías de estilo (recogidas en PEP 8 y PEP 20). La comunidad Python intenta hacer lo posible para que sus proyectos se ajusten a estas guías. Tomando como ejemplo uno de los módulos que disponemos en \emph{PyCardio}, podemos ver cuanto sigue nuestro código las reglas de la guía PEP8. Para ello: 
+Para los \emph{pythonistas} (desarrolladores veteranos de Python) el código fuente de un proyecto es mas leído que escrito, por tanto, el corazón de un proyecto Python es la legibilidad. Una de las razones por las que el código Python es legible es por sus amplias guías de estilo (recogidas en PEP 8 y PEP 20). La comunidad Python intenta hacer lo posible para que sus proyectos se ajusten a estas guías. Tomando como ejemplo uno de los módulos que disponemos en \emph{PyCardio}, podemos ver cuanto sigue nuestro código las reglas de la guía PEP8. \\ 
 \begin{lstlisting}[language=sh, caption=Ejemplo de PEP8 con \emph{PyCardio},label=pep8]
 $ pep8 HRV.py
 HRV.py:3:79: W291 trailing whitespace
@@ -70,11 +70,13 @@ Por una \emph{estructura} de proyecto de programación nos referimos a como la l
 Por tanto seguir una buena estructura de empaquetado y de importar los módulos que se utilicen en el proyecto proporcionará un código menos repetitivo y desordenado. No hay una guía de como estructurar un proyecto pero los siguientes errores más comunes pueden ayudar a  como estructurarlo:
 \begin{itemize}
     \item \textit{Dependencias circulares múltiples y desordenadas:} Ocurre cuando un módulo depende de otro, y este a su vez del mismo inicial. Es decir, \textit{fabrica.py} depende de \textit{trabajadores.py}, que depende de \textit{fabrica.py}.
-    \item \textit{Un abuso en el uso de contextos globales:} Ocurre cuando para dos clases o módulos que hacen uso de la misma variables globales, haciendo así que cualquiera de los dos pueda modificarlo.
+    \item \textit{Un abuso en el uso de contextos globales:} Ocurre cuando dos clases o módulos que hacen uso de la misma variable global, haciendo así que cualquiera de los dos pueda modificarlo.
     \item \textit{Código Ravioli:} hace referencia a que el código se refactoriza en demasiados trozos.
 \end{itemize}
 
-Python a veces se describe como un lenguaje orientado a objetos, pero esto puede resultar engañoso ya que a diferencia de Java, no impone este paradigma de programación como principal. Por tanto, no es necesario definir clases para desarrollar un proyecto en Python, pero en algunas ocasiones es necesario mantener un estado o un contexto, es decir, necesitamos variables globales de clase. La recomendación a seguir es cuando nos querramos traer entre manos un código con contexto persistente o estado, debemos usar funciones o procedimientos con contextos implícitos y efectos secundarios \footnote{\textbf{Contexto implícito} refiere a código que necesita acceder a variables globales para su función, mientras que \textbf{efectos secundarios} es cuando una función o procedimiento cambia el valor  o estado de una variable global. } lo mínimo posible. Uno de los objetivos de desarrollar clases personalizadas es aislar funciones con contexto o efectos secundarios, para ello, se aconseja utilizar cuanto más sea posible la programación funcional, es decir, utilizar funciones puras \footnote{Las \textbf{funciones puras} son aquellas funciones que dada una entrada distinta producen la misma salida.}. Las ventajas de usar la programación funcional  a la hora de desarrollar un proyecto son:
+\subsection*{Programación orientada a objetos}
+Otra característica que destacar cuando estamos trabajando en un proyecto Python es que es un lenguaje orientado a objetos. \\
+Esto puede resultar engañoso ya que a diferencia de Java, no impone este paradigma de programación como principal. Por tanto, no es necesario definir clases para desarrollar un proyecto en Python, pero en algunas ocasiones es necesario mantener un estado o un contexto, es decir, necesitamos variables globales de clase. La recomendación a seguir es cuando nos querramos traer entre manos un código con contexto persistente o estado, debemos usar funciones o procedimientos con contextos implícitos y efectos secundarios \footnote{\textbf{Contexto implícito} refiere a código que necesita acceder a variables globales para su función, mientras que \textbf{efectos secundarios} es cuando una función o procedimiento cambia el valor  o estado de una variable global. } lo mínimo posible. Uno de los objetivos de desarrollar clases personalizadas es aislar funciones con contexto o efectos secundarios, para ello, se aconseja utilizar cuanto más sea posible la programación funcional, es decir, utilizar funciones puras \footnote{Las \textbf{funciones puras} son aquellas funciones que dada una entrada distinta producen la misma salida.}. Las ventajas de usar la programación funcional  a la hora de desarrollar un proyecto son:
 \begin{itemize}
     \item Funciones puras son más sencillas de cambiar o reemplazar si se necesita una optimización.
     \item El uso de funciones puras facilita el desarrollo de tests sobre nuestro proyecto.
@@ -83,7 +85,7 @@ Python a veces se describe como un lenguaje orientado a objetos, pero esto puede
 Como ya sabemos, Python es un lenguaje dinámicamente tipado, lo que quiere decir que una misma variable puede tomar un valor, e inmediatamente después puede ser una cadena de texto, o una función. Esta característica del lenguaje se considera una debilidad del lenguaje, ya que hace muy difícil trazar código.\\
 
 \subsection*{Pruebas de código}
-A la hora de distribuir software de código libre, una de las prácticas que hacen que el software sea más utilizado o que ayude a que se sumen contribuciones al software es la prueba del código. ¿Por qué es una de las prácticas para el desarrollo de un proyecto más importante?. Las siguientes razones son tanto para el ámbito comercial como para un ámbito práctico de desarrollo: 
+A la hora de distribuir software de código libre, una de las prácticas que hacen que el software sea más utilizado o que ayude a que se sumen contribuciones al software es la prueba del código. ¿Por qué es una de las prácticas para el desarrollo de un proyecto más importante?. (Las siguientes razones son tanto para el ámbito comercial como para un ámbito práctico de desarrollo). 
 \begin{itemize}
     \item Porque hasta que una línea de código no es ejecutada, no se puede saber si esta funciona.
     \item En la mayoría de los casos, el código no se ejecuta de principio a fin a menos que se pruebe con los distintos conjunto de casos que trata el software.
@@ -93,7 +95,7 @@ A la hora de distribuir software de código libre, una de las prácticas que hac
     \item Uno de los puntos más importantes a la hora de confiar en un software es la seguridad, las pruebas de código ayudan al consumidor a ver que tienen delante un producto fiable, a que los problemas y riesgos del software son tratados de antemano, a obtener un producto libre de vulnerabilidades y a mantener datos personales de usuario seguros.
 \end{itemize}
 
-A raíz de todos los beneficios que trae el incorporar tests en el desarrollo de software, cada vez se adopta más en la ingeniería de software la práctica de programación TDD (Test-Driven Deployment). Esta consiste en escribir pruebas unitarias \footnote{Pruebas centradas en una única pieza de código como objeto o fúncion.} centrando estas pruebas en los requisitos para nuestro software, tras ello, se implementa el código adecuado para que dichas pruebas no fallen. El siguiente paso, una vez que nuestro código ha pasado las pruebas unitarias es refactorizarlo. Tras su refactorización se vuelve al punto de inicio abordando otro requisito de nuestro desarrollo. \\
+A raíz de todos los beneficios que trae el incorporar tests en el desarrollo de software, cada vez se adopta más en la ingeniería de software la práctica de programación TDD (Test-Driven Deployment). Esta consiste en escribir pruebas unitarias \footnote{Pruebas centradas en una única pieza de código como objeto o fúncion.} centrando estas pruebas en los requisitos de nuestro software, tras ello, se implementa el código adecuado para que dichas pruebas no fallen. El siguiente paso, una vez que nuestro código ha pasado las pruebas unitarias es refactorizarlo. Tras su refactorización se vuelve al punto de inicio abordando otro requisito de nuestro desarrollo. \\
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.8]{img/TDD__logo.jpg}
@@ -102,7 +104,7 @@ A raíz de todos los beneficios que trae el incorporar tests en el desarrollo de
 \end{figure}
 Seguir la práctica de programación TDD supone un cambio en la mentalidad de desarrollo, pensamos en qué queremos hacer con nuestro software y tras ello, cómo debe hacerlo. Adoptar esta metodología de trabajo es lenta, pero una vez adoptada el proceso de desarrollo es rápido y ágil. Afrontar el desarrollo mediante esta nueva práctica puede parecer un gasto de recursos debido al aprendizaje que supone adoptarla, pero esta es una inversión a largo plazo, ya que, ahorra recursos en el mantenimiento de nuestro código. Con TDD se garantiza una cobertura de código entre el 90\% y 100\%,lo que nos permite añadir funcionalidades de manera rápida y sencilla. Por último, esta forma de trabajo nos permite entender mejor el código y facilitar las contribuciones futuras en el software aumentando así la calidad del producto. 
 \subsection*{Documentación}
-Para un proyecto Python no solo se busca la legibilidad en el código, si no también en la documentación. A continuación se presentan unas buenas prácticas para facilitar tanto el uso como la contribución del proyecto. 
+Para un proyecto Python no solo se busca la legibilidad en el código, sino también en la documentación. A continuación se presentan unas buenas prácticas para facilitar tanto el uso como la contribución del proyecto. 
 \subsubsection*{Documentación de  Proyecto}
 Para cualquier proyecto de \emph{software} libre suele existir una documentación para usuarios y otra adicional para quien quiera contribuir al proyecto. Los siguientes ficheros que se comentan a continuación hacen referencia a esa documentación adicional y se centran en facilitar la contribución:\\
 \begin{itemize}
@@ -126,7 +128,7 @@ Una vez que hemos tratado la documentación adicional que debemos incluir, la do
 Al igual que para el software propietario o de autor, necesitamos escoger una licencia para nuestro proyecto. Una de las consecuencias de contribuir o usar un proyecto sin licencia es que es ilegal. Con ella otorgamos las cuatro libertades comentadas al inicio de este trabajo.Podemos distinguir los siguientes tipos como las principales licencias de código libre:
 \begin{itemize}
     \item Licencias BSD: ejemplo de \textbf{licencia permisiva},centradas en dar una libertad total de distribución, modificación y uso del software. Permite que las versiones de los proyectos bajo esta licencia se distribuyan con otra distinta, incluida como software propietario.
-    \item Licencias GPL: licencia que permite la libre distribución, modificación y uso, conservando los derechos de autor. Todo software que se desarrolle modificando el original y que contenga dicha licencia debe estar bajo esta. Licencia considerada como primera licencia \textit{copyleft}.
+    \item Licencias GPL: licencia que permite la libre distribución, modificación y uso, conservando los derechos de autor. Todo software que se desarrolle modificando el original y que contenga dicha licencia debe estar bajo está. Licencia considerada como primera licencia \textit{copyleft}.
     \item Licencias Apache: bajo este tipo de licencia se permite al usuario la distribución, modificación y distribuir modificiaciones del software siempre y cuando que se mantenga el \emph{copyright}. Esta licencia no exige que se mantenga las versiones modificadas bajo la misma licencia, solo que se informe a los receptores de las modificaciones que bajo el código se ha utilizado dicha licencia Apache.
     \item Licencias Creative Commons: El software bajo esta licencia se puede distribuir, exhibir y representar con la condición de reconocer y citar al autor original. Bajo esta licencia no se puede modificar el software. Creative Commons implica también la prohibición de usar el software con dicha licencia bajo fines comerciales. 
     \item Licencias AGPL: licencias que derivan de las licencias GPL añadiendo una novedad, esta novedad obliga a distribuir el software modificado bajo su libre distribución.
@@ -140,7 +142,7 @@ Tras tratar con una breve guía de buenas prácticas para desarrollar y contribu
 
 \subsubsection*{Travis}
 \label{subsubsec:Travis}
-Para la parte de integración continua se usará en nuestro proyecto Travis, ya comentado en el \ref{chap:Arqui}. Antes de empezar a integrar Travis en nuestro proyecto debemos tener una cuenta en GitHub y permitir a Travis acceder a ella. El siguiente paso es añadir a la raíz de nuestro proyecto un fichero de configuración \texttt{.travis.yml}, en él, se informa a Travis que tiene que hacer, donde podemos especificar la versión de lenguaje que utilizamos, el lenguaje, donde se encuentra nuestras pruebas de código, y un gran abanico de opciones que pueden variar debido al lenguaje utilizado. \\
+Para la parte de integración continua se usará en nuestro proyecto Travis, ya comentado en el capítulo \ref{chap:Arqui}. Antes de empezar a integrar Travis en nuestro proyecto debemos tener una cuenta en GitHub y permitir a Travis acceder a ella. El siguiente paso es añadir a la raíz de nuestro proyecto un fichero de configuración \texttt{.travis.yml}, en él, se informa a Travis que tiene que hacer, donde podemos especificar la versión de lenguaje que utilizamos, el lenguaje, donde se encuentra nuestras pruebas de código, y un gran abanico de opciones que pueden variar debido al lenguaje utilizado. \\
 
 \begin{figure}[h]
 \centering
@@ -158,7 +160,7 @@ Para la parte de integración continua se usará en nuestro proyecto Travis, ya 
 .2 .travis.yml.
 .2 README.md.
 .2 LICENSE.md.
-.2 requirements.txt
+.2 requirements.txt.
 .2 setup.py.
 }
 \end{minipage}
@@ -199,12 +201,12 @@ after_success:
     - codecov
 \end{lstlisting}
 
-Al usar Travis para la integración continua, basta con añadir en el archivo que tras la ejecución de las pruebas de código (mediante el comando \texttt{coverage run tests.py}) se ejecute el comando \texttt{codecov} donde se enviará el informe de cobertura a CodeCov. 
+Al usar Travis para la integración continua, basta con añadir en el archivo  \textit{travis.yml} que tras la ejecución de las pruebas de código (mediante el comando \texttt{coverage run tests.py}) se ejecute el comando \texttt{codecov} donde se enviará el informe de cobertura a CodeCov. 
 
 \subsubsection*{Read The Docs}
 \label{subusub:rtd}
-Como ya hemos comentado en el capítulo \ref{chap:Arqui} Read The Docs simplifica y automatiza la documentación de un proyecto desarrollado en Python. La documentación la cual read the docs usa para su servicio es la generada por dos herramientas MkDocs o Sphinx. Para PyCardio se ha hecho uso de la herramienta Sphinx. \\
-¿Cómo trabaja Sphinx? La documentación que esta herramienta genera, lo hace a partir de documentos con lenguaje de marcado \textit{restructuredtext}, en estos documentos estan compuestos por el código y documentación el cual Sphinx usará para generar la documentación en HTML, epub o pdf. En nuestro caso, en vez de escribir esta documentación en dichos documentos,usaremos la función \texttt{autodoc} de Sphinx, donde se generará documentación a partir de los \textit{docstrings} contenidos en el código, pero ¿qué es un \textit{docstring} de una clase, módulo o función?. Una de las prácticas que se debe llevar a cabo para un proyecto es la de tener correctamente detallada y documentada la funcionalidad de este. Para un proyecto Python usualmente se usa \textit{docstring}, que no es más que una cadena de texto que precede el código de una función, clase u objeto. Para nuestro ejemplo en la extracción de código \ref{docstring} observamos la documentación realizada al módulo \texttt{HRV.py} donde se muestra docstring del módulo, de la clase \texttt{HRV} y de la función \texttt{beat\_label\_filter}.
+Como ya hemos comentado en el capítulo \ref{chap:Arqui} Read The Docs simplifica y automatiza la documentación de un proyecto desarrollado en Python. La documentación la cual Read The Docs usa para su servicio es la generada por dos herramientas MkDocs o Sphinx. Para PyCardio se ha hecho uso de la herramienta Sphinx. \\
+¿Cómo trabaja Sphinx? La documentación que esta herramienta genera, lo hace a partir de documentos con lenguaje de marcado \textit{restructuredtext}, en estos documentos Sphinx usará para generar la documentación en HTML, epub o pdf. En nuestro caso, en vez de escribir la documentación de las funcionalidades de dichos módulos directamente en los documentos con el lenguaje de marcado mencionado ,usaremos la función \texttt{autodoc} de Sphinx, donde se generará documentación a partir de los \textit{docstrings} contenidos en el código, pero ¿qué es un \textit{docstring} de una clase, módulo o función?. Una de las prácticas que se debe llevar a cabo para un proyecto es la de tener correctamente detallada y documentada la funcionalidad de este. Para un proyecto Python usualmente se usa \textit{docstring}, que no es más que una cadena de texto que precede el código de una función, clase u objeto. Para nuestro ejemplo en la extracción de código \ref{docstring} observamos la documentación realizada al módulo \texttt{HRV.py} donde se muestra docstring del módulo, de la clase \texttt{HRV} y de la función \texttt{beat\_label\_filter}.
 
 \begin{lstlisting}[language=python,caption=HRV.py,label=docstring]
 """ 
@@ -227,7 +229,7 @@ Como ya hemos comentado en el capítulo \ref{chap:Arqui} Read The Docs simplific
         """
 \end{lstlisting}
 
-Una vez que tenemos nuestra implementación documentada tal y como se ha mostrado con \textit{docstrings} necesitamos indicar en un documento \textit{restructuredtext} las funciones de las cuales vamos a generar su documentación, ya que Sphinx solo procesará aquellos documentos con dicho lenguaje de marcado. En nuestro caso, vamos a mostrar un caso sencillo en el que para la página principal de la documentación se mostrará la breve descripción\footnote{Dicha descripción es la misma que contiene el README.md del proyecto} del paquete de PyCardio y un enlace a la documentación del módulo HRV del paquete, del cual es el único del que disponemos de su documentación. \\
+Una vez que tenemos nuestra implementación documentada tal y como se muestra con \textit{docstrings} necesitamos indicar en un documento \textit{restructuredtext} las funciones de las cuales vamos a generar su documentación, ya que Sphinx solo procesará aquellos documentos con dicho lenguaje de marcado. En nuestro caso, vamos a mostrar un caso sencillo en el que para la página principal de la documentación se mostrará la breve descripción\footnote{Dicha descripción es la misma que contiene el README.md del proyecto} del paquete de PyCardio y un enlace a la documentación del módulo HRV del paquete, del cual es el único del que disponemos de su documentación. \\
 Este \texttt{index.rst} (página principal de nuestra documentación) esta compuesto por el código \ref{index}
 \begin{lstlisting}[caption=\texttt{index.rst},label=index]
 Welcome to PyCardio's documentation!
@@ -254,7 +256,7 @@ Python module to perform Cardiac Signal Analysis, namely:
    HRV
 
 \end{lstlisting}
-En este código observamos a parte de contenido plano, unas directivas, que son funciones del lenguaje \textit{restructuredtext}. La utilizada en esta página principal es \texttt{toctree} donde se indica cuál va a ser el árbol de nuestra documentación, en nuestro ejemplo, indicamos que como máximo sera de un nivel con la opción \texttt{maxdepth} y que tenemos como contenido HRV. Al indicar con la opción \texttt{contents} que tenemos un contenido y que este es HRV, sphinx buscará un documento el cual sea de nombre HRV y de lenguaje \textit{restructuredtext}, es decir, \texttt{HRV.rst}, en el cual se incluirá la estructura o contenido para la sección HRV, en este caso, para la página HTML del módulo HRV. \\
+En este código observamos a parte de contenido plano, unas directivas, que son funciones del lenguaje \textit{restructuredtext}. La utilizada en esta página principal es \texttt{toctree} donde se indica cuál va a ser el árbol de nuestra documentación, en nuestro ejemplo, indicamos que como máximo sera de un nivel con la opción \texttt{maxdepth} y que tenemos como contenido HRV. Con la opción \texttt{contents}  indicamos que tenemos un contenido y que este es HRV, sphinx buscará un documento el cual sea de nombre HRV y de lenguaje \textit{restructuredtext}, es decir, \texttt{HRV.rst}, en el cual se incluirá la estructura o contenido para la sección HRV, en este caso, para la página HTML del módulo HRV. \\
 El contenido de \texttt{HRV.rst} es el dado por el código \ref{hrv}, que como vemos hacemos uso de la opción \texttt{autodoc} de sphinx, para ello, indicamos donde debe hacer el uso de dicha opción con la directiva \texttt{automodule}, indicando de que módulo generamos la documentación. \begin{lstlisting}[caption=\texttt{HRV.rst},label=hrv]
 Module HRV
 ==================

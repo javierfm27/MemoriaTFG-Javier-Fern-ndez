@@ -12,17 +12,18 @@ Este capítulo constará de dos partes. Una primera donde se muestra una visión
 \label{sec:arqui}
 En cualquier proyecto de desarrollo web existen dos tipos de tecnologías, BackEnd y FrontEnd. Por tanto, antes de exponer la visión general de nuestra web. ¿Qué significan estos dos términos?:
 \begin{itemize}
-    \item \textbf{BackEnd:} Tecnologías que trabajan en el lado del servidor,es decir, tecnologías en toma de datos, procesarlos, envío al usuario. Sin estas, las tecnologías del \emph{frontEnd} no tendrían nada que mostrar.
+    \item \textbf{BackEnd:} Tecnologías que trabajan en el lado del servidor,es decir, tecnologías en toma de datos, procesarlos, envío al usuario. Sin estas, las tecnologías del \emph{frontEnd} no tendrían nada que mostrar. En este proyecto además podemos añadir al BackEnd del proyecto, tecnologías de gestión de código, distribución y empaquetado. 
     \item \textbf{FrontEnd:} Tal y como hemos comentado, son las tecnologías que se encargan de mostrar el contenido, es decir, tecnologías centradas en el lado de la aplicación como CSS, HTML5, JavaScript.
 \end{itemize}
-Una vez diferenciada estas capas, en nuestro \emph{BackEnd} podemos diferencias tecnología donde se alojara tanto nuestro contenido web como nuestro código fuente en \emph{GitHub}, tecnología que además proporcionará otras como soporte de problemas (ITS), tecnologías sobre cobertura de código. \\
+Una vez diferenciadas estas dos partes que compondrán nuestro proyecto, en nuestro \emph{BackEnd} podemos diferenciar dos tipos de tecnologías, unas tecnologías que se encargaran del código del contenido web, y otras que se encargarán del empaquetado, gestión y distribución del código fuente del software. \\ 
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{img/arqui_general.png}
     \caption{Arquitectura General de la Web}
     \label{fig:arquiGeneral}
 \end{figure}
-En la capa \emph{FrontEnd} observamos como todas las tecnologías que colaborarán son aquellas ya conocidascomo HTML5, CSS; donde cuyo objetivo es mostrar contenido y otras nuevas como \emph{Jekyll}. Observando la figura \ref{fig:arquiGeneral} vemos que otras dos tecnologías nos apoyarán en mostrar el funcionamiento del módulo \emph{PyCardio}, una para mostrar la documentación de los módulos(\emph{ReadTheDocs}) y otra donde también se alojará el código fuente siendo así una aplicación de terceros de Python(PyPI).
+En la capa \emph{FrontEnd} observamos como todas las tecnologías que colaborarán son aquellas ya conocidas como HTML5, CSS; donde cuyo objetivo es mostrar contenido y otras nuevas como \emph{Jekyll}. Observando la figura \ref{fig:arquiGeneral} vemos que otras dos tecnologías nos apoyarán en mostrar el funcionamiento del módulo \emph{PyCardio}, una para mostrar la documentación de los módulos(\emph{ReadTheDocs}) y otra donde también se alojará el código fuente siendo así una aplicación de terceros de Python(PyPI).
 
     %%%%%%%%%%%%%%%%%%%%
     % 2.2 - BackEnd
@@ -54,8 +55,9 @@ Todo el funcionamiento de este sistema de control de versiones es mayoritariamen
     \item \textbf{Committed}: Este estado indica que los archivos que han sido modificados, se han almacenado de manera segura en la base de datos local.
     \item \textbf{Modified}: Indica que los archivos que han sido modificados, no han sido confirmados, es decir, los archivos no se han almacenado de forma segura en la base de datos local.
     \item \textbf{Staged}: Estado que marca archivos modificados para la siguiente confirmación.
-\end{itemize}
-Estos tres estados nos lleva a diferenciar las siguientes áreas de trabajo:
+\end{itemize} 
+
+Estos tres estados nos lleva a diferenciar las siguientes áreas de trabajo: \\
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{img/git_states.png}
@@ -77,7 +79,7 @@ Antes de dar por finalizada la sección sobre \emph{Git}, debemos hablar sobre \
     \caption{WorkFlow impuesto por la estrategia y mantenimiento de \emph{GitFlow}}
     \label{fig:gitFlow}
 \end{figure}
-Por tanto, cada vez que se incorpora código a la rama \textit{master}, tenemos nueva versión. A parte de las ramas principales, observando la figura \ref{fig:gitFlow} podemos distinguir tres tipos de ramas auxiliares, donde cada una sigue sus propias reglas:
+Por tanto, cada vez que se incorpora código a la rama \textit{master}, tenemos nueva versión. Además de las ramas principales, observando la figura \ref{fig:gitFlow} podemos distinguir tres tipos de ramas auxiliares, donde cada una sigue sus propias reglas:
 \begin{itemize}
     \item \textbf{Feature:} Se originan a partir de la rama \textit{develop}, y  se utilizan para incorporar nuevas características a la aplicación.
     \item \textbf{Release:} Rama que se crea al igual que \textit{feature}, a partir de la rama \textit{develop}. En ellas se depura el código el cual se va a pasar a la producción, es decir, a la rama \textit{master}.
@@ -105,7 +107,7 @@ Así, esta herramienta nos proporcionará corregir aquellos errores o bugs detec
 \subsection{Wiki}
 \label{subsec:wiki}
 Aunque en nuestro proyecto para la creación de documentación usaremos otra herramienta, no hay que dejar pasar por alto, la que nos proporciona \emph{GitHub}.\\
-Todo repositorio de \emph{GitHub} viene equipado con una sección para alojar documentación, llamado wiki.\footnote{Wiki alude al nombre que recibe una comunidad virtual, cuyas páginas pueden ser editadas directamente desde el navegador, donde los mismos usuarios crean, modifican, corrigen o eliminan contenidos que, generalmente, comparten}.Estas wikis se generan mediante texto de marcado \footnote{Este lenguaje puede ser \emph{MarkDown}, lenguaje utilizado para la escritura de ficheros de documentación como \texttt{README.md}} o cualquier otro formato que soporte la creación de wikis. El objetivo por tanto de esta sección es informar de como se ha diseñado, cómo instalar, manifiestos sobre sus principios básicos, objetivos y como usar detalladamente el código al cual pertenece el repositorio, escribir una buena documentación ayuda a otros a usar y a que se extienda dicho proyecto.
+Todo repositorio de \emph{GitHub} viene equipado con una sección para alojar documentación, llamado wiki.\footnote{Wiki alude al nombre que recibe una comunidad virtual, cuyas páginas pueden ser editadas directamente desde el navegador, donde los mismos usuarios crean, modifican, corrigen o eliminan contenidos que, generalmente, comparten}.Estas wikis se generan mediante texto de marcado \footnote{Este lenguaje puede ser \emph{MarkDown}, lenguaje utilizado para la escritura de ficheros de documentación como \texttt{README.md}} o cualquier otro formato que soporte la creación de wikis. La funcionalidad de usar una Wiki en un proyecto es la de informar de como se ha diseñado, cómo instalar, manifiestos sobre sus principios básicos, objetivos y como usar detalladamente el código al cual pertenece el repositorio, escribir una buena documentación ayuda a otros a usar y a que se extienda dicho proyecto.
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % AUTOMATED TOOLS
@@ -218,27 +220,27 @@ Las ventajas de usar \emph{MarkDown} son las siguientes:
 \subsection*{¿Cómo funciona \emph{Liquid?}}
 El código de  \emph{Liquid} se puede categorizar en tres partes:
 \begin{itemize}
-    \item \textbf{Objetos:} estos objetos indican donde mostrar el contenido en una página. Los objetos y variables estarán denotados por \texttt{\{\{ \}\}}
-    \begin{lstlisting}[title=Código 1: Input. Objetos]
+    \item \textbf{Objetos:} estos objetos indican donde mostrar el contenido en una página. Los objetos y variables estarán denotados por \texttt{\{\{ \}\}}.
+    \begin{lstlisting}[caption=Input. Objetos]
     {{ page.title }}
     \end{lstlisting}
-    \begin{lstlisting}[title=Código 2: Output. Objetos]
-    {{ Liquid Basics }}
+    \begin{lstlisting}[caption=Output. Objetos]
+    Liquid Basics 
     \end{lstlisting}
     \item \textbf{Etiquetas:} Crean la lógica y el control de flujo para las plantillas, vendrán entre llaves y el caracter de porcentaje ( \texttt{\{\%  \%\}} ). El lenguaje utilizado en las etiquetas no produce ningún texto visible, esto significa que puede asignar variables y crear condiciones o bucles sin mostrar nada en la página.
-    \begin{lstlisting}[title=Código 3: Input. Etiquetas]
+    \begin{lstlisting}[caption=Input. Etiquetas]
         {% if user %}
             Hello {{ user.name }}!
         {% endif %}
     \end{lstlisting}
-    \begin{lstlisting}[title=Código 4: Output. Etiquetas]
+    \begin{lstlisting}[caption=Output. Etiquetas]
         Hello Adam
     \end{lstlisting}
     \item \textbf{Filtros:} Los filtros cambian la salida de un objeto de \emph{Liquid}. Se utilizan dentro de una salida, es decir, entre la doble llave ( \texttt{\{\{ \}\}} ), y vienen separados por \texttt{|}.
-    \begin{lstlisting}[title=Código 5: Input. Filtros]
+    \begin{lstlisting}[caption=Input. Filtros]
     {{ "/my/fancy/url" | append: ".html" }}
     \end{lstlisting}
-    \begin{lstlisting}[title=Código 6: Output. Filtros]
+    \begin{lstlisting}[caption=Output. Filtros]
     /my/fancy/url.html
     \end{lstlisting}
 \end{itemize}
@@ -278,7 +280,7 @@ Para ver como generar nuestra propia documentación con \emph{Read The Docs} vam
     \caption{Ejemplos de los generadores de la documentación}
 \end{figure}
 \textbf{Importar nuestra Documentación}\\
-A la hora de importar nuestra documentación debemos tener una cuenta , tras ello, podemos vincular dicha cuenta a la de \emph{GitHub} permitiendo así que \emph{Read the Docs} muestre una lista de repositorios que se pueden importar a \emph{Read the Docs}. A la hora de importar uno de nuestros repositorio, es hora de configurar el \emph{webhook}\footnote{Método de alterar una aplicación o página web, con callbacks personalizados.En este caso son gestionados por \emph{GitHub}, con cada commit o merge, este se lo notifica a \emph{Read the Docs}} de nuestro repositorio, se encargaŕa de notificar cuando hay un cambio en nuestro código fuente para generar de nuevo la documentación.\\
+A la hora de importar nuestra documentación debemos estar registrados, tras ello, podemos vincular dicha cuenta a la de \emph{GitHub} permitiendo así que \emph{Read the Docs} muestre una lista de repositorios que se pueden importar a \emph{Read the Docs}. A la hora de importar uno de nuestros repositorio, es hora de configurar el \emph{webhook}\footnote{Método de alterar una aplicación o página web, con callbacks personalizados.En este caso son gestionados por \emph{GitHub}, con cada commit o merge, este se lo notifica a \emph{Read the Docs}} de nuestro repositorio, se encargaŕa de notificar cuando hay un cambio en nuestro código fuente para generar de nuevo la documentación.\\
 Una vez importado el repositorio y configurado el \emph{webhook}, nuestra documentación se generará automáticamente. ¿Como lo genera \emph{Read the Docs} a partir del repositorio?\\
 Lo primero que hace es mirar dos cosas, el tipo de documentación (\emph{Sphinx} o \emph{MkDocs}) y el repositorio. Dependiendo del tipo \emph{Read the Docs} actuará de una manera u otra.
 \begin{itemize}
@@ -386,32 +388,32 @@ Tal y como observamos la figura \ref{fig:jekyllProc} el proceso de trabajo para 
 
 Para entender como funcionan estos tres pasos vamos a tratar cada uno por separado dando un  breve resumen apoyado en ejemplos sencillos. Antes de empezar hay que destacar que cuando ejecutamos \emph{Jekyll} sobre nuestro directorio , cuyo fin será el que contenga los archivos de nuestro sitio web estático, establece una estructura creando en nuestra raíz del proyecto una serie de directorios, cuya función son las siguientes:\\
 \begin{itemize}
-    \item[] \textbf{\_includes:} En el irán las porciones de código que se repetirán para todos el sitio web (p.ej. footer), se incluirán en nuestro layouts con includes.
+    \item[] \textbf{\_includes:} En él irán las porciones de código que se repetirán para todos los contenidos del sitio web (p.ej. footer), se incluirán en nuestro layouts con includes.
     \item[] \textbf{\_layouts:} Directorio que contendrá todas las plantillas creadas para el sitio web.
     \item[] \textbf{\_posts:} Lugar donde irán todos los artículos que iremos escribiendo en texto plano.
     \item[] \textbf{\_drafts:} En esta carpeta guardaremos los borradores de nuestros artículos, es decir, se utiliza para la prueba de código.
     \item[] \textbf{\_site:} Está se genera no al crear el proyecto \emph{Jekyll}, si no al lanzar el servidor, está contendrá todos los HTML montados así como un \textit{index.html} (archivo principal de un sitio web).
-    \item[] \textbf{\_config.yml:} Esto no es un directorio, es una archivo, pero también es generado al crear un proyecto \emph{Jekyll} donde en él encontraremos datos de configuración así como indicaciones de qué directorio obtener los datos.
+    \item[] \textbf{\_config.yml:} Archivo generado al crear un proyecto \emph{Jekyll} donde en él encontraremos datos de configuración así como indicaciones de qué directorio obtener los datos, es decir, el uso de este archivo se basa en la personalización del sitio web que se genera. 
 \end{itemize}
 Una vez que tenemos claro a que corresponde cada directorio en nuestro proyecto , tratamos a continucación lo mencionando anteriormente, los pasos  de un proyecto \emph{Jekyll}. \\
 
 \textbf{\large{Diseño de Layout}} \\
 Layout es una plantilla donde \emph{Jekyll} incrustará el contenido escrito en texto plano. Tal y como hemos comentado antes, estas plantillas deberán almacenarse en el directorio \texttt{\_layout}. En ellas  haremos uso de nuestro código guardado en \texttt{\_include}, un ejemplo como el de incluir un footer al final de mi plantilla \texttt{default.html} es el siguiente:
 
-\begin{lstlisting}[style=htmlcssjs,title=Código 1: default.html]
+\begin{lstlisting}[style=htmlcssjs,caption=default.html]
 <!-- default.html -->
 <footer>
     {{include footer.html}}
 </footer>
 \end{lstlisting}
-\begin{lstlisting}[style=htmlcssjs,title=Código 2: footer.html]
+\begin{lstlisting}[style=htmlcssjs,caption=footer.html]
 <!-- footer.html -->
 <p>Posted by: Hege Refsnes</p>
 <p>Contact information: <a href="mailto:someone@example.com">
   someone@example.com</a>.</p>
 \end{lstlisting}
-La herramienta que mas optimiza el trabajo a la hora de elaborar estas plantillas de la que hace uso \emph{Jekyll} es \emph{Liquid}. Este lenguaje que trataremos en el siguiente punto hace uso de variables, donde estas son etiquetas, objetos y filtros. Además cualquier archivo \emph{Jekyll} es accesible mediante variables vía \emph{Liquid}. Estas variables pueden ser el título del sitio web (establecido en \texttt{\_config.yml}). La variable más importante es \texttt{\{\{content\}\}}, ya que en ella es donde \emph{Jekyll} incrustará el contenido escrito en texto plano. Un ejemplo sencillo de un layout sería el siguiente:
-\begin{lstlisting}[style=htmlcssjs,title=Código 3: Layout Básico]
+La herramienta que mas optimiza el trabajo a la hora de elaborar estas plantillas de la que hace uso \emph{Jekyll} es \emph{Liquid}. Este lenguaje que tratamos  en \ref{subsec:markdo} hace uso de variables, donde estas son etiquetas, objetos y filtros. Además cualquier archivo \emph{Jekyll} es accesible mediante variables vía \emph{Liquid}. Estas variables pueden ser el título del sitio web (establecido en \texttt{\_config.yml}). La variable más importante es \texttt{\{\{content\}\}}, ya que en ella es donde \emph{Jekyll} incrustará el contenido escrito en texto plano. Un ejemplo sencillo de un layout sería el siguiente:
+\begin{lstlisting}[style=htmlcssjs,caption=Layout Básico]
 <!doctype html>
 <html lang="en">
   <head>
@@ -432,16 +434,16 @@ La herramienta que mas optimiza el trabajo a la hora de elaborar estas plantilla
 </html>
 \end{lstlisting}
 \textbf{\large{Escribiendo contenido}} \\
-Una vez que ya tenemos nuestro layout, es hora de crear el contenido con el que poder construir nuestro sitio web. Como ya hemos mencionado, no es necesario tener conocimientos de HTML, solo escribir contenido en texto plano. \\
+Una vez que ya tenemos nuestro layout, es hora de crear el contenido con el que poder construir nuestro sitio web. No es necesario tener conocimientos de HTML, solo escribir contenido en texto plano. \\
 A la hora de escribirlo la parte más importante es la denominada como \emph{Front Matter}, ya que cualquier documento que lo contenga, \emph{Jekyll} lo tratará como un fichero especial. Esté debe ser el primer elemento de nuestro fichero, y debe seguir la forma de lenguaje \emph{YAML} entre tres guiones.
-\begin{lstlisting}
----
+\begin{lstlisting}[language=yaml,caption=Ejemplo de Front Matter]
+    ---
 layout: post
 title: Blogging Like a Hacker
----
+    ---
 \end{lstlisting}
 Entre los guiones se pueden definir variables personalizadas  o variables ya definidas que son accesibles en el contenido usando etiquetas \emph{Liquid} y lo serán tanto en los layouts como en el contenido que estamos creando. La más importante de las variables globales predefinidas que existen es la denominada como \textbf{layout}, con ella indicamos que plantilla vamos a utilizar para el contenido que se va a crear tras el \emph{Front Matter} \\
-No podemos finalizar esta sección sin mencionar la regla más importante a la hora de crear posts en nuestra sitio web estático. El fichero que creamos con nuestro texto plano debe alojarse en el directorio ya comentado como , \textbf{\_layout}, el nombre de éste debe seguir una regla de formato, que vendrá dada por: \texttt{YEAR-MONTH-DAY-title.MARKUP}, ya que para organizar el contenido de nuestra web \emph{Jekyll} lo organizará por un sistema de directorios con orden cronólogico.  \\
+No podemos finalizar esta sección sin mencionar la regla más importante a la hora de crear posts en nuestra sitio web estático. El fichero que creamos con nuestro texto plano debe alojarse en el directorio ya comentado como , \textbf{\_posts}, el nombre de éste debe seguir una regla de formato, que vendrá dada por: \texttt{YEAR-MONTH-DAY-title.MARKUP}, ya que para organizar el contenido de nuestra web \emph{Jekyll} lo organizará por un sistema de directorios con orden cronólogico.  \\
 \textbf{\large{Generando la web}}\\
 Creada la plantilla y creado el contenido solo queda generar el sitio web, para ello basta con ejecutar \emph{Jekyll}.\\
 Una vez que creamos un directorio como nuestro proyecto \emph{Jekyll}, cada vez que queramos generar el contenido HTML, se ejecuta el comando con la opción de lanzar el sitio localmente o solo construirlo teniendo así nuestro sitio web estático.
@@ -451,7 +453,7 @@ Una vez que creamos un directorio como nuestro proyecto \emph{Jekyll}, cada vez 
     \caption{Proceso de Contenido en Jekyll}
     \label{fig:jekyllProc2}
 \end{figure}
-\begin{lstlisting}[language=sh]
+\begin{lstlisting}[language=sh,caption={Comandos para crear un sitio web}]
 jekyll new #Crea un proyecto Jekyll
 jekyll serve #Construye el sitio web y lo sirve localmente en
              #"localhost:1400"
@@ -460,4 +462,4 @@ jekyll build #Genera el contenido web
 \subsection*{Jekyll en repositorio GitHub}
 \label{subsec:jekandGit}
 Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el contenido \emph{Jekyll}, pero ¿Cómo actualizamos nuestra web?¿Cada vez que creamos contenido es necesario actualizar repositorio y ejecutar \emph{Jekyll} por separado?. \\
-\emph{GitHub} funciona con Jekyll, lo que quiere decir que cuando creamos contenido y este lo comprometemos (committed), \emph{Jekyll} se encargaŕa de generar el contenido tal y como hemos mencionado.
+\emph{GitHub} esta integrado junto con Jekyll, lo que quiere decir que cuando creamos contenido y este lo comprometemos (committed), \emph{Jekyll} se encargaŕa de generar el contenido tal y como observamos en la figura \ref{fig:jekyllProc2}
