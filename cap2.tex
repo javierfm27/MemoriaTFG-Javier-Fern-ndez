@@ -142,7 +142,61 @@ Así el cálculo de cobertura es la relación: $coverage = hits / (sum\ of\ hit 
 Tras este cálculo tal y como hemos mencionado, \emph{CodeCov} ofrece una medida visual de esta cobertura, con la interfaz el desarrollador puede ver que parte de código debe cubrir en sus siguientes bloques de pruebas. \\
 Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar por alto es \emph{Travis-CI}, servidor de integración continua en la nube donde podemos vincular nuestra cuenta de GitHub, donde se encarga de realizar las tareas planificadas por cada push \& commit que hagamos en alguno de nuestros repositorios de nuestra cuenta. La mayor ventaja que aporta \emph{Travis-CI} es la de probar nuestras librerías y/o aplicaciones con distintas configuraciones sin tener que instalarlas localmente.
 
-
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % EMPAQUETADO Y DISTRIBUCIÓN
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsection{Empaquetado y distribución}
+ Una de las partes más importantes a la hora de diseño de software, es el empaquetado del software desarrollado y su distribución con el objetivo de hacer llegar el software a los potenciales interesados, tanto futuros contribuyentes como usuarios del software diseñado. Antes de presentar las tecnologías usadas, recalcar que se presentarán las tecnologías usadas tanto para el empaquetado y distribución puro de Python y para Anaconda \footnote{\textit{¿Qué es Anaconda?} Es una distribución libre y abierta de Python, que permite crear entornos de programación usando la versión de Python escogida. Además incluye \emph{pip} lo que nos permite instalar los paquetes deseados para el entorno que queramos}. \\
+ 
+ \subsection*{Python Package Index (\emph{PyPi})}
+ Cuando hablamos de distribución y empaquetado en Python "puro", nos referimos a distribuirlo mediante el recurso principal donde se almacenan software de terceros,\emph{PyPi}, que será tratado más adelante. \\
+ Las tecnologías utilizadas para ello son las que se comentan a continuación.
+ 
+ \subsubsection*{distutils}
+ Módulo Python que automatiza el proceso para empaquetar software en Python. Para ello hace uso de un script de configuración, \emph{setup.py}. Este fichero es el centro de toda la actividad del módulo, el propósito principal de \emph{setup.py} es el de informar sobre la distribución del paquete/módulo diseñado para que \textit{distutils} se encargue de ejecutar los comandos correctos. 
+ 
+ \subsubsection*{setuptools}
+ Este módulo añade funcionalidades al módulo \textit{distutils}. Uno de los cambios más representativos de las nuevas funcionalidades que ofrece es el nuevo formato de archivo para la distribución del software diseñado. 
+ 
+ Con estos módulos se realiza tanto el empaquetado como se generan los archivos de distribución para su posterior subida a \emph{PyPi}. La subida al repositorio oficial se puede realizar mediante el archivo \emph{setup.py}. Pero en nuestro caso usaremos el módulo \textit{twine}, ya que, mediante de la otra manera la subida se basa en el uso de archivos de texto plano y se pone en riesgo tanto cuenta como contraseña de Pypi.
+ 
+ \subsubsection*{twine}
+ Herramienta Python para publicar paquetes en el repositorio oficial de software de terceros de Python. Módulo diseñado para mejorar la interacción con Pypi. Las características que este ofrece más destacadas son:
+ \begin{itemize}
+     \item Conexiones HTTPS verificadas
+     \item Subir los archivos de distribución no requiere la ejecución de \emph{setup.py}
+     \item Subida de archivos que ya han sido creados, permitiendo probar las distribuciones antes de su subida
+     \item Soporta cualquier formato de empaquetado
+ \end{itemize}
+ 
+ \subsection*{Anaconda}
+ Debido al carácter científico de nuestro módulo y por la versatilidad de Anaconda, realizaremos un empaquetado para su distribución en Anaconda. ¿Por qué este interés en distribuir nuestro módulo en Anaconda? A parte de lo mencionado, Anaconda goza de las siguientes características de las cuales la hace la mejor herramienta para la ciencia de datos para Python:
+ \begin{itemize}
+     \item Permite instalar y administrar paquetes, dependencias y entornos.
+     \item Gestión avanzada de paquetes.
+     \item Elimina problemas de dependencia de paquetes y control de versiones.
+     \item Permite portabilidad de proyectos, es decir, nos brinda la posibilidad de poder compartir dichos proyectos y ejecutarlos en diferentes plataforhttps://docs.conda.io/projects/conda-build/en/latest/source/sample-recipes.htmlmas.
+ \end{itemize}
+ 
+ Para generar el empaquetado de conda \footnote{Conda hace referencia a las órdenes de Anaconda}. Se han usado los módulos \textit{conda skeleton} y \textit{conda build}. \\
+ 
+ \subsubsection*{conda skeleton}
+ Módulo de conda que permite crear una receta (\emph{recipe}) a partir de repositorios donde este alojado el software. Conda para construir paquetes hace uso de las recetas, estas son directorios que se componen de los siguientes archivos: 
+ 
+ \begin{itemize}
+     \item \textbf{meta.yaml: } Contiene todos los metadatos de la receta.
+     \item \textbf{build.sh: } Script que instala todos los archives para el paquete en Linux y macOs.
+     \item \textbf{bld.bat: } Misma función que \textit{build.sh} pero para la plataforma Windows.
+     \item \textbf{$run_test.[py,pl,sh,bat]$:} Fichero opcional de testeo. Script que contiene los comandos de ejecución para el testeo del módulo o software si estos son necesarios para la receta.
+ \end{itemize}
+ 
+ Al contar con el empaquetado en PyPi, usaremos la función que ofrece \emph{conda skeleton} de construir nuestra receta a partir del contenido que se aloja en PyPi.
+ 
+ \subsubsection*{conda build}
+ Módulo de conda que construye un paquete a partir de la receta que se le facilita como argumento. 
+ 
+ Con estos módulos trataremos de construir nuestro paquete para su distribución en Anaconda. La manera correcta de realizarlo consistiría en subir dicho paquete generado por \textit{conda build} a uno de los canales de Conda, ya que el método que seguiremos en este proyecto es de manera local. Repositorios desde donde accedemos a multitud de paquetes conda para su uso en los distintos entornos que se creen. 
+ 
     %%%%%%%%%%%%%%%%%%%%
     % 2.3 - FRONTEND
     %%%%%%%%%%%%%%%%%%%
