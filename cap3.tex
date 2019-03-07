@@ -129,12 +129,12 @@ Al igual que para el software propietario o de autor, necesitamos escoger una li
 \begin{itemize}
     \item Licencias BSD: ejemplo de \textbf{licencia permisiva},centradas en dar una libertad total de distribución, modificación y uso del software. Permite que las versiones de los proyectos bajo esta licencia se distribuyan con otra distinta, incluida como software propietario.
     \item Licencias GPL: licencia que permite la libre distribución, modificación y uso, conservando los derechos de autor. Todo software que se desarrolle modificando el original y que contenga dicha licencia debe estar bajo está. Licencia considerada como primera licencia \textit{copyleft}.
-    \item Licencias Apache: bajo este tipo de licencia se permite al usuario la distribución, modificación y distribuir modificiaciones del software siempre y cuando que se mantenga el \emph{copyright}. Esta licencia no exige que se mantenga las versiones modificadas bajo la misma licencia, solo que se informe a los receptores de las modificaciones que bajo el código se ha utilizado dicha licencia Apache.
+    \item Licencias Apache: bajo este tipo de licencia se permite al usuario la distribución, modificación y distribuir alteraciones del software siempre y cuando que se mantenga el \emph{copyright}. Esta licencia no exige que se mantenga las versiones modificadas bajo la misma licencia, solo que se informe a los receptores de las modificaciones que bajo el código se ha utilizado dicha licencia Apache.
     \item Licencias Creative Commons: El software bajo esta licencia se puede distribuir, exhibir y representar con la condición de reconocer y citar al autor original. Bajo esta licencia no se puede modificar el software. Creative Commons implica también la prohibición de usar el software con dicha licencia bajo fines comerciales. 
     \item Licencias AGPL: licencias que derivan de las licencias GPL añadiendo una novedad, esta novedad obliga a distribuir el software modificado bajo su libre distribución.
 \end{itemize}
 
-[[PARTICULARIZAMOS QUE LICENCIA DEBEMOS ESCOGER]]
+Para nuestro proyecto, se ha decidido lanzar el software bajo la licencia Apache versión 2.0. Para poder aplicar dicha licencia, se crea un archivo de texto plano en el directorio raíz del proyecto con nombre \textt{LICENSE} donde incluiremos todas las condiciones que está licencia aplica. 
 
 \subsection{Gestión de código}
 \label{subsec:}
@@ -265,7 +265,9 @@ Module HRV
   :members:
 
 \end{lstlisting}
+
 Una vez que tenemos escrito el esqueleto de nuestra documentación, mediante la ejecución del Makefile que genera Sphinx obtenemos nuestra documentación sobre HTML.
+
 \begin{figure}[H]
     \centering
     \subfloat[Página Principal]{
@@ -277,6 +279,124 @@ Una vez que tenemos escrito el esqueleto de nuestra documentación, mediante la 
     \label{fig:sphinx}
 \end{figure}
 
-Ya tenemos generada nuestra documentación, ahora podemos integrar esta con Read the docs, importando el repositorio donde se encuentre nuestro proyecto. Para ello Read The Docs localizará el archivo \texttt{conf.py} y generará la documentación y esta se alojará en su servidor. 
+Ya tenemos generada nuestra documentación, ahora podemos integrar esta con Read the docs, importando el repositorio donde se encuentre nuestro proyecto. Para ello Read The Docs localizará el archivo \texttt{conf.py} y generará la documentación y esta la alojará en su servidor. 
 
-%DEPURADO Y TERMINADO
+
+\subsection*{Empaquetado y Distribución}
+
+El último aspecto que debemos considerar en gestión de código siendo este uno de los más importantes, es la de empaquetado y distribución. Una vez que el desarrollo se da por finalizado, y el equipo esta dispuesto a lanzar una primera producción del desarrollo de software necesitamos empaquetar el software diseñado para hacer de nuestro producto fácil de instalar para los usuarios y para nosotros, distribuirla. 
+
+
+Tal y como se presentó en el capítulo \ref{chap:Arqui}, usaremos el repositorio oficial de aplicaciones de terceros,\emph{PyPi}, y el entorno de distribución Anaconda. Mostraremos así, el proceso para empaquetar \emph{pyCardio} para su posterior subida a \emph{PyPi}, y partiendo de esta, el empaquetado para Anaconda.
+
+\subsubsection*{PyPi}
+En Python existen dos módulos para el objetivo de empaquetar código, \textit{distutils} y \textit{setuptools}. Por lo comentado en el capítulo \ref{chap:Arqui} se hará uso de \textit{setuptools}, al extenderse de \textit{distutils} y poseer más funcionalidades. Antes de comenzar el empaquetado debemos estructurar nuestros ficheros y directorios correctamente. Tomando como ejemplo la estructura mencionada en la figura \ref{fig:dirPyPi}, y añadiendo los archivos necesarios de los servicios para integrarlos en nuestro proyecto que se han ido mencionado a lo largo de este capítulo, la estructura de \emph{pyCardio} es la expuesta en la figura \ref{fig:pyCardioDir}. \\
+
+\begin{figure}[h]
+\centering
+\framebox[\textwidth]{%
+\begin{minipage}{0.9\textwidth}
+  \dirtree{%
+.1 /PyCardio. 
+.2 docs.
+.2 PyCardio.
+.3 HRV.
+.3 ECG. 
+.3 HRT.
+.3 ReadHolter.
+.3 \_\_init\_\_.py.
+.2 .travis.yml.
+.2 README.md.
+.2 LICENSE.md.
+.2 requirements.txt.
+.2 setup.py.
+.2 Makefile.
+.2 tests.py.  
+}
+\end{minipage}
+}
+\caption{Estructura final PyCardio}
+\label{fig:pyCardioDir}
+\end{figure}
+
+Como podemos observar los ficheros que componen nuestro proyecto, han sido ya comentados en las demás secciones de esta memoria describiendo su funcionalidad. Una vez que tenemos la estructura de ficheros y directorios correctamente, nos centramos en el archivo \textit{setup.py}, script de configuración. En él se hará uso de la función \textit{setup} incluida en el módulo \textit{setuptools}. Esta función puede tomar una amplia gama de parámetros. Para \emph{PyCardio}, usaremos las siguientes:
+\begin{itemize}
+    \item \textbf{name: } Nombre del paquete.
+    \item \textbf{version: } Número de versión del paquete.
+    \item \textbf{author: } Autor de la aplicación.
+    \item \textbf{author\_email: } Dirección de correo del autor de la aplicación.
+    \item \textbf{install\_requires: } Lista de las dependencias del paquete.
+    \item \textbf{description: } Breve explicación del proyecto.
+    \item \textbf{long\_description: } Descripción extensa del proyecto. De manera usual, coincide con el contenido de README.md
+    \item \textbf{long\_description\_content\_type: } Tipo de lenguaje en el que esta escrito la descripción larga del proyecto.
+    \item \textbf{url: } Dirección web donde se aloja el código del proyecto.
+    \item \textbf{packages: } Lista de paquetes escritos en Python que se incluyen en la instalación de nuestro paquete. Para poder identificar cuales se incluyen se utiliza la función del módulo de \textit{setuptools},\textit{find\_packages()}.
+    \item \textbf{classifiers: } Listado de las categorías a las que pertenece nuestro proyecto. Dichas categorías sirven para poder encontrar el paquete desarrollado en PyPi dependiendo del interés del usuario.
+\end{itemize}
+
+\begin{lstlisting}[language=python,caption=\textit{setup.py de pyCardio}]
+import setuptools
+
+setuptools.setup(
+    name="PyCardioTest",
+    version="0.0.6",
+    author="Oscar Barquero",
+    author_email="oscar.barquero@urjc.es",
+    install_requires= [
+        'numpy',
+        'scipy',
+        'matplotlib'
+    ],
+    description="Package for heart analysis",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/javierfm27/PyCardio",
+    packages=setuptools.find_packages(),
+    classifiers= [
+        "Programming Language :: Python :: 3 ",
+        "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "License :: OSI Approved :: Apache Software License",
+        "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    ]
+)
+
+\end{lstlisting}
+
+Una vez que tenemos nuestro script de configuración para \textit{setuptools}, para poder subir el proyecto a PyPi necesitamos crear un paquete de distribución. Para poder crear una fuente de distribución basta con ejecutar: \\
+\texttt{python3 setup.py sdist}. \\
+Esta fuente de distribución contiene una fase donde se crean los metadatos del paquete que como vemos en el comando ejecutado, se recogen a partir de \texttt{setup.py}. Cuando se genera la distribución  se crean dos carpetas, una que contendrá la información del paquete contenido en archivos planos de texto y otra carpeta "dist" donde se encontrará el archivo comprimido con el código del paquete que se ha desarrollado. \\
+
+Para finalmente subir dicho proyecto a PyPi \footnote{El paquete que vamos a subir a PyPi, se subirá  a \url{https://test.pypi.org/}, ya que para que el proyecto pueda pertenecer a PyPi se necesita una aprobación de dicha subida.} usaremos el módulo \texttt{twine} porque la subida mediante el script \texttt{setup.py} basa la subida en archivos de texto plano poniendo en riesgo la cuenta y contraseña de PyPi. Por tanto, para subir dicho paquete a TestPypi: \\
+\texttt{twine upload dist/*}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{img/testPyPi.png}
+    \caption{pyCardio subido a Test Pypi}
+    \label{fig:testPypi}
+\end{figure}
+
+\subsubsection*{Anaconda}
+Para la creación del paquete conda partiremos del paquete que previamente hemos subido a TestPypi. Conda para la creación de sus paquetes usa recetas, tal y como se introdujo en \ref{subsec:anaconda}. Para la creación de la receta de nuestro proyecto a partir de proyecto alojado en TestPypi usaremos el módulo \texttt{conda-skeleton}, donde le pasaremos como argumento a la orden conda, la dirección del servidor TestPypi y el nombre que tiene nuestro proyecto: \\
+\texttt{conda-skeleton pypi PyCardioTest --pypi-url https://test.pypi.org/pypi/} \\
+Esto creará una carpeta en nuestro directorio, este directorio es la mencionada receta que contendrá el fichero \texttt{meta.yaml} con los metadatos del paquete. Para generar el paquete el cual podrá ser distribuido mediante los canales de Anaconda, usamos \texttt{conda-build}. Al frente de generarlo, cuando ejecutamos: \\
+\texttt{conda-build pycardiotest}\footnote{Siendo \textit{pycardiotest} el directorio de la receta generada con \texttt{conda-skeleton}} \\
+Este comando sigue los siguientes pasos para construir el paquete:
+\begin{enumerate}
+    \item Lectura de metadatos de la receta generada
+    \item Descarga del código fuente y lo almacena en una caché
+    \item Organiza el código en un directorio de proyecto
+    \item Aplicación de parches
+    \item Creación de un entorno de construcción donde instala las dependencias necesarias para el paquete
+    \item Ejecución del script \texttt{build.sh}
+    \item Creación del paquete conda conteniendo todos los ficheros nuevos necesarios para el entorno de construcción junto con los metadatos para el paquete conda
+\end{enumerate}
+Así obtendremos el paquete conda, donde \texttt{conda build} se encarga de almacenarlo en el repositorio local de conda (o comúnmente denominado canal). En dicho repositorio local, además de encontrarnos con el paquete listo para su distribución o subida a un canal, contiene subdirectorios según la plataforma para la cuál se ha desarrollado el paquete, en estos subdirectorios nos encontraremos una lista de paquetes disponibles o un índice de repositorios. En nuestro caso el subdirectorio que se ha creado dando como único paquete disponible \texttt{PyCardioTest} es \texttt{linux-64}. Por cada subdirectorio se crea además de los paquetes conda, un archivo JSON \footnote{JSON es un formato de texto sencillo para intercambio de datos} listando todos los paquetes conda por subdirectorio recogiendo todos los metadatos del paquete. Así los paquetes disponibles en nuestro repositorio local son los mostrados por la figura \ref{fig:condaChannelLocal}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{img/condaLocalChannel.png}
+    \caption{Repositorio local de paquetes conda disponibles}
+    \label{fig:condaChannelLocal}
+\end{figure}

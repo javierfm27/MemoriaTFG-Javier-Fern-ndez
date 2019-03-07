@@ -36,7 +36,7 @@
 \definecolor{lightblue}{rgb}{0.1,0.57,0.7}
 \definecolor{lightred}{rgb}{1,0.4,0.5}
 \usepackage{upquote}
-\usepackage{listings}
+\usepackage[procnames]{listings}
 % CSS
 \lstdefinelanguage{CSS}{
   keywords={color,background-image:,margin,padding,font,weight,display,position,top,left,right,bottom,list,style,border,size,white,space,min,width, transition:, transform:, transition-property, transition-duration, transition-timing-function},
@@ -143,6 +143,7 @@
   breaklines=true
 }
 
+
 \title{Memoria del Proyecto}
 \author{Javier Fernández Morata}
 %DEFINICIÓN DE ESTILO PARA FRONT MATTER
@@ -179,6 +180,6 @@
 \lst@AddToHook{EveryLine}{\ifx\lst@language\language@yaml\YAMLkeystyle\fi}
 \makeatother
 \newcommand\ProcessThreeDashes{\llap{\color{cyan}\mdseries-{-}-}}
-
-
 \renewcommand{\baselinestretch}{1.5}
+
+
