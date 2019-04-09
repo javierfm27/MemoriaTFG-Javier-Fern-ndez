@@ -148,8 +148,8 @@ Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar
  \subsection{Empaquetado y distribución}
  Una de las partes más importantes a la hora de diseño de software, es el empaquetado del software desarrollado y su distribución con el objetivo de hacer llegar el software a los potenciales interesados, tanto futuros contribuyentes como usuarios del software diseñado. Antes de presentar las tecnologías usadas, recalcar que se presentarán las tecnologías usadas tanto para el empaquetado y distribución puro de Python y para Anaconda \footnote{\textit{¿Qué es Anaconda?} Es una distribución libre y abierta de Python, que permite crear entornos de programación usando la versión de Python escogida. Además incluye \emph{pip} lo que nos permite instalar los paquetes deseados para el entorno que queramos}. \\
  
- \subsection*{Python Package Index (\emph{PyPi})}
- Cuando hablamos de distribución y empaquetado en Python "puro", nos referimos a distribuirlo mediante el recurso principal donde se almacenan software de terceros,\emph{PyPi}, que será tratado más adelante. \\
+ \subsection*{Python Package Index (\emph{PyPI})}
+ Cuando hablamos de distribución y empaquetado en Python "puro", nos referimos a distribuirlo mediante el recurso principal donde se almacenan software de terceros,\emph{PyPI}, que será tratado más adelante. \\
  Las tecnologías utilizadas para ello son las que se comentan a continuación.
  
  \subsubsection*{distutils}
@@ -158,10 +158,10 @@ Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar
  \subsubsection*{setuptools}
  Este módulo añade funcionalidades al módulo \textit{distutils}. Uno de los cambios más representativos de las nuevas funcionalidades que ofrece es el nuevo formato de archivo para la distribución del software diseñado. 
  
- Con estos módulos se realiza tanto el empaquetado como se generan los archivos de distribución para su posterior subida a \emph{PyPi}. La subida al repositorio oficial se puede realizar mediante el archivo \emph{setup.py}. Pero en nuestro caso usaremos el módulo \textit{twine}, ya que, mediante de la otra manera la subida se basa en el uso de archivos de texto plano y se pone en riesgo tanto cuenta como contraseña de Pypi.
+ Con estos módulos se realiza tanto el empaquetado como se generan los archivos de distribución para su posterior subida a \emph{PyPI}. La subida al repositorio oficial se puede realizar mediante el archivo \emph{setup.py}. Pero en nuestro caso usaremos el módulo \textit{twine}, ya que, mediante de la otra manera la subida se basa en el uso de archivos de texto plano y se pone en riesgo tanto cuenta como contraseña de PyPI.
  
  \subsubsection*{twine}
- Herramienta Python para publicar paquetes en el repositorio oficial de software de terceros de Python. Módulo diseñado para mejorar la interacción con Pypi. Las características que este ofrece más destacadas son:
+ Herramienta Python para publicar paquetes en el repositorio oficial de software de terceros de Python. Módulo diseñado para mejorar la interacción con PyPI. Las características que este ofrece más destacadas son:
  \begin{itemize}
      \item Conexiones HTTPS verificadas
      \item Subir los archivos de distribución no requiere la ejecución de \emph{setup.py}
@@ -191,7 +191,7 @@ Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar
      \item \textbf{$run_test.[py,pl,sh,bat]$:} Fichero opcional de testeo. Script que contiene los comandos de ejecución para el testeo del módulo o software si estos son necesarios para la receta.
  \end{itemize}
  
- Al contar con el empaquetado en PyPi, usaremos la función que ofrece \emph{conda skeleton} de construir nuestra receta a partir del contenido que se aloja en PyPi.
+ Al contar con el empaquetado en PyPI, usaremos la función que ofrece \emph{conda skeleton} de construir nuestra receta a partir del contenido que se aloja en PyPI.
  
  \subsubsection*{conda build}
  Módulo de conda que construye un paquete a partir de la receta que se le facilita como argumento. 
@@ -357,10 +357,10 @@ Con todo esto tenemos una manera sencilla de generar la documentación de nuestr
 
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%
-        % PYPI
+        % PyPI
         %%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{PyPi}
-\label{subsec:pypi}
+\subsection{PyPI}
+\label{subsec:PyPI}
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.5]{img/logo_pypi.jpg}
