@@ -12,7 +12,7 @@ Este capítulo constará de dos partes. Una primera donde se muestra una visión
 \label{sec:arqui}
 En cualquier proyecto de desarrollo web existen dos tipos de tecnologías, BackEnd y FrontEnd. Por tanto, antes de exponer la visión general de nuestra web. ¿Qué significan estos dos términos?:
 \begin{itemize}
-    \item \textbf{BackEnd:} Tecnologías que trabajan en el lado del servidor,es decir, tecnologías en toma de datos, procesarlos, envío al usuario. Sin estas, las tecnologías del \emph{frontEnd} no tendrían nada que mostrar. En este proyecto además podemos añadir al BackEnd del proyecto, tecnologías de gestión de código, distribución y empaquetado. 
+    \item \textbf{BackEnd:} Tecnologías que trabajan en el lado del servidor,es decir, tecnologías en toma de datos, procesarlos, envío al usuario. Sin estas, las tecnologías del \emph{frontEnd} no tendrían nada que mostrar. En este proyecto, además, podemos añadir al BackEnd del proyecto, tecnologías de gestión de código, distribución y empaquetado. 
     \item \textbf{FrontEnd:} Tal y como hemos comentado, son las tecnologías que se encargan de mostrar el contenido, es decir, tecnologías centradas en el lado de la aplicación como CSS, HTML5, JavaScript.
 \end{itemize}
 Una vez diferenciadas estas dos partes que compondrán nuestro proyecto, en nuestro \emph{BackEnd} podemos diferenciar dos tipos de tecnologías, unas tecnologías que se encargaran del código del contenido web, y otras que se encargarán del empaquetado, gestión y distribución del código fuente del software. \\ 
@@ -23,7 +23,7 @@ Una vez diferenciadas estas dos partes que compondrán nuestro proyecto, en nues
     \caption{Arquitectura General de la Web}
     \label{fig:arquiGeneral}
 \end{figure}
-En la capa \emph{FrontEnd} observamos como todas las tecnologías que colaborarán son aquellas ya conocidas como HTML5, CSS; donde cuyo objetivo es mostrar contenido y otras nuevas como \emph{Jekyll}. Observando la figura \ref{fig:arquiGeneral} vemos que otras dos tecnologías nos apoyarán en mostrar el funcionamiento del módulo \emph{PyCardio}, una para mostrar la documentación de los módulos(\emph{ReadTheDocs}) y otra donde también se alojará el código fuente siendo así una aplicación de terceros de Python(PyPI).
+En la capa \emph{FrontEnd} observamos como todas las tecnologías que colaborarán son aquellas ya conocidas como HTML5, CSS; donde cuyo objetivo es mostrar contenido y otras nuevas como \emph{Jekyll}. Observando la figura \ref{fig:arquiGeneral} vemos que otras dos tecnologías nos apoyarán en mostrar el funcionamiento del módulo \emph{PyCardio}: una para mostrar la documentación de los módulos(\emph{ReadTheDocs}) y otra donde también se alojará el código fuente siendo así una aplicación de terceros de Python(PyPI).
 
     %%%%%%%%%%%%%%%%%%%%
     % 2.2 - BackEnd
@@ -46,8 +46,8 @@ En la capa \emph{FrontEnd} observamos como todas las tecnologías que colaborar�
         \label{img:logoGithub}
     }
 \end{figure}
-Este proyecto al ser un trabajo de \emph{software libre}, significa que el código sufrirá cambios de distintos autores, por lo que es necesario un sistema de control de versiones. Para que un sistema sea de control de versiones debe proporcionar un mecanismo de almacenamiento de los elementos que se desea gestionar, posibilidad de realizar cambios sobre los elementos almacenados y un registro histórico de las acciones realizadas con cada elemento o conjunto de elementos. \\
-El sistema que se ha escogido debido a nuestra arquitectura de almacenamiento de código y por su seguridad, comodidad y velocidad, es \emph{Git}. Una gran diferencia de \emph{Git} respecto a los demás sistemas de control de versiones es la manera de llevar el registro de cambios sobre sus datos, mientras que la mayoría de sistemas almacenan la información como una lista de cambios, en \emph{Git}, cada vez que se realiza un cambio sobre un archivo \emph{Git} hace una instantánea, y guarda una referencia sobre el archivo sin estos cambios. Para ser mas eficiente, si los archivos no han sido modificados, \emph{Git} no almacena el archivo de nuevo. Esta distinción influye en uno de los mayores beneficios de \emph{Git}, las ramificaciones, tema que trataremos a continuación, viendo como trabajar en un proyecto siguiendo una serie de reglas impuestas por \emph{GitFlow}. \\
+Cualquier proyecto al ser un trabajo de \emph{software}, significa que el código sufrirá cambios de distintos autores, por lo que es necesario un sistema de control de versiones. Para que un sistema sea de control de versiones debe proporcionar un mecanismo de almacenamiento de los elementos que se desea gestionar, posibilidad de realizar cambios sobre los elementos almacenados y un registro histórico de las acciones realizadas con cada elemento o conjunto de elementos. \\
+El sistema que se ha escogido debido a nuestra arquitectura de almacenamiento de código y por su seguridad, comodidad y velocidad, es \emph{Git}. Una gran diferencia de \emph{Git} respecto a los demás sistemas de control de versiones es la manera de llevar el registro de cambios sobre sus datos. Mientras que la mayoría de sistemas almacenan la información como una lista de cambios, en \emph{Git}, cada vez que se realiza un cambio sobre un archivo \emph{Git} hace una instantánea, y guarda una referencia sobre el archivo sin estos cambios. Para ser mas eficiente, si los archivos no han sido modificados, \emph{Git} no almacena el archivo de nuevo. Esta distinción influye en uno de los mayores beneficios de \emph{Git}, las ramificaciones, tema que trataremos a continuación, viendo como trabajar en un proyecto siguiendo una serie de reglas impuestas por \emph{GitFlow}. \\
 \textbf{¿Cómo funciona \emph{Git}?}\\
 Todo el funcionamiento de este sistema de control de versiones es mayoritariamente local, es decir, no se necesita información de ningún servidor haciendo así que este sistema sea muy rápido respecto a otros que necesitan información remota para sus operaciones. \\
 \emph{Git} tiene tres estados para los archivos que trabajamos:
@@ -69,10 +69,10 @@ Estos tres estados nos lleva a diferenciar las siguientes áreas de trabajo: \\
     \item \textbf{Staged Area}: Área en la que se recoge los cambios que van a realizarse sobre los archivos antes de confirmarse.
     \item \textbf{Git Directory}: Estado de los archivos originales del proyecto, incluidos metadatos. Cuando se confirma un archivo, \emph{Git} toma los cambios del área de preparación (Staged Área) y almacena los cambios nuevos en el directorio \emph{Git}.
 \end{itemize}
-Por tanto, el flujo que hay que seguir para trabajar con este sistema de control de versiones es el representado en la figura \ref{fig:gitStates}, donde como vemos tras modificar una serie de archivos en el directorio de trabajo preparamos los archivos añadiéndolos al staged area, se confirman los cambios realizados sobre estos, añadiendo así las instantáneas (copias de los archivos con los cambios confirmados) en el directorio \emph{Git}.
+Por tanto, el flujo que hay que seguir para trabajar con este sistema de control de versiones es el representado en la figura \ref{fig:gitStates}, donde como vemos tras modificar una serie de archivos en el directorio de trabajo preparamos los archivos añadiéndolos al staged area. Se confirman los cambios realizados sobre estos, añadiendo así las instantáneas (copias de los archivos con los cambios confirmados) en el directorio \emph{Git}.
 
 Una vez que hemos visto como trabaja \emph{Git} nos queda responder la pregunta de \textit{¿Qué es GitHub?} \emph{GitHub} es una plataforma de desarrollo colaborativo de software para alojar proyectos utilizando los mencionados repositorios \emph{Git}, es decir, aloja el código en la nube y brinda herramientas para el trabajo de equipo en el proyecto. Otra de las características de \emph{GitHub} es el poder contribuir en el desarrollo de software de los demás, algo esencial en cualquier proyecto de software libre. \textit{¿Qué herramientas proporciona para el trabajo en equipo?} \emph{GitHub} proporciona un amplio abanico de funcionalidades , entre ellas, destaca una wiki para el mantenimiento de las versiones de las paǵinas, un sistema de seguimiento de problemas permitiendo al equipo detallar los problemas con lo desarrollado y una herramienta de revisión de código. \\
-Antes de dar por finalizada la sección sobre \emph{Git}, debemos hablar sobre \emph{GitFlow}, extensión de \emph{GitHub} que permite un mantenimiento y estrategia para las ramificicaciones en un proyecto de desarrollo. Esta estrategia y mantenimiento se basa en una serie de reglas, donde se destacan dos ramas principales: rama \textit{master}, y rama \textit{develop}.La \textit{master} se usa cada vez que tengamos código para producción y la rama \textit{develop} para el código que conformará la nueva versión del proyecto \\
+Antes de dar por finalizada la sección sobre \emph{Git}, debemos hablar sobre \emph{GitFlow}, extensión de \emph{GitHub} que permite un mantenimiento y estrategia para las ramificicaciones en un proyecto de desarrollo. Esta estrategia y mantenimiento se basa en una serie de reglas, donde se destacan dos ramas principales: rama \textit{master}, y rama \textit{develop}. La \textit{master} se usa cada vez que tengamos código para producción y la rama \textit{develop} para el código que conformará la nueva versión del proyecto \\
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.2]{img/git_flow.png}
@@ -92,14 +92,14 @@ De esta manera el uso que daremos de \emph{GitHub} es el de construir un reposit
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{ITS (Issue Tracking System)}
 \label{subsec:issue}
-\emph{GitHub} proporciona un sistema de seguimiento de incidencias (en inglés \textit{issue tracking system}), funcionalidad que permite administrar y mantener una lista de incidentes, al tratarse de \emph{software}, una incidencia será una solicitud de modificación, corrección o mejora. Esta herramienta integrada en \emph{GitHub} permite a cualquier usuario (si el repositorio es público) agregar una incidencia mediante un \emph{ticket}. Estos, se crean mediante una interfaz gráfica que permite escribir la incidencia en texto plano y etiquetar esta según de donde provenga (bug,error de sintaxis,etc). Cualquier usuario puede editar estos \emph{tickets}, pudiendo así cerrarlos, añadir etiquetas. \\
+\emph{GitHub} proporciona un sistema de seguimiento de incidencias (en inglés \textit{issue tracking system}), funcionalidad que permite administrar y mantener una lista de incidentes. Al tratarse de \emph{software}, una incidencia será una solicitud de modificación, corrección o mejora. Esta herramienta integrada en \emph{GitHub} permite a cualquier usuario (si el repositorio es público) agregar una incidencia mediante un \emph{ticket}. Estos, se crean mediante una interfaz gráfica que permite escribir la incidencia en texto plano y etiquetar esta según de donde provenga (bug,error de sintaxis,etc). Cualquier usuario puede editar estos \emph{tickets}, pudiendo así cerrarlos, añadir etiquetas. \\
 Las ventajas de incorporar un ITS  en un proyecto de \emph{software} son las siguientes:
 \begin{itemize}
     \item Tener un único lugar para observar tanto las incidencias creadas por los colaboradores del proyecto como las creadas por los usuarios del \emph{software}.
     \item Categorizar las incidencias, como ya hemos mencionado, mediante etiquetas.
     \item Tener un acceso rápido sobre el historial de una incidencia. Además, herramientas como \emph{GitHub} incorpora un cuadro de búsqueda, permitiendo así que una incidencia no se repita.
 \end{itemize}
-Así, esta herramienta nos proporcionará corregir aquellos errores o bugs detectados por usuarios de \emph{PyCardio}, donde estos nos informaran mediante la apertura de \emph{tickets}.
+Así, esta herramienta nos permitirá corregir bugs detectados por usuarios de \emph{PyCardio}, donde estos nos informaran mediante la apertura de \emph{tickets}.
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % WIKI
@@ -107,14 +107,14 @@ Así, esta herramienta nos proporcionará corregir aquellos errores o bugs detec
 \subsection{Wiki}
 \label{subsec:wiki}
 Aunque en nuestro proyecto para la creación de documentación usaremos otra herramienta, no hay que dejar pasar por alto, la que nos proporciona \emph{GitHub}.\\
-Todo repositorio de \emph{GitHub} viene equipado con una sección para alojar documentación, llamado wiki.\footnote{Wiki alude al nombre que recibe una comunidad virtual, cuyas páginas pueden ser editadas directamente desde el navegador, donde los mismos usuarios crean, modifican, corrigen o eliminan contenidos que, generalmente, comparten}.Estas wikis se generan mediante texto de marcado \footnote{Este lenguaje puede ser \emph{MarkDown}, lenguaje utilizado para la escritura de ficheros de documentación como \texttt{README.md}} o cualquier otro formato que soporte la creación de wikis. La funcionalidad de usar una Wiki en un proyecto es la de informar de como se ha diseñado, cómo instalar, manifiestos sobre sus principios básicos, objetivos y como usar detalladamente el código al cual pertenece el repositorio, escribir una buena documentación ayuda a otros a usar y a que se extienda dicho proyecto.
+Todo repositorio de \emph{GitHub} viene equipado con una sección para alojar documentación, llamado wiki.\footnote{Wiki alude al nombre que recibe una comunidad virtual, cuyas páginas pueden ser editadas directamente desde el navegador, donde los mismos usuarios crean, modifican, corrigen o eliminan contenidos que, generalmente, comparten}.Estas wikis se generan mediante texto de marcado \footnote{Este lenguaje puede ser \emph{MarkDown}, lenguaje utilizado para la escritura de ficheros de documentación como \texttt{README.md}} o cualquier otro formato que soporte la creación de wikis. La funcionalidad de usar una Wiki en un proyecto es la de informar de como se ha diseñado, como instalar sus componentes, manifiestos sobre sus principios básicos, objetivos y como usar detalladamente el código al cual pertenece el repositorio. Escribir una buena documentación ayuda a otros a usar y a que se extienda dicho proyecto.
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % AUTOMATED TOOLS
         %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Automated tools}
 \label{subsec:autotools}
-\emph{GitHub} además de las funcionalidades que hemos tratado, este ofrece un gran abanico de APIs para la gestión de proyecto, donde estas son automáticas. \emph{GitHub} ofrece estas de manera categórica, cada categoría se centra en una funcionalidad distinta aunque más de una herramienta ofrece diversos servicios, las más importantes son las siguientes:
+\emph{GitHub} además de las funcionalidades que hemos tratado, ofrece un gran abanico de APIs para la gestión de proyecto, donde estas son automáticas. \emph{GitHub} ofrece estas de manera categórica, cada categoría se centra en una funcionalidad distinta aunque más de una herramienta ofrece diversos servicios, las más importantes son las siguientes:
 \begin{table}[H]
     \centering
     \resizebox{\textwidth}{!}{
@@ -132,7 +132,7 @@ Todo repositorio de \emph{GitHub} viene equipado con una sección para alojar do
     \caption{Categorías de herramientas para la gestión de proyectos en \emph{GitHub}}
     \label{tab:cagGitHub}
 \end{table}
-Una herramienta que engloba varias de estas funcionalidades es Code Coverage (\emph{CodeCov}). Es una herramienta que nos permite medir la cobertura de código, es decir, mide en que grado el código fuente de un programa ha sido comprobado (testeado). Además esta cobertura es mostrada mediante representaciones visuales y gráficos de evolución. Cuando usamos \emph{CodeCov} usa un porcentaje indicando cuanto código está cubierto. Para el cálculo de esta medida \emph{CodeCov} se distinguen tres terminos que influyen de manera distinta en el cálculo de este:
+Una herramienta que engloba varias de estas funcionalidades es Code Coverage (\emph{CodeCov}). Es una herramienta que nos permite medir la cobertura de código, es decir, mide en qué grado el código fuente de un programa ha sido comprobado (testeado). Además esta cobertura es mostrada mediante representaciones visuales y gráficos de evolución. Cuando usamos \emph{CodeCov} usa un porcentaje indicando cuanto código está cubierto. Para el cálculo de esta medida \emph{CodeCov} se distinguen tres terminos que influyen de manera distinta en el cálculo de este:
 \begin{itemize}
     \item \textbf{Hit: } Indica que código fuente ha sido ejecutado por pruebas de test.
     \item \textbf{Partial: } Parte del código fuente que no es comprobado (\emph{testeado}) por un bloque de pruebas, es decir, ramificaciones de código (p.ej. sentencia \emph{if-else}).
@@ -140,38 +140,41 @@ Una herramienta que engloba varias de estas funcionalidades es Code Coverage (\e
 \end{itemize}
 Así el cálculo de cobertura es la relación: $coverage = hits / (sum\ of\ hit + partial + miss)$ \\
 Tras este cálculo tal y como hemos mencionado, \emph{CodeCov} ofrece una medida visual de esta cobertura, con la interfaz el desarrollador puede ver que parte de código debe cubrir en sus siguientes bloques de pruebas. \\
-Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar por alto es \emph{Travis-CI}, servidor de integración continua en la nube donde podemos vincular nuestra cuenta de GitHub, donde se encarga de realizar las tareas planificadas por cada push \& commit que hagamos en alguno de nuestros repositorios de nuestra cuenta. La mayor ventaja que aporta \emph{Travis-CI} es la de probar nuestras librerías y/o aplicaciones con distintas configuraciones sin tener que instalarlas localmente.
+Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar por alto es \emph{Travis-CI}, servidor de integración continua en la nube donde podemos vincular nuestra cuenta de GitHub, donde se encarga de realizar las tareas planificadas por cada push \& commit que hagamos en alguno de nuestros repositorios de nuestra cuenta. La mayor ventaja que aporta \emph{Travis-CI} es la de probar nuestras librerías y/o aplicaciones con distintas configuraciones sin tener que instalarlas localmente. \\
+
+ \\
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % EMPAQUETADO Y DISTRIBUCIÓN
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  \subsection{Empaquetado y distribución}
- Una de las partes más importantes a la hora de diseño de software, es el empaquetado del software desarrollado y su distribución con el objetivo de hacer llegar el software a los potenciales interesados, tanto futuros contribuyentes como usuarios del software diseñado. Antes de presentar las tecnologías usadas, recalcar que se presentarán las tecnologías usadas tanto para el empaquetado y distribución puro de Python y para Anaconda \footnote{\textit{¿Qué es Anaconda?} Es una distribución libre y abierta de Python, que permite crear entornos de programación usando la versión de Python escogida. Además incluye \emph{pip} lo que nos permite instalar los paquetes deseados para el entorno que queramos}. \\
+ Una de las partes más importantes a la hora de diseño de software, es el empaquetado del software desarrollado y su distribución con el objetivo de hacer llegar el software a los potenciales interesados, tanto futuros contribuyentes como usuarios del software diseñado. Antes de presentar las tecnologías usadas, recalcar que se presentarán las tecnologías usadas tanto para el empaquetado y distribución puro de Python y para Anaconda, es decir para conda. \footnote{\textit{¿Qué es Anaconda?} Es una distribución libre y abierta de Python, que permite crear entornos de programación usando la versión de Python escogida. Además incluye \emph{pip} lo que nos permite instalar los paquetes deseados para el entorno que queramos}. \\
  
  \subsection*{Python Package Index (\emph{PyPI})}
  Cuando hablamos de distribución y empaquetado en Python "puro", nos referimos a distribuirlo mediante el recurso principal donde se almacenan software de terceros,\emph{PyPI}, que será tratado más adelante. \\
  Las tecnologías utilizadas para ello son las que se comentan a continuación.
  
  \subsubsection*{distutils}
- Módulo Python que automatiza el proceso para empaquetar software en Python. Para ello hace uso de un script de configuración, \emph{setup.py}. Este fichero es el centro de toda la actividad del módulo, el propósito principal de \emph{setup.py} es el de informar sobre la distribución del paquete/módulo diseñado para que \textit{distutils} se encargue de ejecutar los comandos correctos. 
+ Módulo Python que automatiza el proceso para empaquetar software en Python. Para ello hace uso de un script de configuración, \emph{setup.py}. Este fichero es el centro de toda la actividad del módulo. El propósito principal de \emph{setup.py} es el de informar sobre la distribución del paquete/módulo diseñado para que \textit{distutils} se encargue de ejecutar los comandos correctos. 
  
  \subsubsection*{setuptools}
  Este módulo añade funcionalidades al módulo \textit{distutils}. Uno de los cambios más representativos de las nuevas funcionalidades que ofrece es el nuevo formato de archivo para la distribución del software diseñado. 
  
- Con estos módulos se realiza tanto el empaquetado como se generan los archivos de distribución para su posterior subida a \emph{PyPI}. La subida al repositorio oficial se puede realizar mediante el archivo \emph{setup.py}. Pero en nuestro caso usaremos el módulo \textit{twine}, ya que, mediante de la otra manera la subida se basa en el uso de archivos de texto plano y se pone en riesgo tanto cuenta como contraseña de PyPI.
+ Con estos módulos se realiza tanto el empaquetado como se generan los archivos de distribución para su posterior subida a \emph{PyPI}. La subida al repositorio oficial se puede realizar mediante el archivo \emph{setup.py}. Pero en nuestro caso usaremos el módulo \textit{twine}, ya que, por medio de la otra manera la subida se basa en el uso de archivos de texto plano y se pone en riesgo tanto cuenta como contraseña de PyPI.
  
  \subsubsection*{twine}
  Herramienta Python para publicar paquetes en el repositorio oficial de software de terceros de Python. Módulo diseñado para mejorar la interacción con PyPI. Las características que este ofrece más destacadas son:
  \begin{itemize}
-     \item Conexiones HTTPS verificadas
-     \item Subir los archivos de distribución no requiere la ejecución de \emph{setup.py}
-     \item Subida de archivos que ya han sido creados, permitiendo probar las distribuciones antes de su subida
-     \item Soporta cualquier formato de empaquetado
+     \item Conexiones HTTPS verificadas.
+     \item Subir los archivos de distribución no requiere la ejecución de \emph{setup.py}.
+     \item Subida de archivos que ya han sido creados, permitiendo probar las distribuciones antes de su subida.
+     \item Soporta cualquier formato de empaquetado.
  \end{itemize}
  
- \subsection*{Anaconda}
+ \subsection*{Conda}
  \label{subsec:anaconda}
- Debido al carácter científico de nuestro módulo y por la versatilidad de Anaconda, realizaremos un empaquetado para su distribución en Anaconda. ¿Por qué este interés en distribuir nuestro módulo en Anaconda? A parte de lo mencionado, Anaconda goza de las siguientes características de las cuales la hace la mejor herramienta para la ciencia de datos para Python:
+Antes de introducir Anaconda debemos saber que es Conda. Conda es un gestor de paquetes y de entornos virtuales que nos permite instalar, ejecutar y actualizar los paquetes que nosotros deseemos. Como entorno virtual se conoce al conjunto de ejecutables, en este caso, de Python y las distintas versiones de librerías que queremos usar permitiéndonos desarrollar varias aplicaciones con distintas versiones tanto de librerías como del propio intérprete del lenguaje, es decir, Python. \\
+ Debido al carácter científico de nuestro módulo y por la versatilidad de Anaconda, realizaremos un empaquetado para su distribución en Conda. ¿Por qué este interés en distribuir nuestro módulo en Conda? Aparte de lo mencionado, Conda goza de las siguientes características que la convierten en una de las mejores herramientas para ciencia de datos con Python:
  \begin{itemize}
      \item Permite instalar y administrar paquetes, dependencias y entornos.
      \item Gestión avanzada de paquetes.
@@ -179,14 +182,15 @@ Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar
      \item Permite portabilidad de proyectos, es decir, nos brinda la posibilidad de poder compartir dichos proyectos y ejecutarlos en diferentes plataforhttps://docs.conda.io/projects/conda-build/en/latest/source/sample-recipes.htmlmas.
  \end{itemize}
  
- Para generar el empaquetado de conda \footnote{Conda hace referencia a las órdenes de Anaconda}. Se han usado los módulos \textit{conda skeleton} y \textit{conda build}. \\
+
+ Para generar el empaquetado de conda. Se han usado los módulos \textit{conda skeleton} y \textit{conda build}. \\
  
  \subsubsection*{conda skeleton}
  Módulo de conda que permite crear una receta (\emph{recipe}) a partir de repositorios donde este alojado el software. Conda para construir paquetes hace uso de las recetas, estas son directorios que se componen de los siguientes archivos: 
  
  \begin{itemize}
      \item \textbf{meta.yaml: } Contiene todos los metadatos de la receta.
-     \item \textbf{build.sh: } Script que instala todos los archives para el paquete en Linux y macOs.
+     \item \textbf{build.sh: } Script que instala todos los archivos para el paquete en Linux y macOs.
      \item \textbf{bld.bat: } Misma función que \textit{build.sh} pero para la plataforma Windows.
      \item \textbf{$run_test.[py,pl,sh,bat]$:} Fichero opcional de testeo. Script que contiene los comandos de ejecución para el testeo del módulo o software si estos son necesarios para la receta.
  \end{itemize}
@@ -196,7 +200,7 @@ Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar
  \subsubsection*{conda build}
  Módulo de conda que construye un paquete a partir de la receta que se le facilita como argumento. 
  
- Con estos módulos trataremos de construir nuestro paquete para su distribución en Anaconda. La manera correcta de realizarlo consistiría en subir dicho paquete generado por \textit{conda build} a uno de los canales de Conda, ya que el método que seguiremos en este proyecto es de manera local. Repositorios desde donde accedemos a multitud de paquetes conda para su uso en los distintos entornos que se creen. 
+ Con estos módulos trataremos de construir nuestro paquete para su distribución en Anaconda. La manera correcta de realizarlo consistiría en subir dicho paquete generado por \textit{conda build} a uno de los canales de Conda, ya que el método que seguiremos en este proyecto es de manera local. Estos canales son repositorios desde donde accedemos a multitud de paquetes conda para su uso en los distintos entornos que se creen. 
  
     %%%%%%%%%%%%%%%%%%%%
     % 2.3 - FRONTEND
@@ -208,12 +212,12 @@ Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar
         %%%%%%%%%%%%%%%%%%%%%%%
 \subsection{HTML5}
 \label{sec:html}
-HTML (Hiper Text Markup Language) hace referencia al lenguaje de marcado para la elaboración de páginas web. Es un estándar que sirve de referencia para creación de páginas web. Este estándar está a cargo de la W3C, organización dedicada a la estandarización de casi todas las tecnologías ligadas al desarrollo web, sobre todo, referente a la escritura y su interpretación. Es un lenguaje sencillo, basado en utilizar etiquetas , que definen el contenido que se mostrará al usuario, a parte de tener estas etiquetas con su respectivo contenido, tenemos  que destacar otro elemento en este lenguaje y son los atributos de etiquetas, que nos permitirán configurar los elementos o ajustar su comportamiento. Los atributos más importantes son \emph{class} e \emph{id}, que se usarán para darle estilo al contenido web mediante CSS y Bootstrap. \\
+HTML (Hiper Text Markup Language) hace referencia al lenguaje de marcado para la elaboración de páginas web. Es un estándar que sirve de referencia para creación de páginas web. Este estándar está a cargo de la W3C, organización dedicada a la estandarización de casi todas las tecnologías ligadas al desarrollo web, sobre todo, referente a la escritura y su interpretación. Es un lenguaje sencillo, basado en utilizar etiquetas , que definen el contenido que se mostrará al usuario. Aparte de tener estas etiquetas con su respectivo contenido, tenemos  que destacar otro elemento en este lenguaje y son los atributos de etiquetas, que nos permitirán configurar los elementos o ajustar su comportamiento. Los atributos más importantes son \emph{class} e \emph{id}, que se usarán para darle estilo al contenido web mediante CSS y Bootstrap. \\
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.8]{img/logo_html5.png}
 \end{figure}
-HTML5 es la quinta revisión importante de HTML. Lo más importante de esta revisión es que se especifican dos variantes de sintaxis: HTML y XHTML que esta estará servida como lenguaje XML. Las principales novedades que podemos destacar de la nueva revisión son:
+HTML5 es la quinta revisión importante de HTML. Lo más importante de esta revisión es que se especifican dos variantes de sintaxis: HTML y XHTML que se sirve en formato XML. Las principales novedades que podemos destacar de la nueva revisión son:
 \begin{itemize}
     \item Se mejora el elemento \emph{canvas}
     \item API que permite almacenar datos en el lado del cliente.
@@ -245,7 +249,7 @@ Cascading Style Sheets (hojas de estilo en español) es un lenguaje usado para d
     \includegraphics[scale=0.3]{./img/logo_bootstrap.png}
     \label{fig:logoBoot}
 \end{figure}
-\emph{Bootstrap} son plantillas echas en base HTML5, CSS3, JQuery y JavaScript que permite hacer una página responsiva, es decir, nos permite que una página web se adapte al tamaño del navegador  o en el dispositivo que está siendo mostrada. Este \emph{framework} trae varios elementos con estilos predefinidos fáciles de configurar como botones. La plantilla que utilizamos en el proyecto usa elementos \emph{Bootstrap}.
+\emph{Bootstrap} es un \emph{framework} de programación web. Contiene plantillas echas en base HTML5, CSS3, JQuery y JavaScript que permite hacer una página responsiva, es decir, nos permite que una página web se adapte al tamaño del navegador  o en el dispositivo que está siendo mostrada. Este \emph{framework} trae varios elementos con estilos predefinidos fáciles de configurar como botones. La plantilla que utilizamos en el proyecto usa elementos \emph{Bootstrap}.
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % MARKDOWN
         %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -256,7 +260,7 @@ Cascading Style Sheets (hojas de estilo en español) es un lenguaje usado para d
     \includegraphics[scale=0.6]{img/logo_markdown.png}
     \label{fig:logoMd}
 \end{figure}
-\emph{MarkDown} es un lenguaje de marcado que facilita la aplicación de formato a un texto empleando una serie de caracteres de una forma especial. En principio fue diseñado para elaborar sitios web haciendo que elaborarlos sea más rápido y sencillo que si estuviésemos empleando directamente HTML, pero hoy en día se utiliza para cualquier tipo de texto independientemente de cual vaya a ser su destino, ya que el principal objetivo de la sintaxis de \emph{MarkDown} es hacerla lo más legible posible. \\
+\emph{MarkDown} es un lenguaje de marcado que facilita la aplicación de formato a un texto empleando una serie de caracteres de una forma especial. En principio fue diseñado para elaborar sitios web haciendo que elaborarlos sea más rápido y sencillo que si estuviésemos empleando directamente HTML. Sin embargo, hoy en día se utiliza para cualquier tipo de texto independientemente de cual vaya a ser su destino, ya que el principal objetivo de la sintaxis de \emph{MarkDown} es hacerla lo más legible posible. \\
 Esto hace que \emph{MarkDown} sea realmente dos cosas, por un lado, un lenguaje y por otro, una herramienta de software tal y como dice "Jhon Gruber" (uno de los creadores) en su web oficial \footnote{\url{https://daringfireball.net/projects/markdown/}}.
 Las ventajas de usar \emph{MarkDown} son las siguientes:
 \begin{itemize}
@@ -318,7 +322,7 @@ Para ver como generar nuestra propia documentación con \emph{Read The Docs} vam
 \begin{enumerate}
     \item Vamos a ver que tecnología usaremos para la generación de documentación.
     \item Como importar nuestra documentación.
-    \item Como versionar la documentación.
+    \item Cómo versionar la documentación.
 \end{enumerate}
 \textbf{Generadores de Documentación} \\
 \emph{Read the Docs} usa para generar la documentación \emph{Sphinx} y/o \emph{MkDocs}. \emph{MkDocs} es un generador que se centra en la simplicidad y la rapidez, permite una personalización  sencilla mediante extensiones y temas, utiliza  \emph{MarkDown} \footnote{¿Qué es \emph{MarkDown} \ref{subsec:markdo}}. \emph{Sphinx} en cambio te permite generar páginas web, PDFs, documentos para e-readers, además de la propia documentación; utiliza \emph{ReStructuredText}(otro lenguaje de marcado).\\
@@ -345,7 +349,7 @@ Lo primero que hace es mirar dos cosas, el tipo de documentación (\emph{Sphinx}
 \end{itemize}
 \textbf{Como versionar la documentación} \\
 Tal y como se mencionó al inicio de este capítulo, \emph{Read the Docs} soporta múltiples versiones de su repositorio. Cuando se importa por primera vez el proyecto se creará la version \emph{latest} apuntando a la rama por defecto de nuestro sistema de control de versiones, en nuestro caso, rama \texttt{master} de nuestro repositorio de \emph{GitHub}. \\
-En los casos normales la versión \emph{latest} apuntará al código más actualizado, si en el proyecto se desarrolla en otra rama, se deberá establecer esta como rama por defecto en la interfaz de configuración de \emph{Read the Docs}. \\
+En los casos normales la versión \emph{latest} apuntará al código más actualizado. Si en el proyecto se desarrolla en otra rama, se deberá establecer esta como rama por defecto en la interfaz de configuración de \emph{Read the Docs}. \\
 
 \begin{figure}[H]
     \centering
@@ -414,7 +418,7 @@ oficial.
 Es un servicio de alojamiento web que ofrece \emph{GitHub}, se usa para alojar sitios web estáticos usando directamente un repositorio \emph{Git}. Para aclarar la principal ventaja de \emph{GitHub Pages} frente a otros servidores vamos a definir que es una pagina web estática y que se diferencia respecto a una página web dinámica. \\
 \textbf{¿Qué es una página web estática?}\\
 Una página web estática es aquel documento web que muestra el mismo contenido para todos los usuarios, es decir, que no es personalizable o no hay elección de interactuar con ella para ordenar, ocultar o modificar contenido (páginas dinámicas). Una de las ventajas principales de este tipo de páginas es lo económico que resulta crearlas, sin tener que usar ningún tipo de programación especial. Estas páginas son útiles para el objetivo de simplemente mostrar contenido. Hay que destacar que la mayor desventaja de generar sitios web estáticos son su actualización haciendo de esta algo tedioso. \\
-Una vez aclarado, la ventaja principal, a parte de todas las proporcionadas por ser un repositorio \emph{Git}, es que al no necesitar base de datos para servir el contenido, solo se requiere un servidor web que vaya sirviendo el contenido que se solicita.
+Una vez aclarado, la ventaja principal, aparte de todas las proporcionadas por ser un repositorio \emph{Git}, es que al no necesitar base de datos para servir el contenido, solo se requiere un servidor web que vaya sirviendo el contenido que se solicita.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Jekyll
@@ -428,6 +432,7 @@ Una vez aclarado, la ventaja principal, a parte de todas las proporcionadas por 
     \label{img:logoJekyll}
 \end{figure}
 \emph{Jekyll} es un generador de sitios web estáticos, en vez de trabajar con base de datos, \emph{Jekyll} trabaja con texto plano (MarkDown o Textile) y lenguaje de plantilla (Liquid)  generando la página web. La principal ventaja que podemos inferir de \emph{Jekyll} es que no necesitamos saber HTML, para generar nuestro contenido web, ventaja que contra resta sobre lo tedioso que es tener actualizado un sitio web estático. \\
+Jekyll está escrito en Ruby, donde las gemas (\emph{gems}) serían las librerías que se desarrollan y se usan para cualquier proyecto escrito en este lenguaje. Un proyecto como \emph{Jekyll}, puede usar un gran abanico de librerías por lo que instalar una a una individualmente puede resultar un trabajo bastante engorroso. Para ello, se utiliza una librería (gema) que se encargará de manejar todas estas dependencias. Esta gema se denomina, \emph{Bundler}. Esta herramienta o librería instalará todas aquellas dependencias que vengan contenidas en el archivo \texttt{gemfile}.  \\
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{img/jeyll_process.png}
@@ -517,4 +522,5 @@ jekyll build #Genera el contenido web
 \subsection*{Jekyll en repositorio GitHub}
 \label{subsec:jekandGit}
 Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el contenido \emph{Jekyll}, pero ¿Cómo actualizamos nuestra web?¿Cada vez que creamos contenido es necesario actualizar repositorio y ejecutar \emph{Jekyll} por separado?. \\
-\emph{GitHub} esta integrado junto con Jekyll, lo que quiere decir que cuando creamos contenido y este lo comprometemos (committed), \emph{Jekyll} se encargaŕa de generar el contenido tal y como observamos en la figura \ref{fig:jekyllProc2}
+\emph{GitHub} esta integrado junto con Jekyll, lo que quiere decir que cuando creamos contenido y este lo comprometemos (committed), \emph{Jekyll} se encargaŕa de generar el contenido tal y como observamos en la figura \ref{fig:jekyllProc2}. \\
+Hay que destacar la herramienta Bundler que introduciamos en \ref{subsec:jekyll}, ya que nos ayuda a mantener las dependencias actualizadas. La versión de la web subida en GitHub puede estar desfasada con la que tenemos desarrollada en local 

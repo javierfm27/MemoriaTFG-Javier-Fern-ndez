@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Propuesta de diseño del sitio web del proyecto}
 \label{chap:webProp}
-Tras la gestión necesaria que necesita un paquete de software desarrollado en Python. En el presente capítulo se muestra la solución web para el software desarrollado de PyCardio, donde trataremos de mostrar las partes que la componen y como han sido implementadas.
+Tras la gestión necesaria de código que hemos creído oportuna para PyCardio. En el presente capítulo se muestra la solución web para el software desarrollado de PyCardio, donde trataremos de mostrar las partes que la componen y como han sido implementadas.
 
 Para mostrar la web, el proceso que seguirá esta memoria es la de ir sección por sección donde enseñamos tanto el resultado como la implementación que sigue.
 
@@ -18,15 +18,15 @@ Nada más acceder en la web de PyCardio, nos encontramos en el home de la págin
 
 \begin{figure}[H]
     \centering
-    \subfloat[Home 1]{
+    \subfloat[Captura de  Home 1]{
         \includegraphics[width=0.3\textwidth]{img/home_1.png}
         \label{fig:home1}
         }
-    \subfloat[Home 2]{
+    \subfloat[Captura de Home 2]{
         \includegraphics[width=0.3\textwidth]{img/home_2.png}
         \label{fig:home2}
     }
-    \subfloat[Home 3]{
+    \subfloat[Captura de Home 3]{
         \includegraphics[width=0.3\textwidth]{img/home_3.png}
         \label{fig:home3}
     }
@@ -71,9 +71,8 @@ Si observamos las imágenes de la figura \ref{fig:homePyCardio} podemos ver que 
     \label{fig:includ}
 \end{figure}
 
-Así, el Home de la web al ser una página única que no va a tener parecido alguno en lo restante de web excepto en los \texttt{includes} mencionados, el propio layout main, es la página desarrollada, por esto \texttt{index.md} solo se compone de la llamada a dicha plantilla y del título. 
-
-Antes de pasar a tratar la siguiente sección de la web, cabe mencionar que se crea un \texttt{include} más denonminado \texttt{script.html}, donde irá al final de los layouts desarrollados que contendrán aquella tecnología JQuery y Javascript que utiliza la plantilla para hacer de la web   ``sensible'', o como llamamos hoy  día a este tipo de webs \textit{responsive}.
+El Home (página principal) de la web al ser una página única, es decir, los elementos que la componen no se repetirán en ninguna otra sección de la web, tendrá un \emph{layout} único y exclusivo solo para este uso (\texttt{main.html}). Cabe mencionar que esta plantilla también contiene los \emph{includes} de la figura \ref{fig:includ}. \\ 
+Antes de pasar a tratar la siguiente sección de la web, cabe mencionar que se crea un \texttt{include} más denonminado \texttt{script.html}, que irá al final de los layouts desarrollados que contendrán aquella tecnología JQuery y Javascript que utiliza la plantilla para hacer de la web   ``sensible'', o como llamamos hoy  día a este tipo de webs \textit{responsive}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                       ABOUT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -83,11 +82,11 @@ Esta sección de la web trata de dar una vista general de todos aquellos que han
 
 \begin{figure}[H]
     \centering
-    \subfloat[About 1]{
+    \subfloat[Captura de  About 1]{
         \includegraphics[width=0.5\textwidth]{img/about_1.png}
         \label{fig:aboutWeb1}
     }
-    \subfloat[About 2]{
+    \subfloat[Captura de About 2]{
         \includegraphics[width=0.5\textwidth]{img/about_2.png}
         \label{fig:aboutWeb2}
     }
@@ -99,7 +98,7 @@ Para llevar a cabo esta sección, se ha diseñado un nuevo layout denominado \te
 
 \begin{itemize}
     \item \textbf{Pages: } Contenido que no está basado en una fecha.
-    \item \textbf{Posts: } Aquel contenido que se caracteriza por la fecha en la que se publicó en la web.
+    \item \textbf{Posts: } Aquel contenido que se caracteriza por la fecha en la que se publicó en la web, típicamente una entrada en un blog del sitio web.
 \end{itemize}
 
 \begin{lstlisting}[style=htmlcssjs,caption=Layout Page,label={code:layoutPage}]
@@ -144,7 +143,7 @@ Para llevar a cabo esta sección, se ha diseñado un nuevo layout denominado \te
 
 Si observamos la plantilla mencionada, percibimos que para el desarrollo de \textit{About} usamos una variable nueva dónde el contenido se incrustará en  dicha variable del lenguaje de plantilla Liquid denominada \texttt{content}. Al incluir \textit{shortcodes}\footnote{Fragmentos de código utilizadas por los plugins que en este caso se adjuntan con la plantilla Unify adquirida.} de la plantilla Unify el contenido que tendrá nuestro fichero principal de la sección \textit{about} será HTML.
 
-El \textit{shortcode} empleado trata de un elemento de bloque en el que solo se hace uso de los CSS en conjucción con la plantilla. Quedando así tal y como lo muestra el listing \ref{code:about}. 
+El \textit{shortcode} empleado trata de un elemento de bloque en el que solo se hace uso de los CSS en conjunción con la plantilla. Quedando así tal y como lo muestra el listing \ref{code:about}. 
 \begin{lstlisting}[style=htmlcssjs,caption=index.html de About,label={code:about}]
 ---
 layout: page
@@ -194,7 +193,7 @@ Antes de continuar probablemente os hayáis preguntado el porqué de otro ficher
 
 Así si escribimos un hiperenlace en nuestro web escribiendo \texttt{\{\{site.url\}\}/about/} \footnote{\texttt{\{\{site.url\}\}} es una variable del \textit{framework} Jekyll definido en el fichero de configuración(\texttt{config.yml}) donde obtenemos la dirección URL del sitio web}, nos mostrará el contenido generado por \texttt{index.html} en nuestro directorio \texttt{/about/}.
 
-Cabe destacar la introducción de un nuevo elemento en el \textit{layout} del que se hace referencia en esta sección, haciendo uso del \textit{include} de \texttt{breadc.html} y utilizando la variable \texttt{page}, que brinda información de página específico, permitiendo el uso de las variables definidas en el Front Matter, y de setencias de control del lenguaje de plantilla Liquid,  diferenciándole del mencionado con anterioridad. 
+Cabe destacar la introducción de un nuevo elemento en el \textit{layout} del que se hace referencia en esta sección, haciendo uso del \textit{include} de \texttt{breadc.html} y utilizando la variable \texttt{page}, que brinda información de página específica, permitiendo el uso de las variables definidas en el Front Matter, y de setencias de control del lenguaje de plantilla Liquid,  diferenciándole del mencionado con anterioridad. 
 
 \begin{lstlisting}[style=htmlcssjs,caption=Breadcrumber,label={code:breadcrum}]
   <div class="align-self-center ml-auto">
@@ -280,24 +279,24 @@ Antes de mostrar el contenido de este apartado es de mencionar que está incompl
 
 
 \subsection*{Getting Started}
-El contenido web de esta subsección de \textit{tutorials} centra en enseñar como instalar el paquete y como aplicarlo. Al no disponer de la información de como usar el paquete, se ha procedido a implementar una plantilla para su uso futuro cuando se disponga de mas información. En dicha plantilla podemos distinguir trozos de inserción de código, gráficas y texto. 
+El contenido web de esta subsección de \textit{tutorials} se centra en enseñar como instalar el paquete y como aplicarlo. Al no disponer de la información de como usar el paquete, se ha procedido a implementar una plantilla para su uso futuro cuando se disponga de mas información. En dicha plantilla podemos distinguir trozos de inserción de código, gráficas y texto. 
 
 \begin{figure}[H]
     \centering
-    \subfloat[Getting Started 1]{
+    \subfloat[Captura de  Getting Started 1]{
         \includegraphics[width=0.3\textwidth]{img/gettin_1.png}
         \label{fig:gettinWeb1}
     }
-    \subfloat[Getting Started 2]{
+    \subfloat[Captura de  Getting Started 2]{
         \includegraphics[width=0.3\textwidth]{img/gettin_2.png}
         \label{fig:gettinWeb2}
     }
-    \subfloat[Getting Started 3]{
+    \subfloat[Captura de  Getting Started 3]{
         \includegraphics[width=0.3\textwidth]{img/gettin_3.png}
         \label{fig:gettinWeb3}
     }
     \caption{Subsección Getting Started de Tutorials }
-    \label{fig:my_label}
+    \label{fig:gettinWeb}
 \end{figure}
 
 Su implementación a diferencia de lo demás visto hasta ahora esta escrita en MarkDown. Para ello, como venimos haciendo, en el Front Matter de nuestro fichero damos un título y referenciamos el layout que se va a usar para mostar el contenido escrito. 
@@ -331,5 +330,244 @@ Prueba de la variable de entorno de file.path -> {{site.path_assets}}
 Si observamos las  últimas líneas del Listing \ref{code:gettingMark} podemos ver que también es posible escribir HTML en nuestro contenido, aunque el archivo sea de tipo MarkDown.
 
 \subsection*{Tutorial HRV}
+Tomando la plantilla escrita para la sección de \textit{getting started} en la que insertamos gráficas, código y escribimos texto plano se ha implementado la sección de tutorial HRV usando la información que se ha proporcionado por los creadores de \textit{PyCardio} a través de un \textit{jupyter notebook}\footnote{Entorno de trabajo interactivo que permite desarrollar en código Python.} pudiendo así mostrar en la web una guía de como utilizar este módulo. 
 
 
+\begin{figure}[H]
+    \centering
+    \subfloat[Captura de HRV 1]{
+        \includegraphics[width=0.3\textwidth]{img/hrv_1.png}
+        \label{fig:hrvWeb1}
+    }
+    \subfloat[Captura de HRV 2]{
+        \includegraphics[width=0.3\textwidth]{img/hrv_2.png}
+        \label{fig:hrvWeb2}
+    }
+    \subfloat[Captura de HRV 3]{
+        \includegraphics[width=0.3\textwidth]{img/hrv_3.png}
+        \label{fig:hrvWeb3}
+    }
+    \caption{Subsección HRV de Tutorials}
+    \label{fig:hrvWeb}
+\end{figure}
+
+Si examinamos las capturas realizadas de la sección en la figura \ref{fig:hrvWeb} tenemos un ejemplo de lo comentado anteriormente, texto plano, gráficas e inserción de código. Además de cambiar el tipo de fuente cuando insertamos código, comprobamos cómo dependiendo de las palabras reservadas utilizadas en el lenguaje especifico estas están resaltadas de una manera u otra. Para llevar a cabo el resaltado de código se ha utilizado un resaltador escrito en  \textit{Ruby} denominado \textit{Rouge}, se hace posible su uso añadiendo al fichero de configuración la setencia \texttt{higlighter: rouge}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                       CONTACT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Contact}
+\label{sec:contactWeb}
+Contenido web centrado en mostrar quién es el autor del paquete \textit{PyCardio} dando información de trayectoria, dedicación y proyectos en los que ha colaborado o autorizado. Además, se incluye un formulario con la intención de sugerir dudas, inscribirse al blog de la web y así como recibir información de futuras \textit{releases}.
+
+\begin{figure}[H]
+    \centering
+    \subfloat[Captura de  Contact 1]{
+        \includegraphics[width=0.4\textwidth]{img/contact_1.png}
+        \label{fig:contactWeb1}
+    }
+    \subfloat[Captura de Contact 2]{
+        \includegraphics[width=0.4\textwidth]{img/contact_2.png}
+        \label{fig:contactWeb2}
+    }
+    \caption{Sección Contact de la Web}
+    \label{fig:contactWeb}
+\end{figure}
+
+
+La parte que consiste en proporcionar la información del autor se ha desarrollado como se ha ido realizando hasta ahora, creando un fichero \texttt{index.html} en el directorio \texttt{/contact/} que utilizará el \textit{layout Page}. Tanto la parte visual (CSS) y contenido (HTML) de toda la sección se ha diseñado usando el abanico de \textit{shortcodes} proporcionados por la plantilla \textit{Unify}. \\
+
+Contemplando la figura  \ref{fig:contactWeb2} vemos que el formulario que se basa en contactar con los desarrolladores se compone de diversos campos. Toda la información recogida en estos compondrán un \textit{email} que será enviado al correo de los autores de \textit{PyCardio}. Para implementar esta parte se ha hecho uso de una API de \textit{JavaScript} que envía correo directamente desde su código en la web. El servicio utilizado es \textit{emailJs}\footnote{\url{https://www.emailjs.com/}}
+
+El uso de este servicio se ha realizado siguiendo estos pasos:
+\begin{enumerate}
+    \item Nos registramos con una cuenta, al ser el primer registro se proporciona una cuota de 200 \textit{emails} gratis. Tras ellos, es necesario desembolsar una cuota mensual.
+    \item Se crea una plantilla con la finalidad de completarla con lo obtenido en el formulario mediante \textit{JQuery}.
+    \item Implementación de código \textit{JavaScript} y \textit{JQuery} encargado de obtener la información y finalmente enviar el correo.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/email_template.png}
+    \caption{Plantilla \textit{email}}
+    \label{fig:emailTemplate}
+\end{figure}
+
+Exceptuando el paso de registro, que solo trata de obtener una cuenta válida para el uso del servicio, vamos a explicar el proceso seguido para los otros. 
+
+\subsubsection*{Creación de plantilla de correo}
+Este paso se realiza a través de la interfaz gráfica que proporciona el servicio \textit{emailJS} que únicamente consiste en definir la forma que obtendrá el contenido del correo que llegará a los destinatarios que elijamos. Este contenido aparte de obtener texto también se establece mediante las variables de plantilla. Si observamos la plantilla definida en la figura \ref{fig:emailTemplate} vemos que tenemos las siguientes variables para nuestro contenido personalizado:
+\begin{itemize}
+    \item \{\{$subject$\}\}: Asunto del correo.
+    \item \{\{$from\_name$\}\}: Nombre del sugerente recogido en la web. 
+    \item \{\{$from\_email$\}\}: \textit{Email} de la persona que solicita o envía información a través del formulario.
+    \item \{\{$message\_html$\}\}: Contenido del mensaje que es escrito por el usuario de la web.
+\end{itemize}
+
+\subsubsection*{Código \textit{JQuery} y \textit{JavaScript}}
+Ya tenemos la cuenta y la plantilla, por tanto, solo nos queda obtener la información. El código que se encargará de dicha acción se incluirá al final del contenido HTML en un elemento \texttt{script}. Podemos así separar dos secciones de código dentro del \textit{script}, una parte encargada de recoger la información y otra, cuya meta es enviar el correo usando el servicio \textit{emailJS}.
+
+La obtención se realiza con el evento de \textit{JQuery} \texttt{focusout()} que se ejecuta cuando cambiamos de campo en la web. Un ejemplo de esto sería el dado por el Listing \ref{code:jquery1}, que como vemos asignamos a la variable \texttt{$template\_params.message\_html$} lo escrito en el formulario de clase \texttt{message-form}. La tupla de valores \texttt{$template\_params$} contendrá todos las varibles de plantilla y su contenido. 
+
+\begin{lstlisting}[caption=Código para obtener la información de \texttt{message-form},label={code:jquery1}]
+  $(".message-form").focusout(function() {
+    template_params.message_html = $(this).val();
+  });
+\end{lstlisting}
+
+Tras agrupar toda la información en nuestra variable, sólo nos queda hacer posible el envío del correo. Para ese fin, antes de ejecutar la función del servicio \texttt{emailjs.send()} pasando por parámetro el servicio utilizado, la plantilla, y los valores de la variables, debemos habilitar el uso de la interfaz, que se consigue, incluyendo el código mostrado en el Listing \ref{code:initEmailJS}, el valor que se pasa por parámetro a la función \texttt{emailjs.init()} es el API \textit{key} asociado al usuario. Para que funcione la aplicación el código mencionado debe ir en la cabecera \textit{head} de la página que vaya a utilizarla
+
+\begin{lstlisting}[caption=Código que permite conectarse con la interfaz de \textit{emailJs},label={code:initEmailJS}]
+  <!-- EMAILJS -->
+<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("user_Hopd6SgEyxvsIFC4VTcCc");
+   })();
+</script>
+\end{lstlisting}
+
+
+Una vez que se inicia la conexión para manejar \textit{emailJS}, hacemos uso de la función \texttt{send()} de igual manera que la mostrada en el Listing \ref{code:sendEmail} , donde vemos que las sentencias se ejecutan a partir de cuando se produce el evento \textit{JQuery} \texttt{click} en el bóton que compone el final del formulario.
+
+\begin{lstlisting}[caption=Código que produce el envío de correo,label={code:sendEmail}]
+  $("#enviarEmail").click(function() {
+    var service_id = "default_service";
+    var template_id = "template_SDZsLF1w";
+    emailjs.send(service_id, template_id, template_params)
+      .then(function(response) {
+        alert('SUCCESS!', response.status, response.text);
+      }, function(error) {
+        alert('FAILED...', error);
+      });
+    alert("Email Send!");
+  });
+\end{lstlisting}
+
+Un ejemplo de lo conseguido por estos tres pasos es el mostrado en la figura \ref{fig:sendEmail}.
+
+\begin{figure}[H]
+    \centering
+    \subfloat[Formulario \textit{Web}]{
+        \includegraphics[width=0.5\textwidth]{img/send_email_1.png}
+        \label{fig:sendEmail1}
+    }
+    \subfloat[Correo Recibido]{
+        \includegraphics[width=0.5\textwidth]{img/send_email_2.png}
+        \label{fig:sendEmail2}
+    }
+    \caption{Ejemplo sencillo de envío de correo en \textit{PyCardio Web}}
+    \label{fig:sendEmail}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                       RELEASE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Release}
+\label{sec:releaseWeb}
+
+En este lugar de la web se incluirá todos los \textit{posts} que se publicarán informando de las nuevas características y funcionalidades correspondientes a las \textit{releases} que se vayan lanzando. El aspecto que tendrá esta página es sencilla, de modo que en el panel lateral tendremos un listado de todos los \textit{posts} publicados hasta el momento, y de manera más visual y mostrando un breve contenido de las tres últimas publicaciones. 
+
+\begin{figure}[H]
+    \centering
+    \subfloat[Captura de Release 1]{
+        \includegraphics[width=0.5\textwidth]{img/release.png}
+        \label{fig:releaseWeb1}
+    }
+    \subfloat[Captura de Release 2]{
+        \includegraphics[width=0.5\textwidth]{img/release1.png}
+        \label{fig:releaseWeb2}
+    }
+    \caption{Sección Release de la Web}
+    \label{fig:releaseWeb}
+\end{figure}
+
+Para la implementación de esta parte se introduce por primera vez el uso de \textit{posts} del \textit{framework} \textit{Jekyll} comentado en la sección \ref{subsec:jekyll}. Es por esto, que para su desarrollo hacemos uso de dos \textit{layouts}, uno que se usará para el fichero \texttt{index.html} (el \textit{layout} utilizado es el mismo que anteriormente, \texttt{page.html}) de esta sección y otro \textit{layout} nuevo cuyo uso es para la escritura de los \textit{posts}, de forma que solo tengamos que preocuparnos de redactar en texto plano todo lo nuevo referente a la \textit{release} que estamos comentando. \\
+
+El diseño del nuevo \textit{layout} se diseña con el objetivo de que cuando escribimos el \textit{post} se introduzca el autor, título y el contenido. Tanto el título como el contenido se darán a través del \textit{front matter}. La publicación que mostramos como ejemplo en el Listing \ref{code:release1} se corresponde al fichero \texttt{2019-01-29-0.0.5-pycardio-relesased.md}, siguiendo el convenio de nomenclatura que aconseja \textit{Jekyll}. \\
+
+
+\begin{lstlisting}[caption=Ejemplo de publicación para la sección \textit{release},label={code:release1}]
+  ---
+layout: release
+title: "PyCardio 0.0.5 Released"
+author: "javierfm27"
+category: [releases]
+permalink: /:categories/:year/:month/:title
+---
+Welcome to the PyCardio Launch!
+
+
+We are pleased to show you the HRV module with which we started this software for the analysis of the heart
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\end{lstlisting}
+
+Si observamos el \textit{front matter} del ejemplo estamos catalogando nuestra publicación a la categoría de \textit{release}, esto lo hacemos debido a que en nuestra \textit{web} tendremos dos tipos de publicaciones: por un lado \textit{releases} y, por otro lado, las referentes al \textit{blog} de la \textit{web}. Por tanto, es una buena práctica diferenciarlas mediante categorías para su implementación por ejemplo a la hora de listar todas las publicaciones mediante la variable global \texttt{site.categories}.
+
+\begin{figure}[H]
+    \centering
+    \subfloat[Ejemplo de Publicación 1]{
+        \includegraphics[width=0.5\textwidth]{img/only_release_1.png}
+        \label{fig:onlyreleaseWeb1}
+    }
+    \subfloat[Ejemplo de Publicación 2]{
+        \includegraphics[width=0.5\textwidth]{img/only_release_2.png}
+    }
+    \caption{Aspecto Web de una publicación}
+    \label{fig:onlyreleaseWeb}
+\end{figure}
+
+El resultado del Listing \ref{code:release1} es el mostrado por la figura \ref{fig:onlyreleaseWeb}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                       BLOG
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Blog}
+\label{sec:blogWeb}
+Porción de la web centrada en mostrar todas las publicaciones que se escriben referente al \textit{software} de \textit{PyCardio} como nuevos usos que se han dado de este, noticias sobre su próximo lanzamiento, así como  publicaciones de los autores. Para su aspecto \textit{web} se ha seguido el mismo razonamiento de sencillez  de \ref{sec:releaseWeb} solo que, para esta sección, se ha cambiado el aspecto además de la adición de tres enlaces en el panel lateral. 
+
+\begin{figure}[H]
+    \centering
+    \subfloat[Captura de Blog Web 1]{
+        \includegraphics[width=0.5\textwidth]{img/blogWeb_1.png}
+        \label{fig:blogWeb1}
+    }
+    \subfloat[Captura de Blog Web 2]{
+        \includegraphics[width=0.5\textwidth]{img/blogWeb_2.png}
+        \label{fig:blogWeb2}
+    }
+    \caption{Sección Blog de la Web}
+    \label{fig:blogWeb}
+\end{figure}
+
+La implementación de esta parte sigue el procedimiento de la sección de \textit{release} donde distinguimos el fichero \texttt{index.html} de \texttt{/blog/} que usa el \textit{layout} de \texttt{page.html} y las publicaciones que se redactarán en texto plano que usarán uno nuevo denominado \texttt{blog.html}. Podemos distinguir en el código escrito en \ref{code:blogMD} cómo se asigna la categoría de \textit{blog}. El resultado de la publicación de la porción de código es el dado por \ref{fig:blogExample}.
+
+\begin{lstlisting}[caption=Ejemplo de publicación de Blog,label={code:blogMD}]
+---
+layout: blog
+title: HRV is ready!
+author: obarquero
+published: true
+category: [blog]
+permalink: /:categories/:year/:month/:title
+---
+We are pleased to report that we launched our first module. HRV.
+
+This class allows to perform a basic Heart Rate Variability Analysis from an RR-Interval time series. It is supposed that a numpy array (n_samples, 1) with RR intervals is available, as well as beat label numpy array vector.
+
+For complete documentation go to [documentation](https://pycardio.readthedocs.io/en/latest/?badge=latest) or if you prefer take a look at our first [tutorial]({{site.url}}/tutorials/hrv.html).
+
+Go Ahead!
+\end{lstlisting}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/blog_example.png}
+    \caption{Ejemplo de publicación para la sección de Blog}
+    \label{fig:blogExample}
+\end{figure}

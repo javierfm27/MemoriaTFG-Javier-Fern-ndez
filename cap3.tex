@@ -6,7 +6,7 @@
 \begin{comment}
 Introducción de lo que es el proyecto, lo del libro de Python y luego las tecnologías usadas en el proyecto unidas con la introducción.
 \end{comment}
-En este capítulo trataremos como está compuesto el proyecto y como se ha gestionado este, tanto la parte del código fuente de nuestro paquete \emph{PyCardio} como el código que forma parte de nuestro proyecto web reflejando todo lo que concierne a \emph{PyCardio} como documentación, como usarlo, funcionalidades. \\
+En este capítulo trataremos como está compuesto el proyecto y como se ha gestionado este, tanto la parte del código fuente de nuestro paquete \emph{PyCardio} como el código que forma parte de nuestro proyecto web. En dicho proyecto se presenta la documentación de PyCardio, incluyendo manuales de usuario y una descripción de sus funcionalidades principales. \\
 Para ello dividiremos el capítulo en tres secciones:
 \begin{enumerate}
     \item Explicación de que contiene el proyecto \emph{PyCardio} mediante un breve resumen de los módulos que la componen. 
@@ -17,16 +17,16 @@ Para ello dividiremos el capítulo en tres secciones:
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %% EXPLICACIÓN DE CONTENIDO
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{¿Que és PyCardio?}
-\label{subsec:explainPyCardio}
-\emph{PyCardio} es un módulo en desarrollo  de Python creado por el Dr. Óscar Barquero. Dicho módulo tiene el objetivo de realizar análisis de las señales cardíacas, es decir:
+\section{¿Que és PyCardio?}
+\label{sec:explainPyCardio}
+\emph{PyCardio} es un módulo en desarrollo  de Python creado por varios profesores del Grupo de Teoría de la Señal y Comunicaciones de la ETSIT, en la URJC. Dicho módulo tiene el objetivo de realizar análisis de las señales cardíacas. Los tipos de análisis actualmente incluidos en la herramienta son:
 \begin{itemize}
-    \item \textbf{ECG Análisis}: Detección del complejo QRS, extracción de series temporales de intervalo RR, delinación completa de ECG.
+    \item \textbf{ECG Análisis}: Detección del complejo QRS, extracción de series temporales de intervalo RR, delineación completa de ECG.
     \item \textbf{Análisis de variabilidad de la frecuencia cardíaca}: Un análisis completo de las series temporales de intervalo RR, donde se realiza un preprocesado, análisis en  el dominio del tiempo, análisis en el dominio de la frecuencia, análisis no lineal y un análisis tiempo-frecuencia.
     \item \textbf{Análisis de la frecuencia cardiaca de turbulencia.}
     \item \textbf{Análisis de fibrilación auricular.}
     \item \textbf{Análisis de fibrilación ventricular.}
-    \item \textbf{Análisis de arritmia mediante 24 Holter.}
+    \item \textbf{Análisis de arritmia mediante un dispositivo de monitorización portátil.}
 \end{itemize}
 
 El objetivo, por tanto, es la creación de una página web que muestre estas funcionalidades, así como una guía de instalación, documentación, y una orientación de como colaborar en el proyecto mediante las tecnologías mencionadas en el capítulo \ref{chap:Arqui}.
@@ -34,7 +34,7 @@ El objetivo, por tanto, es la creación de una página web que muestre estas fun
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% BUENAS PRÁCTICAS DE DESARROLLO
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Buenas prácticas de desarrollo en Python}
+\section{Buenas prácticas de desarrollo en Python}
 \label{subsec:bestPracticses}
 En esta sección tratamos de explicar y mostrar buenas prácticas para el desarrollo de proyectos en Python.\\
 
@@ -67,7 +67,7 @@ PEP son las siglas de Proposal Enhancement Python, son documentos de diseño que
 \subsection*{Estructurando el proyecto}
 \label{subsec:structurePython}
 Por una \emph{estructura} de proyecto de programación nos referimos a como la lógica y las dependencias del código están implementadas. \\
-Por tanto seguir una buena estructura de empaquetado y de importar los módulos que se utilicen en el proyecto proporcionará un código menos repetitivo y desordenado. No hay una guía de como estructurar un proyecto pero los siguientes errores más comunes pueden ayudar a  como estructurarlo:
+Por tanto seguir una buena estructura de empaquetado y de importación de los módulos que se utilicen en el proyecto proporcionará un código menos repetitivo y desordenado. No hay una guía de como estructurar un proyecto pero los siguientes errores más comunes pueden ayudar a  como estructurarlo:
 \begin{itemize}
     \item \textit{Dependencias circulares múltiples y desordenadas:} Ocurre cuando un módulo depende de otro, y este a su vez del mismo inicial. Es decir, \textit{fabrica.py} depende de \textit{trabajadores.py}, que depende de \textit{fabrica.py}.
     \item \textit{Un abuso en el uso de contextos globales:} Ocurre cuando dos clases o módulos que hacen uso de la misma variable global, haciendo así que cualquiera de los dos pueda modificarlo.
@@ -82,7 +82,7 @@ Esto puede resultar engañoso ya que a diferencia de Java, no impone este paradi
     \item El uso de funciones puras facilita el desarrollo de tests sobre nuestro proyecto.
     \item El tener funciones puras hace más sencillo la manipulación y decoración de estas.
 \end{itemize}
-Como ya sabemos, Python es un lenguaje dinámicamente tipado, lo que quiere decir que una misma variable puede tomar un valor, e inmediatamente después puede ser una cadena de texto, o una función. Esta característica del lenguaje se considera una debilidad del lenguaje, ya que hace muy difícil trazar código.\\
+Como ya sabemos, Python es un lenguaje dinámicamente tipado, lo que quiere decir que una misma variable puede tomar un valor, e inmediatamente después puede ser una cadena de texto, o una función. Esta característica del lenguaje también puede considerarse una debilidad del mismo, ya que hace muy difícil trazar código.\\
 
 \subsection*{Pruebas de código}
 A la hora de distribuir software de código libre, una de las prácticas que hacen que el software sea más utilizado o que ayude a que se sumen contribuciones al software es la prueba del código. ¿Por qué es una de las prácticas para el desarrollo de un proyecto más importante?. (Las siguientes razones son tanto para el ámbito comercial como para un ámbito práctico de desarrollo). 
@@ -131,18 +131,22 @@ Al igual que para el software propietario o de autor, necesitamos escoger una li
     \item Licencias GPL: licencia que permite la libre distribución, modificación y uso, conservando los derechos de autor. Todo software que se desarrolle modificando el original y que contenga dicha licencia debe estar bajo está. Licencia considerada como primera licencia \textit{copyleft}.
     \item Licencias Apache: bajo este tipo de licencia se permite al usuario la distribución, modificación y distribuir alteraciones del software siempre y cuando que se mantenga el \emph{copyright}. Esta licencia no exige que se mantenga las versiones modificadas bajo la misma licencia, solo que se informe a los receptores de las modificaciones que bajo el código se ha utilizado dicha licencia Apache.
     \item Licencias Creative Commons: El software bajo esta licencia se puede distribuir, exhibir y representar con la condición de reconocer y citar al autor original. Bajo esta licencia no se puede modificar el software. Creative Commons implica también la prohibición de usar el software con dicha licencia bajo fines comerciales. 
+    
+    [[AÑADIR LA MATRIZ Y EXPLICAR MEJOR]]
     \item Licencias AGPL: licencias que derivan de las licencias GPL añadiendo una novedad, esta novedad obliga a distribuir el software modificado bajo su libre distribución.
 \end{itemize}
 
 Para nuestro proyecto, se ha decidido lanzar el software bajo la licencia Apache versión 2.0. Para poder aplicar dicha licencia, se crea un archivo de texto plano en el directorio raíz del proyecto con nombre \texttt{LICENSE} donde incluiremos todas las condiciones que está licencia aplica. 
 
-\subsection{Gestión de código}
+\section{Gestión de código}
 \label{subsec:}
 Tras tratar con una breve guía de buenas prácticas para desarrollar y contribuir en un proyecto en Python, en este apartado abordaremos algunos de los servicios de gestión de código comentados en el capítulo \ref{chap:Arqui}. Para cada servicio que comentaremos a continuación, se hará una breve guía de utilización particularizándolo para nuestro proyecto PyCardio.
 
 \subsubsection*{Travis}
 \label{subsubsec:Travis}
 Para la parte de integración continua se usará en nuestro proyecto Travis, ya comentado en el capítulo \ref{chap:Arqui}. Antes de empezar a integrar Travis en nuestro proyecto debemos tener una cuenta en GitHub y permitir a Travis acceder a ella. El siguiente paso es añadir a la raíz de nuestro proyecto un fichero de configuración \texttt{.travis.yml}, en él, se informa a Travis que tiene que hacer, donde podemos especificar la versión de lenguaje que utilizamos, el lenguaje, donde se encuentra nuestras pruebas de código, y un gran abanico de opciones que pueden variar debido al lenguaje utilizado. \\
+
+Como integración continua se conoce a una práctica de \emph{software} que consiste en que los desarrolladores que estarán enviando cambios de forma periódica al repositorio compartido, se ejecuten pruebas de unidad en los nuevos cambios para identificar cualquier error. Lo que permite que tengamos siempre (tras cada cambio introducido) un \emph{software} libre de errores para probarlo antes de la fase de producción. \\
 
 \begin{figure}[h]
 \centering
@@ -176,17 +180,17 @@ python:
 install:
   - pip install -r requirements.txt
 \end{lstlisting}
-Observando el contenido del fichero, podemos diferenciar dos opciones:
+Observando el contenido del fichero, podemos diferenciar tres opciones:
 \begin{itemize}
     \item \textbf{Language}: En esta opción indicamos a Travis el lenguaje del proyecto.
     \item \textbf{Python}: En este apartado indicamos todas las versiones de Python en la que queremos que se pruebe el proyecto. Para ello Travis creará un entorno virtual por cada versión que le indiquemos en él.
     \item \textbf{Install}: Con la orden install indicamos los comandos a ejecutar antes de probar, montar o construir el proyecto. En este caso con estos comandos instalaremos las dependencias de nuestro proyecto para el entorno virtual que crea Travis para cada versión. Estas dependencias vienen indicadas mediante el archivo \textit{requirements.txt}. 
 \end{itemize}
-Una de las opciones que no están incluidas en nuestro fichero \texttt{.travis.yml} es la orden \texttt{script}. En ella, se indica el fichero donde Travis puede encontrar los tests, y mediante que comando queremos que estos se ejecuten. Al no tener dichos tests implementados, no podemos incluir dicha orden en nuestro fichero. A parte de la opción comentada, Travis tiene un abanico amplio para poder construir el proyecto de la manera más adecuada.
+Una de las opciones que no están incluidas en nuestro fichero \texttt{.travis.yml} es la orden \texttt{script}. En ella, se indica el fichero donde Travis puede encontrar los tests, y mediante que comando queremos que estos se ejecuten. Al no tener dichos tests implementados, no podemos incluir dicha orden en nuestro fichero. Aparte de la opción comentada, Travis tiene un abanico amplio para poder construir el proyecto de la manera más adecuada.
 
 \subsubsection*{CodeCov}
 \label{subsubsec:CodeCov}
-Para apoyar la integración continua de nuestro proyecto, usaremos CodeCov, nos aportará una medida de la cobertura que tenemos de pruebas de código sobre nuestro proyecto. \\
+Para apoyar la integración continua de nuestro proyecto, usaremos CodeCov. Nos aportará una medida de la cobertura que tenemos de pruebas de código sobre nuestro proyecto. \\
 Para integrarlo en nuestro proyecto basta con conectarse a dicho servicio mediante GitHub, y modificar nuestro fichero \texttt{.travis.yml} quedando así como el de la figura \ref{travisCodecov}
 
 \begin{lstlisting}[caption={\texttt{.travis.yml} para integrar CodeCov},label=travisCodecov]
@@ -206,7 +210,12 @@ Al usar Travis para la integración continua, basta con añadir en el archivo  \
 \subsubsection*{Read The Docs}
 \label{subusub:rtd}
 Como ya hemos comentado en el capítulo \ref{chap:Arqui} Read The Docs simplifica y automatiza la documentación de un proyecto desarrollado en Python. La documentación la cual Read The Docs usa para su servicio es la generada por dos herramientas MkDocs o Sphinx. Para PyCardio se ha hecho uso de la herramienta Sphinx. \\
-¿Cómo trabaja Sphinx? La documentación que esta herramienta genera, lo hace a partir de documentos con lenguaje de marcado \textit{restructuredtext}, en estos documentos Sphinx usará para generar la documentación en HTML, epub o pdf. En nuestro caso, en vez de escribir la documentación de las funcionalidades de dichos módulos directamente en los documentos con el lenguaje de marcado mencionado ,usaremos la función \texttt{autodoc} de Sphinx, donde se generará documentación a partir de los \textit{docstrings} contenidos en el código, pero ¿qué es un \textit{docstring} de una clase, módulo o función?. Una de las prácticas que se debe llevar a cabo para un proyecto es la de tener correctamente detallada y documentada la funcionalidad de este. Para un proyecto Python usualmente se usa \textit{docstring}, que no es más que una cadena de texto que precede el código de una función, clase u objeto. Para nuestro ejemplo en la extracción de código \ref{docstring} observamos la documentación realizada al módulo \texttt{HRV.py} donde se muestra docstring del módulo, de la clase \texttt{HRV} y de la función \texttt{beat\_label\_filter}.
+¿Cómo trabaja Sphinx? La documentación que esta herramienta genera, lo hace a partir de documentos con lenguaje de marcado \textit{restructuredtext}. Estos ficheros los convierte en formato web (HTML), PDF o epub. Para ello, Sphinx a partir de  
+
+en estos documentos Sphinx usará para generar la documentación en HTML, epub o pdf.\\
+
+
+En nuestro caso, en vez de escribir la documentación de las funcionalidades de dichos módulos directamente en los documentos con el lenguaje de marcado mencionado ,usaremos la función \texttt{autodoc} de Sphinx, donde se generará documentación a partir de los \textit{docstrings} contenidos en el código, pero ¿qué es un \textit{docstring} de una clase, módulo o función?. Una de las prácticas que se debe llevar a cabo para un proyecto es la de tener correctamente detallada y documentada la funcionalidad de este. Para un proyecto Python usualmente se usa \textit{docstring}, que no es más que una cadena de texto que precede el código de una función, clase u objeto. Para nuestro ejemplo en la extracción de código \ref{docstring} observamos la documentación realizada al módulo \texttt{HRV.py} donde se muestra docstring del módulo, de la clase \texttt{HRV} y de la función \texttt{beat\_label\_filter}.
 
 \begin{lstlisting}[language=python,caption=HRV.py,label=docstring]
 """ 
@@ -256,8 +265,8 @@ Python module to perform Cardiac Signal Analysis, namely:
    HRV
 
 \end{lstlisting}
-En este código observamos a parte de contenido plano, unas directivas, que son funciones del lenguaje \textit{restructuredtext}. La utilizada en esta página principal es \texttt{toctree} donde se indica cuál va a ser el árbol de nuestra documentación, en nuestro ejemplo, indicamos que como máximo sera de un nivel con la opción \texttt{maxdepth} y que tenemos como contenido HRV. Con la opción \texttt{contents}  indicamos que tenemos un contenido y que este es HRV, sphinx buscará un documento el cual sea de nombre HRV y de lenguaje \textit{restructuredtext}, es decir, \texttt{HRV.rst}, en el cual se incluirá la estructura o contenido para la sección HRV, en este caso, para la página HTML del módulo HRV. \\
-El contenido de \texttt{HRV.rst} es el dado por el código \ref{hrv}, que como vemos hacemos uso de la opción \texttt{autodoc} de sphinx, para ello, indicamos donde debe hacer el uso de dicha opción con la directiva \texttt{automodule}, indicando de que módulo generamos la documentación. \begin{lstlisting}[caption=\texttt{HRV.rst},label=hrv]
+En este código observamos aparte de contenido plano, unas directivas, que son funciones del lenguaje \textit{restructuredtext}. La utilizada en esta página principal es \texttt{toctree} donde se indica cuál va a ser el árbol de nuestra documentación, en nuestro ejemplo, indicamos que como máximo sera de un nivel con la opción \texttt{maxdepth} y que tenemos como contenido HRV. Con la opción \texttt{contents}  indicamos que tenemos un contenido y que este es HRV. Sphinx buscará un documento el cual sea de nombre HRV y de lenguaje \textit{restructuredtext}, es decir, \texttt{HRV.rst}, en el cual se incluirá la estructura o contenido para la sección HRV, en este caso, para la página HTML del módulo HRV. \\
+El contenido de \texttt{HRV.rst} es el dado por el código \ref{hrv}, que como vemos hacemos uso de la opción \texttt{autodoc} de sphinx. Para ello, indicamos donde debe hacer el uso de dicha opción con la directiva \texttt{automodule}, indicando de que módulo generamos la documentación. \begin{lstlisting}[caption=\texttt{HRV.rst},label=hrv]
 Module HRV
 ==================
 
@@ -377,6 +386,8 @@ Para finalmente subir dicho proyecto a PyPI \footnote{El paquete que vamos a sub
 \end{figure}
 
 \subsubsection*{Anaconda}
+Conda
+
 Para la creación del paquete conda partiremos del paquete que previamente hemos subido a TestPyPI. Conda para la creación de sus paquetes usa recetas, tal y como se introdujo en \ref{subsec:anaconda}. Para la creación de la receta de nuestro proyecto a partir de proyecto alojado en TestPyPI usaremos el módulo \texttt{conda-skeleton}, donde le pasaremos como argumento a la orden conda, la dirección del servidor TestPyPI y el nombre que tiene nuestro proyecto: \\
 \texttt{conda-skeleton pypi PyCardioTest --pypi-url https://test.pypi.org/pypi/} \\
 Esto creará una carpeta en nuestro directorio, este directorio es la mencionada receta que contendrá el fichero \texttt{meta.yaml} con los metadatos del paquete. Para generar el paquete el cual podrá ser distribuido mediante los canales de Anaconda, usamos \texttt{conda-build}. Al frente de generarlo, cuando ejecutamos: \\
