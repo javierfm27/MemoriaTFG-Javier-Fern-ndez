@@ -4,7 +4,38 @@
 \chapter{Conclusiones y trabajo futuro}
 \label{chap:conclusiones}
 
-En el presente punto tratamos haremos un repaso de los logros y los objetivos cumplidos que nos proponíamos en el principio de esta memoria, enumeraremos lo aprendido y que asignaturas del grado cursado tienen relación con lo nuevo aprendido y por último daremos cuales son los siguientes pasos a seguir para que este proyecto siga su debido crecimiento.
+En el presente punto  haremos un repaso de los logros y los objetivos cumplidos que nos proponíamos en el principio de esta memoria, enumeraremos lo aprendido y que asignaturas del grado cursado tienen relación con lo nuevo aprendido y por último daremos cuales son los siguientes pasos a seguir para que este proyecto siga su debido crecimiento.
 
 \section{Principales logros y resultados del proyecto}
 \label{sec:conclus}
+
+Echando la vista hacia atrás, al comienzo de este proyecto partíamos de tener un software desarrollado en Python para aplicaciones científicas y nos proponíamos como primer objetivo la implementación de una web que tratará tanto como interfaz para acceder al código del software como a su documentación y guías para su uso. No obstante, no podemos pasar por alto un segundo objetivo que se ha llevado a cabo que es si cabe igual de importante que el principal y es el de saber gestionar el código de un proyecto Python, ya que es tan importante su buen desarrollo como seguir buenas prácticas para que sea fiable, legible y que facilite futuras contribuciones de potenciales usuarios.\\ 
+Para abordar estos, se han ido cumpliendo varias metas secundarias. En la gestión y empaquetado de código se realizó la implementación necesaria del fichero \texttt{setup.py} para poder subir el código fuente al repositorio de prueba de \emph{PyPi} mediante el uso de librerías ya desarrolladas. Se realizó un empaquetado para el gestor de paquetes \emph{Conda} cuya intención es que este software se pueda incluir en la distribución libre de Anaconda por su uso científico. Con la ayuda del equipo que desarrollo PyCardio se documentan las funciones y clases de uno de los módulos de la librería, haciendo posible la generación de documentación mediante \emph{Sphinx}. Otra meta a destacar y muy importante a la hora de hacer llegar al usuario que el código es fiable, es el uso de servicios como \emph{Travis CI} y \emph{CodeCov}, en los que hemos hecho una pequeña introducción de como estos pueden ser utilizados implementando los ficheros de configuración. En cuanto la gestión de código, la última meta que se consigue es la de aplicar una licencia al software desarrollado. \\
+En la parte de la implementación web, se consigue con buen resultado la web con los objetivos que se deseaban para esta, cumpliendo además el objetivo de que una web de documentación tiene que ser accesible, vistosa y sobre todo rápida para que las consultas sobre esta sean óptimas. Esta rapidez la entrega el hecho de que la web implementada sea estática.
+
+
+\section{Resumen de conceptos y tecnologías aprendidas}
+\label{sec:resumenTecn}
+
+Mediante he ido realizando el proyecto todo objetivo tanto secundario como principal, ha sido una oportunidad de aprender un nuevo concepto o una nueva tecnología, por lo que puedo concluir en que este proyecto ha sido un trabajo enriquecedor. A continuación, presento algunas de ellas: 
+\begin{itemize}
+    \item Cuando traté de realizar toda la gestión del código, aprendí a saber que el software que tengo entre manos es de buena calidad y sobre todo a la importancia que tiene contribuir en ellos. Esta contribución puede ser tanto de aportar ideas de mejoras para sus futuros desarrollos como la de reportar problemas si haciendo uso de este se encuentra alguno.
+    \item La importancia que tiene seguir una buena estructura para que sea fácil la contribución de otros desarrolladores del equipo, así como las prácticas que se mencionan siguiendo el libro de \emph{The Hitchhiker’s Guide to Python}\cite{pythonGuide}. 
+    \item Otro buen concepto aprendido es el de la importancia que tiene adjuntar a cada código desarrollado su documentación, en este caso, en forma de comentario precediendo al código, ya que esto facilita la creación de documentación en otros formatos como PDF o HTML; mediante la herramienta \emph{Sphinx}.
+    \item Soltura a la hora de trabajar con repositorios Git, sobre todo a la hora de una vez que tenemos una versión  nueva para su producción, tener en cuenta que debe ser actualizada, subiendo así una \emph{release} o informando mediante los medios que tengamos. En nuestro caso, uno de estos medios es publicar una nueva entrada en el blog de \emph{release} disponible en la web.
+    \item Mediante en el trabajo de lectura, aunque no se haya podido aplicar a este proyecto, he aprendido a seguir la mecánica de trabajo para desarrollar un software. La mecánica seguida es la impuesta por \emph{GitFlow}.
+    \item Eficacia a la hora de desarrollar una web, usando una plantilla ajena. Esto es muy importante, ya que utilizar código que no es tuyo es muy difícil y en este caso, he aprendido a familiarizarme con el rápidemente identificando prácticas de desarrollo de la plantilla como haciendo un correcto uso de la documentación adjunta a la plantilla.
+    \item Generar sitios web estáticos mediante \emph{Jekyll}, lo que conlleva a aprender lenguajes como Liquid, y profundizar conocimientos en el uso de JavaScript, elementos CSS y HTML.
+    \item La importancia de saber crear el paquete del código correctamente para que este pueda ser utilizado en todo sistema operativo o versión de python (lenguaje en el que está desarrollado el paquete PyCardio).
+\end{itemize}
+
+Los conocimientos aplicados para lograr el éxito del proyecto han sido mayormente las asignaturas de programación. Podemos así, identificar que la mayor parte de los conocimientos aplicados proceden de asignaturas como SAT (Servicios y Aplicaciones Telemáticas) y DAT (Desarrollo de Aplicaciones Telemáticas). Asignaturas tratamos el desarrollo web tanto del lado del servidor como el de aplicación.
+
+\section{Trabajo futuro sobre el proyecto}
+\label{sec:trabajoFuturo}
+
+Una vez que se ha terminado el proyecto, se proponen unas ideas para que esta librería siga su curso y en un futuro pueda ser usado en desarrollo de aplicaciones. \\
+Tal y como hemos comentado, hacer llegar al usuario un \emph{software} o librería fiable. Se propone el seguir la práctica de testeo de \emph{software}, donde proponemos la implementación de los tests para todo el código que ya está desarrollado. Haciendo así posible el uso de los servicios de \emph{Travis} y \emph{CodeCov}. Servicios que no han podido demostrarse como se deseaba por falta de tests. \\
+Implementar una guía de contribución para todos aquellos que quieran aportar ideas al código de PyCardio. Esta guía deberá incluirse tanto en el \texttt{README.md} del repositorio como en la página web haciéndola más accesible. \\
+Documentar todo lo restante del código de PyCardio. \\
+Implementar más cambios a la web, si estos fueran necesarios. Incluir los nuevos tutoriales en la web, a medida que se avanza en la producción de estos.

@@ -61,7 +61,7 @@ Estos tres estados nos lleva a diferenciar las siguientes áreas de trabajo: \\
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{img/git_states.png}
-    \caption{ Esquema de los estados de un repositorio Git}
+    \caption{ Esquema de los estados de un repositorio Git \\ Fuente: \url{https://git-scm.com/book/es/v1/Empezando-Fundamentos-de-Git}}
     \label{fig:gitStates}
 \end{figure}
 \begin{itemize}
@@ -76,7 +76,7 @@ Antes de dar por finalizada la sección sobre \emph{Git}, debemos hablar sobre \
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.2]{img/git_flow.png}
-    \caption{WorkFlow impuesto por la estrategia y mantenimiento de \emph{GitFlow}}
+    \caption{WorkFlow impuesto por la estrategia y mantenimiento de \emph{GitFlow} \\ Fuente: \url{https://datasift.github.io/gitflow/IntroducingGitFlow.html}}
     \label{fig:gitFlow}
 \end{figure}
 Por tanto, cada vez que se incorpora código a la rama \textit{master}, tenemos nueva versión. Además de las ramas principales, observando la figura \ref{fig:gitFlow} podemos distinguir tres tipos de ramas auxiliares, donde cada una sigue sus propias reglas:
@@ -142,8 +142,6 @@ Así el cálculo de cobertura es la relación: $coverage = hits / (sum\ of\ hit 
 Tras este cálculo tal y como hemos mencionado, \emph{CodeCov} ofrece una medida visual de esta cobertura, con la interfaz el desarrollador puede ver que parte de código debe cubrir en sus siguientes bloques de pruebas. \\
 Otro servicio en el que podemos integrar nuestro proyecto y que no debemos pasar por alto es \emph{Travis-CI}, servidor de integración continua en la nube donde podemos vincular nuestra cuenta de GitHub, donde se encarga de realizar las tareas planificadas por cada push \& commit que hagamos en alguno de nuestros repositorios de nuestra cuenta. La mayor ventaja que aporta \emph{Travis-CI} es la de probar nuestras librerías y/o aplicaciones con distintas configuraciones sin tener que instalarlas localmente. \\
 
- \\
-
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % EMPAQUETADO Y DISTRIBUCIÓN
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,7 +190,7 @@ Antes de introducir Anaconda debemos saber que es Conda. Conda es un gestor de p
      \item \textbf{meta.yaml: } Contiene todos los metadatos de la receta.
      \item \textbf{build.sh: } Script que instala todos los archivos para el paquete en Linux y macOs.
      \item \textbf{bld.bat: } Misma función que \textit{build.sh} pero para la plataforma Windows.
-     \item \textbf{$run_test.[py,pl,sh,bat]$:} Fichero opcional de testeo. Script que contiene los comandos de ejecución para el testeo del módulo o software si estos son necesarios para la receta.
+     \item \textbf{$run\_test.[py,pl,sh,bat]$:} Fichero opcional de testeo. Script que contiene los comandos de ejecución para el testeo del módulo o software si estos son necesarios para la receta.
  \end{itemize}
  
  Al contar con el empaquetado en PyPI, usaremos la función que ofrece \emph{conda skeleton} de construir nuestra receta a partir del contenido que se aloja en PyPI.
@@ -269,42 +267,6 @@ Las ventajas de usar \emph{MarkDown} son las siguientes:
     \item Perfecto para usarlo con editores de textos minimalistas.
 \end{itemize}
 
-        %%%%%%%%%%%%%%%%%%%%%%%%%%
-        % LIQUID
-        %%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Liquid}
-\label{subse:liquid}
-\emph{Liquid} es un lenguaje de plantillas de código abierto creado por Shopify y escrito en Ruby. Se utiliza para cargar contenido dinámico en los contenidos de las páginas web.
-
-\subsection*{¿Cómo funciona \emph{Liquid?}}
-El código de  \emph{Liquid} se puede categorizar en tres partes:
-\begin{itemize}
-    \item \textbf{Objetos:} estos objetos indican donde mostrar el contenido en una página. Los objetos y variables estarán denotados por \texttt{\{\{ \}\}}.
-    \begin{lstlisting}[caption=Input. Objetos]
-    {{ page.title }}
-    \end{lstlisting}
-    \begin{lstlisting}[caption=Output. Objetos]
-    Liquid Basics 
-    \end{lstlisting}
-    \item \textbf{Etiquetas:} Crean la lógica y el control de flujo para las plantillas, vendrán entre llaves y el caracter de porcentaje ( \texttt{\{\%  \%\}} ). El lenguaje utilizado en las etiquetas no produce ningún texto visible, esto significa que puede asignar variables y crear condiciones o bucles sin mostrar nada en la página.
-    \begin{lstlisting}[caption=Input. Etiquetas]
-        {% if user %}
-            Hello {{ user.name }}!
-        {% endif %}
-    \end{lstlisting}
-    \begin{lstlisting}[caption=Output. Etiquetas]
-        Hello Adam
-    \end{lstlisting}
-    \item \textbf{Filtros:} Los filtros cambian la salida de un objeto de \emph{Liquid}. Se utilizan dentro de una salida, es decir, entre la doble llave ( \texttt{\{\{ \}\}} ), y vienen separados por \texttt{|}.
-    \begin{lstlisting}[caption=Input. Filtros]
-    {{ "/my/fancy/url" | append: ".html" }}
-    \end{lstlisting}
-    \begin{lstlisting}[caption=Output. Filtros]
-    /my/fancy/url.html
-    \end{lstlisting}
-\end{itemize}
-
-Como ya hemos mencionado \emph{Liquid} es usado en diversos \emph{frameworks} de contenido web. En nuestro caso, para \emph{Jekyll}, se crearon sus propios objetos, etiquetas y filtros, estableciendo así \emph{Jekyll Liquid}. Para conocer estos, vienen detalladamente explicados  en la página web de  documentación sobre sus plantillas \footnote{\url{https://jekyllrb.com/docs/liquid/}}.
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%
         % READTHEDOCS
@@ -339,7 +301,7 @@ Para ver como generar nuestra propia documentación con \emph{Read The Docs} vam
     \caption{Ejemplos de los generadores de la documentación}
 \end{figure}
 \textbf{Importar nuestra Documentación}\\
-A la hora de importar nuestra documentación debemos estar registrados, tras ello, podemos vincular dicha cuenta a la de \emph{GitHub} permitiendo así que \emph{Read the Docs} muestre una lista de repositorios que se pueden importar a \emph{Read the Docs}. A la hora de importar uno de nuestros repositorio, es hora de configurar el \emph{webhook}\footnote{Método de alterar una aplicación o página web, con callbacks personalizados.En este caso son gestionados por \emph{GitHub}, con cada commit o merge, este se lo notifica a \emph{Read the Docs}} de nuestro repositorio, se encargaŕa de notificar cuando hay un cambio en nuestro código fuente para generar de nuevo la documentación.\\
+A la hora de importar nuestra documentación debemos estar registrados, tras ello, podemos vincular dicha cuenta a la de \emph{GitHub} permitiendo así que \emph{Read the Docs} muestre una lista de repositorios que se pueden importar a \emph{Read the Docs}. A la hora de importar uno de nuestros repositorio, es hora de configurar el \emph{webhook}\footnote{Método de alterar una aplicación o página web, con callbacks personalizados. En este caso son gestionados por \emph{GitHub}, con cada commit o merge, este se lo notifica a \emph{Read the Docs}} de nuestro repositorio, se encargaŕa de notificar cuando hay un cambio en nuestro código fuente para generar de nuevo la documentación.\\
 Una vez importado el repositorio y configurado el \emph{webhook}, nuestra documentación se generará automáticamente. ¿Como lo genera \emph{Read the Docs} a partir del repositorio?\\
 Lo primero que hace es mirar dos cosas, el tipo de documentación (\emph{Sphinx} o \emph{MkDocs}) y el repositorio. Dependiendo del tipo \emph{Read the Docs} actuará de una manera u otra.
 \begin{itemize}
@@ -354,7 +316,7 @@ En los casos normales la versión \emph{latest} apuntará al código más actual
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.25]{img/example_RTD.png}
-    \caption{Ejemplo de documentación generada por \emph{Read the Docs}}
+    \caption{Ejemplo de documentación generada por \emph{Read the Docs} \\Fuente: \url{https://sphinx-autoapi.readthedocs.io/en/latest/}}
     \label{fig:exampleRTD}
 \end{figure}
 Con todo esto tenemos una manera sencilla de generar la documentación de nuestro proyecto de una manera rápida, sencilla, sincronizada con el desarrollo y automática.
@@ -473,26 +435,7 @@ Layout es una plantilla donde \emph{Jekyll} incrustará el contenido escrito en 
   someone@example.com</a>.</p>
 \end{lstlisting}
 La herramienta que mas optimiza el trabajo a la hora de elaborar estas plantillas de la que hace uso \emph{Jekyll} es \emph{Liquid}. Este lenguaje que tratamos  en \ref{subsec:markdo} hace uso de variables, donde estas son etiquetas, objetos y filtros. Además cualquier archivo \emph{Jekyll} es accesible mediante variables vía \emph{Liquid}. Estas variables pueden ser el título del sitio web (establecido en \texttt{\_config.yml}). La variable más importante es \texttt{\{\{content\}\}}, ya que en ella es donde \emph{Jekyll} incrustará el contenido escrito en texto plano. Un ejemplo sencillo de un layout sería el siguiente:
-\begin{lstlisting}[style=htmlcssjs,caption=Layout Básico]
-<!doctype html>
-<html lang="en">
-  <head>
-    {{include head.html}}
-  </head>
-  <body>
-    <nav>
-        {{include nav.html}}
-    </nav>
-    <h1>{{ page.title }}</h1>
-    <section>
-      {{ content }}
-    </section>
-    <footer>
-        {{ include footer.html }}
-    </footer>
-  </body>
-</html>
-\end{lstlisting}
+
 \textbf{\large{Escribiendo contenido}} \\
 Una vez que ya tenemos nuestro layout, es hora de crear el contenido con el que poder construir nuestro sitio web. No es necesario tener conocimientos de HTML, solo escribir contenido en texto plano. \\
 A la hora de escribirlo la parte más importante es la denominada como \emph{Front Matter}, ya que cualquier documento que lo contenga, \emph{Jekyll} lo tratará como un fichero especial. Esté debe ser el primer elemento de nuestro fichero, y debe seguir la forma de lenguaje \emph{YAML} entre tres guiones.
@@ -523,4 +466,41 @@ jekyll build #Genera el contenido web
 \label{subsec:jekandGit}
 Ya tenemos nuestro servidor mediante el servicio \emph{GitHub Pages}, y para el contenido \emph{Jekyll}, pero ¿Cómo actualizamos nuestra web?¿Cada vez que creamos contenido es necesario actualizar repositorio y ejecutar \emph{Jekyll} por separado?. \\
 \emph{GitHub} esta integrado junto con Jekyll, lo que quiere decir que cuando creamos contenido y este lo comprometemos (committed), \emph{Jekyll} se encargaŕa de generar el contenido tal y como observamos en la figura \ref{fig:jekyllProc2}. \\
-Hay que destacar la herramienta Bundler que introduciamos en \ref{subsec:jekyll}, ya que nos ayuda a mantener las dependencias actualizadas. La versión de la web subida en GitHub puede estar desfasada con la que tenemos desarrollada en local 
+Hay que destacar la herramienta Bundler que introduciamos en \ref{subsec:jekyll}, ya que nos ayuda a mantener las dependencias actualizadas. La versión de la web subida en GitHub puede estar desfasada con la que tenemos desarrollada en local.
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%
+        % LIQUID
+        %%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Liquid}
+\label{subse:liquid}
+\emph{Liquid} es un lenguaje de plantillas de código abierto creado por Shopify y escrito en Ruby. Se utiliza para cargar contenido dinámico en los contenidos de las páginas web.
+
+\subsection*{¿Cómo funciona \emph{Liquid?}}
+El código de  \emph{Liquid} se puede categorizar en tres partes:
+\begin{itemize}
+    \item \textbf{Objetos:} estos objetos indican donde mostrar el contenido en una página. Los objetos y variables estarán denotados por \texttt{\{\{ \}\}}.
+    \begin{lstlisting}[caption=Input. Objetos]
+    {{ page.title }}
+    \end{lstlisting}
+    \begin{lstlisting}[caption=Output. Objetos]
+    Liquid Basics 
+    \end{lstlisting}
+    \item \textbf{Etiquetas:} Crean la lógica y el control de flujo para las plantillas, vendrán entre llaves y el caracter de porcentaje ( \texttt{\{\%  \%\}} ). El lenguaje utilizado en las etiquetas no produce ningún texto visible, esto significa que puede asignar variables y crear condiciones o bucles sin mostrar nada en la página.
+    \begin{lstlisting}[caption=Input. Etiquetas]
+        {% if user %}
+            Hello {{ user.name }}!
+        {% endif %}
+    \end{lstlisting}
+    \begin{lstlisting}[caption=Output. Etiquetas]
+        Hello Adam
+    \end{lstlisting}
+    \item \textbf{Filtros:} Los filtros cambian la salida de un objeto de \emph{Liquid}. Se utilizan dentro de una salida, es decir, entre la doble llave ( \texttt{\{\{ \}\}} ), y vienen separados por \texttt{|}.
+    \begin{lstlisting}[caption=Input. Filtros]
+    {{ "/my/fancy/url" | append: ".html" }}
+    \end{lstlisting}
+    \begin{lstlisting}[caption=Output. Filtros]
+    /my/fancy/url.html
+    \end{lstlisting}
+\end{itemize}
+
+Como ya hemos mencionado \emph{Liquid} es usado en diversos \emph{frameworks} de contenido web. En nuestro caso, para \emph{Jekyll}, se crearon sus propios objetos, etiquetas y filtros, estableciendo así \emph{Jekyll Liquid}. Para conocer estos, vienen detalladamente explicados  en la página web de  documentación sobre sus plantillas \footnote{\url{https://jekyllrb.com/docs/liquid/}}.

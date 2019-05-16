@@ -1,0 +1,47 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           APÉNDICE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+\chapter{Anexo Capítulo 2}
+
+\section{Layout Básico}
+\begin{lstlisting}[style=htmlcssjs,caption=Layout Básico]
+<!doctype html>
+<html lang="en">
+  <head>
+    {{include head.html}}
+  </head>
+  <body>
+    <nav>
+        {{include nav.html}}
+    </nav>
+    <h1>{{ page.title }}</h1>
+    <section>
+      {{ content }}
+    </section>
+    <footer>
+        {{ include footer.html }}
+    </footer>
+  </body>
+</html>
+\end{lstlisting}
+
+\chapter{Anexo Capítulo 3}
+
+\section{Output PEP}
+
+\begin{lstlisting}[language=sh, caption=Ejemplo de PEP8 con \emph{PyCardio},label={code:pep8}]
+$ pep8 HRV.py
+HRV.py:3:79: W291 trailing whitespace
+HRV.py:5:80: E501 line too long (83 > 79 characters)
+HRV.py:5:84: W291 trailing whitespace
+HRV.py:6:80: E501 line too long (80 > 79 characters)
+HRV.py:18:1: E302 expected 2 blank lines, found 1
+HRV.py:19:1: W293 blank line contains whitespace
+HRV.py:21:34: W291 trailing whitespace
+HRV.py:23:1: W293 blank line contains whitespace
+HRV.py:24:1: W293 blank line contains whitespace
+HRV.py:25:5: E303 too many blank lines (2)
+HRV.py:27:80: E501 line too long (89 > 79 characters)
+\end{lstlisting}

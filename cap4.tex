@@ -7,35 +7,45 @@ Tras la gestión necesaria de código que hemos creído oportuna para PyCardio. 
 
 Para mostrar la web, el proceso que seguirá esta memoria es la de ir sección por sección donde enseñamos tanto el resultado como la implementación que sigue.
 
-Antes de comenzar, debemos destacar que dicha web se ha implementado utilizando una plantilla adquirida por el equipo de la universidad y diseñada por el equipo WrapBootstrap, esta plantilla se la conoce en dicho servicio como Unify. 
+Antes de comenzar, debemos destacar que dicha web se ha implementado utilizando una plantilla adquirida por el equipo de la universidad y diseñada por el equipo WrapBootstrap, esta plantilla se la conoce en dicho servicio como Unify. El mapa de la propuesta que vamos a tratar es el representado por la figura \ref{fig:mapaWeb}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{img/mapaWeb.png}
+    \caption{Mapa Web de PyCardio}
+    \label{fig:mapaWeb}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                       HOME
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Home}
+\section[Home]{Home \footnote{\url{https://javierfm27.github.io/}}}
 \label{sec:homeWeb}
-Nada más acceder en la web de PyCardio, nos encontramos en el home de la página. El Home se ha implementado de manera que sea lo más visual y sencillo para el usuario, de modo que nada más entrar se nos ofrece la interfaz de todas las secciones, una breve descripción de qué es PyCardio, y los enlaces para redirigirnos a la documentación alojada en Read The Docs, y al código de software a la última release alojada en GitHub. 
+Nada más acceder en la web de PyCardio, nos encontramos en el Home de la página. El Home se ha implementado de manera que sea lo más visual y sencillo para el usuario, de modo que nada más entrar se nos ofrece la interfaz de todas las secciones, una breve descripción de qué es PyCardio, y los enlaces para redirigirnos a la documentación alojada en Read The Docs, y al código de software a la última release alojada en GitHub. \\
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \subfloat[Captura de  Home 1]{
-        \includegraphics[width=0.3\textwidth]{img/home_1.png}
+        \includegraphics[width=0.8\textwidth]{img/home_1.png}
         \label{fig:home1}
-        }
+    }\par
     \subfloat[Captura de Home 2]{
-        \includegraphics[width=0.3\textwidth]{img/home_2.png}
+        \includegraphics[width=0.8\textwidth]{img/home_2.png}
         \label{fig:home2}
-    }
+    }\par
     \subfloat[Captura de Home 3]{
-        \includegraphics[width=0.3\textwidth]{img/home_3.png}
+        \includegraphics[width=0.8\textwidth]{img/home_3.png}
         \label{fig:home3}
     }
     \caption{Home de PyCardio}
     \label{fig:homePyCardio}
 \end{figure}
 
-Para su implementación, lo primero que se realiza es la creación de un fichero \texttt{index} en la raíz del proyecto, donde Jekyll interpretará que dicho fichero será el HTML principal de la web. El fichero puede ser escrito como ya se ha comentado, en MarkDown o en lenguaje de marcado HTML, en nuestro caso, MarkDown. El fichero solo se compone de un Front Matter en el que se llama al layout de Main, y a su vez proporciona el título de la página principal.
-\begin{lstlisting}[language=yaml,caption=index.md. Fichero de home de PyCardio,label=co]
+Para su implementación, lo primero que se realiza es la creación de un fichero \texttt{index} en la raíz del proyecto, donde Jekyll interpretará que dicho fichero será el HTML principal de la web. El fichero puede ser escrito como ya se ha comentado, en MarkDown o en lenguaje de marcado HTML, en nuestro caso, MarkDown. El fichero solo se compone de un Front Matter en el que se llama al layout de Main, y a su vez proporciona el título de la página principal. \\
+
+
+
+\begin{lstlisting}[language=yaml,caption=index.md. Fichero de Home de PyCardio,label=co]
     ---
 layout: main
 title: PyCardio Home
@@ -53,18 +63,18 @@ El contenido del layout main se compondrá de lenguaje HTML. Este contenido adem
 
 Si observamos las imágenes de la figura \ref{fig:homePyCardio} podemos ver que en el layout referenciado (\texttt{ main.html})  tendremos los includes de \texttt{footer.html} y \texttt{header.html}, además de los de CSS y Javascript, estos procurarán ir en todas las páginas de la web. 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \subfloat[header]{
-        \includegraphics[width=0.3\textwidth]{img/header.png}
+        \includegraphics[width=\textwidth]{img/header.png}
         \label{fig:includHeader}
-        }
+    }\par
     \subfloat[breadcrumber]{
-        \includegraphics[width=0.3\textwidth]{img/breadc.png}
+        \includegraphics[width=\textwidth]{img/breadc.png}
         \label{fig:includBread}
-    }
+    }\par
     \subfloat[footer]{
-        \includegraphics[width=0.3\textwidth]{img/footer.png}
+        \includegraphics[width=\textwidth]{img/footer.png}
         \label{fig:includFooter}
     }
     \caption{Includes de PyCardio}
@@ -76,9 +86,9 @@ Antes de pasar a tratar la siguiente sección de la web, cabe mencionar que se c
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                       ABOUT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{About}
+\section[About]{About \footnote{\url{https://javierfm27.github.io/about/}}}
 \label{sec:aboutWeb}
-Esta sección de la web trata de dar una vista general de todos aquellos que han formado parte del proyecto PyCardio, tanto para su parte de desarrollo de software como en la parte de implementación de la web. 
+Esta sección (About\footnote{\url{https://javierfm27.github.io/about/}}) de la web trata de dar una vista general de todos aquellos que han formado parte del proyecto PyCardio, tanto para su parte de desarrollo de software como en la parte de implementación de la web. 
 
 \begin{figure}[H]
     \centering
@@ -189,7 +199,7 @@ title: People
     </div>
 \end{lstlisting}
 
-Antes de continuar probablemente os hayáis preguntado el porqué de otro fichero \texttt{index} si ya habíamos diseñado uno para el \texttt{home} de nuestra web. Pues bien,  cuando tenemos varias páginas en nuestra página web, lo más eficaz es seguir un orden en los directorios. Por lo tanto si estamos desarrollando la sección \texttt{about}, tengamos en un directorio \texttt{/about/}, todos aquellos contenidos que compondrán esta sección. De manera que, para Jekyll, el fichero en el directorio \texttt{/about/index.html}, será el fichero principal para esa sección.
+Antes de continuar probablemente os hayáis preguntado el porqué de otro fichero \texttt{index} si ya habíamos diseñado uno para el Home de nuestra web. Pues bien,  cuando tenemos varias páginas en nuestra página web, lo más eficaz es seguir un orden en los directorios. Por lo tanto si estamos desarrollando la sección \texttt{about}, tengamos en un directorio \texttt{/about/}, todos aquellos contenidos que compondrán esta sección. De manera que, para Jekyll, el fichero en el directorio \texttt{/about/index.html}, será el fichero principal para esa sección.
 
 Así si escribimos un hiperenlace en nuestro web escribiendo \texttt{\{\{site.url\}\}/about/} \footnote{\texttt{\{\{site.url\}\}} es una variable del \textit{framework} Jekyll definido en el fichero de configuración(\texttt{config.yml}) donde obtenemos la dirección URL del sitio web}, nos mostrará el contenido generado por \texttt{index.html} en nuestro directorio \texttt{/about/}.
 
@@ -233,7 +243,7 @@ En este caso el uso que hacemos de la información es el dado por \texttt{\{\{pa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                       DOCUMENTATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Documentation}
+\section[Documentation]{Documentation \footnote{\url{https://javierfm27.github.io/documentation/overview.html}}}
 \label{sec:docWeb}
 
 Apartado donde se da a conocer el software desarrollado, para ello esta sección se divide en dos, donde por una parte se trata el paquete con una perspectiva general de su utilidad, de lo que trata y de los módulos que lo componen y por otro lado se da a conocer de todas las funciones que componen PyCardio, es decir, la documentación de funciones, módulos, y clases del software.
@@ -278,21 +288,21 @@ Antes de mostrar el contenido de este apartado es de mencionar que está incompl
 
 
 
-\subsection*{Getting Started}
+\subsection[Getting Started]{Getting Started \footnote{\url{https://javierfm27.github.io/tutorials/getting_started.html}}}
 El contenido web de esta subsección de \textit{tutorials} se centra en enseñar como instalar el paquete y como aplicarlo. Al no disponer de la información de como usar el paquete, se ha procedido a implementar una plantilla para su uso futuro cuando se disponga de mas información. En dicha plantilla podemos distinguir trozos de inserción de código, gráficas y texto. 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \subfloat[Captura de  Getting Started 1]{
-        \includegraphics[width=0.3\textwidth]{img/gettin_1.png}
+        \includegraphics[width=0.7\textwidth]{img/gettin_1.png}
         \label{fig:gettinWeb1}
-    }
+    }\par
     \subfloat[Captura de  Getting Started 2]{
-        \includegraphics[width=0.3\textwidth]{img/gettin_2.png}
+        \includegraphics[width=0.7\textwidth]{img/gettin_2.png}
         \label{fig:gettinWeb2}
-    }
+    }\par
     \subfloat[Captura de  Getting Started 3]{
-        \includegraphics[width=0.3\textwidth]{img/gettin_3.png}
+        \includegraphics[width=0.7\textwidth]{img/gettin_3.png}
         \label{fig:gettinWeb3}
     }
     \caption{Subsección Getting Started de Tutorials }
@@ -329,22 +339,22 @@ Prueba de la variable de entorno de file.path -> {{site.path_assets}}
 
 Si observamos las  últimas líneas del Listing \ref{code:gettingMark} podemos ver que también es posible escribir HTML en nuestro contenido, aunque el archivo sea de tipo MarkDown.
 
-\subsection*{Tutorial HRV}
+\subsection[Tutorial HRV]{Tutorial HRV \footnote{\url{https://javierfm27.github.io/tutorials/hrv.html}}}
 Tomando la plantilla escrita para la sección de \textit{getting started} en la que insertamos gráficas, código y escribimos texto plano se ha implementado la sección de tutorial HRV usando la información que se ha proporcionado por los creadores de \textit{PyCardio} a través de un \textit{jupyter notebook}\footnote{Entorno de trabajo interactivo que permite desarrollar en código Python.} pudiendo así mostrar en la web una guía de como utilizar este módulo. 
 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \subfloat[Captura de HRV 1]{
-        \includegraphics[width=0.3\textwidth]{img/hrv_1.png}
+        \includegraphics[width=0.7\textwidth]{img/hrv_1.png}
         \label{fig:hrvWeb1}
-    }
+    }\par
     \subfloat[Captura de HRV 2]{
-        \includegraphics[width=0.3\textwidth]{img/hrv_2.png}
+        \includegraphics[width=0.7\textwidth]{img/hrv_2.png}
         \label{fig:hrvWeb2}
-    }
+    }\par
     \subfloat[Captura de HRV 3]{
-        \includegraphics[width=0.3\textwidth]{img/hrv_3.png}
+        \includegraphics[width=0.7\textwidth]{img/hrv_3.png}
         \label{fig:hrvWeb3}
     }
     \caption{Subsección HRV de Tutorials}
@@ -357,7 +367,7 @@ Si examinamos las capturas realizadas de la sección en la figura \ref{fig:hrvWe
 %                       CONTACT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Contact}
+\section[Contact]{Contact \footnote{\url{https://javierfm27.github.io/contact/}}}
 \label{sec:contactWeb}
 Contenido web centrado en mostrar quién es el autor del paquete \textit{PyCardio} dando información de trayectoria, dedicación y proyectos en los que ha colaborado o autorizado. Además, se incluye un formulario con la intención de sugerir dudas, inscribirse al blog de la web y así como recibir información de futuras \textit{releases}.
 
@@ -464,7 +474,7 @@ Un ejemplo de lo conseguido por estos tres pasos es el mostrado en la figura \re
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                       RELEASE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Release}
+\section[Release]{Release \footnote{\url{https://javierfm27.github.io/releases/}}}
 \label{sec:releaseWeb}
 
 En este lugar de la web se incluirá todos los \textit{posts} que se publicarán informando de las nuevas características y funcionalidades correspondientes a las \textit{releases} que se vayan lanzando. El aspecto que tendrá esta página es sencilla, de modo que en el panel lateral tendremos un listado de todos los \textit{posts} publicados hasta el momento, y de manera más visual y mostrando un breve contenido de las tres últimas publicaciones. 
@@ -526,7 +536,7 @@ El resultado del Listing \ref{code:release1} es el mostrado por la figura \ref{f
 %                       BLOG
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Blog}
+\section[Blog]{Blog \footnote{\url{https://javierfm27.github.io/blog/}}}
 \label{sec:blogWeb}
 Porción de la web centrada en mostrar todas las publicaciones que se escriben referente al \textit{software} de \textit{PyCardio} como nuevos usos que se han dado de este, noticias sobre su próximo lanzamiento, así como  publicaciones de los autores. Para su aspecto \textit{web} se ha seguido el mismo razonamiento de sencillez  de \ref{sec:releaseWeb} solo que, para esta sección, se ha cambiado el aspecto además de la adición de tres enlaces en el panel lateral. 
 
