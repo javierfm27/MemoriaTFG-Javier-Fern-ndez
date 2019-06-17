@@ -3,6 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \appendix
+
 \chapter{Anexo Capítulo 2}
 
 \section{Layout Básico}
@@ -45,3 +46,212 @@ HRV.py:24:1: W293 blank line contains whitespace
 HRV.py:25:5: E303 too many blank lines (2)
 HRV.py:27:80: E501 line too long (89 > 79 characters)
 \end{lstlisting}
+
+\section{\texttt{travis.yml} de PyCardio}
+\begin{lstlisting}[caption={\texttt{.travis.yml} de PyCardio},label=travisPyCardio]
+language: python
+python:
+  - "2.7"
+install:
+  - pip install -r requirements.txt
+\end{lstlisting}
+
+\section{\texttt{travis.yml} para CodeCov}
+\begin{lstlisting}[caption={\texttt{.travis.yml} para integrar CodeCov},label=travisCodecov]
+language: python
+python:
+  - "2.7"
+install:
+  - pip install -r requirements.txt
+  - pip install coverage
+script: coverage run tests.py
+after_success:
+    - codecov
+\end{lstlisting}
+
+\section{\texttt{HRV.py}}
+\begin{lstlisting}[language=python,caption=HRV.py,label=docstring]
+""" 
+ HRV.py 
+ ====================================================================
+ docstring of a HRV module
+ Calculates from the RR intervals the statistical time domain variables and the geometrical variables to characterize the heart rate variability (HRV).The RR intervals used are all of them previous to valid tachograms according to the conditions evaluated in the characterization of the heart rate turbulence (HRT). 
+ """
+ class HRV(object):
+    """ docstring of a HRV object """
+    def beat_label_filter(self, beat_labels, numBeatsAfterV = 4):
+        """
+        docstring of a function of HRV class
+        Function that identifies non-normal beats, and filters the rr signal to produce a vector identifying the positions where are non-normal beats.
+
+        Input arguments:
+            numBeatsAfterV <= 4
+        Output arguments:
+            ind_not_N:  has 1 in the position where there is a non-sinusal beat as classified by the label information.
+        """
+\end{lstlisting}
+
+\section{\texttt{index.rst}}
+\begin{lstlisting}[caption=\texttt{index.rst},label=index]
+Welcome to PyCardio's documentation!
+====================================
+
+Python module to perform Cardiac Signal Analysis, namely:
+  * **ECG analysis**: QRS detection, RR-interval time series extraction, ECG complete delineation
+  * **Heart Rate Variability analysis**: Complete analysis from RR-interval time series:
+    * Preprocessing
+    * Time Domain Analysis
+    * Frequency Domain Analysis
+    * Nonlinear Analysis
+    * Time-Frequency analysis
+  * **Heart Rate Turbulence** analysis
+  * **Atrial Fibrillation** analysis: both in ECG and intracavitary electrograms.
+  * **Ventricular Fibrillation** Analysis
+  * **Arrhythmia** analysis on 24 holter
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents:
+
+   HRV
+
+\end{lstlisting}
+
+\chapter{Anexo Capítulo 4}
+\section{\texttt{layout Page}}
+
+\begin{lstlisting}[style=htmlcssjs,caption=Layout Page,label={code:layoutPage}]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Title -->
+  <title>{{page.title}} | PyCardio</title>
+
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+  {% if page.url == "/404.html" %}
+  <meta http-equiv="refresh" content="5; url=/">
+  {% endif %}
+
+
+  {% include css.html %}
+  {% include js.html%}
+
+</head>
+
+<body>
+  {% include header.html %}
+  
+  {% include breadc.html %}
+
+  <div class="container g-mt-50 g-mb-60">
+    {{ content }}
+  </div>
+
+  {% include footer.html %}
+
+  {% include script.html%}
+</body>
+\end{lstlisting}
+
+\section{\texttt{index.html} de About}
+\begin{lstlisting}[style=htmlcssjs,caption=index.html de About,label={code:about}]
+---
+layout: page
+title: People
+---
+<div class="container">
+  <br>
+  <!-- HEADING  MAINTAINERS-->
+  <div class="shortcode-html">
+    <div class="u-heading-v6-2 g-mb-20">
+      <h2 class="h3 u-heading-v6__title g-brd-primary">Maintainers</h2>
+    </div>
+  </div>
+  <!-- END HEADING MAINTAINERS-->
+
+  <!-- TEAM BLOCK -->
+  <div class="row">
+    <div class="col-lg-4 g-mb-30">
+      <!-- Figure -->
+      <figure class="u-shadow-v19 g-bg-white g-rounded-4 g-pa-25">
+        <div class="media g-mb-20">
+          <div class="d-flex g-mr-20">
+            <!-- Figure Image -->
+            <div class="g-brd-around g-brd-3 g-brd-gray-light-v3 rounded-circle">
+              <img class="rounded-circle g-width-50 g-height-50" src="../../assets/img-temp/100x100/img7.jpg" alt="Image Description">
+            </div>
+            <!-- Figure Image -->
+          </div>
+          <div class="media-body">
+            <!-- Figure Info -->
+            <h4 class="h5 g-mb-2"><a href="https://gestion2.urjc.es/pdi/ver/oscar.barquero#tab_1_5">Oscar Barquero</a></h4>
+            <div class="d-block">
+              <i class="g-color-primary g-font-size-default icon-location-pin"></i>
+              <span class="g-color-gray-dark-v4 g-font-size-13">Madrid, ESP</span>
+            </div>
+            <!-- End Figure Info -->
+          </div>
+        </div>
+
+        <p>Data Scientist in biological and biomedical applications</p>
+      </figure>
+      <!-- End Figure -->
+    </div>
+\end{lstlisting}
+
+
+\section{\texttt{getting\_started.md}}
+\begin{lstlisting}[language=yaml,caption=getting\_started.md,label={code:gettingMark}]
+  ---
+layout: page
+title: Getting Started
+---
+<!-- TUTORIALS EXAMPLE -->
+<!-- TEXT -->
+## TEST TUTORIALS - TITLE
+
+# Aquas nam postquam limes manus
+
+## Nondum furtim dummodo Iunonia
+
+Lorem markdownum longis. Vobis fugiunt restitit vir urbis ipsum sunt circuiere
+sit nec illum frustraque ut.
+
+1. Multa et
+2. An concursum saepe
+3. Sine corpus
+
+Prueba de la variable de entorno de file.path -> {{site.path_assets}}
+
+<!-- Al necesitar reescalarla, tenemos que incluirla mediante HTML -->
+<img alt="example" src="/assets/img/maps/Figure_test.png" width="500" height="200">
+\end{lstlisting}
+
+\section{Ejemplo de Publicación de Blog}
+\begin{lstlisting}[caption=Ejemplo de publicación de Blog,label={code:blogMD}]
+---
+layout: blog
+title: HRV is ready!
+author: obarquero
+published: true
+category: [blog]
+permalink: /:categories/:year/:month/:title
+---
+We are pleased to report that we launched our first module. HRV.
+
+This class allows to perform a basic Heart Rate Variability Analysis from an RR-Interval time series. It is supposed that a numpy array (n_samples, 1) with RR intervals is available, as well as beat label numpy array vector.
+
+For complete documentation go to [documentation](https://pycardio.readthedocs.io/en/latest/?badge=latest) or if you prefer take a look at our first [tutorial]({{site.url}}/tutorials/hrv.html).
+
+Go Ahead!
+\end{lstlisting}
+
+

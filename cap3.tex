@@ -143,7 +143,7 @@ Para la parte de integración continua se usará en nuestro proyecto Travis, ya 
 
 Como integración continua se conoce a una práctica de \emph{software} que consiste en que los desarrolladores que estarán enviando cambios de forma periódica al repositorio compartido, se ejecuten pruebas de unidad en los nuevos cambios para identificar cualquier error. Lo que permite que tengamos siempre (tras cada cambio introducido) un \emph{software} libre de errores para probarlo antes de la fase de producción. \\
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \framebox[\textwidth]{%
 \begin{minipage}{0.9\textwidth}
@@ -168,13 +168,7 @@ Como integración continua se conoce a una práctica de \emph{software} que cons
 \label{fig:travisDir}
 \end{figure}
 El contenido del fichero \texttt{.travis.yml} para nuestro proyecto es el dado por la extracción de código \ref{travisPyCardio}. 
-\begin{lstlisting}[caption={\texttt{.travis.yml} de PyCardio},label=travisPyCardio]
-language: python
-python:
-  - "2.7"
-install:
-  - pip install -r requirements.txt
-\end{lstlisting}
+
 Observando el contenido del fichero, podemos diferenciar tres opciones:
 \begin{itemize}
     \item \textbf{Language}: En esta opción indicamos a Travis el lenguaje del proyecto.
@@ -188,78 +182,14 @@ Una de las opciones que no están incluidas en nuestro fichero \texttt{.travis.y
 Para apoyar la integración continua de nuestro proyecto, usaremos CodeCov. Nos aportará una medida de la cobertura que tenemos de pruebas de código sobre nuestro proyecto. \\
 Para integrarlo en nuestro proyecto basta con conectarse a dicho servicio mediante GitHub, y modificar nuestro fichero \texttt{.travis.yml} quedando así como el de la figura \ref{travisCodecov}
 
-\begin{lstlisting}[caption={\texttt{.travis.yml} para integrar CodeCov},label=travisCodecov]
-language: python
-python:
-  - "2.7"
-install:
-  - pip install -r requirements.txt
-  - pip install coverage
-script: coverage run tests.py
-after_success:
-    - codecov
-\end{lstlisting}
-
 Al usar Travis para la integración continua, basta con añadir en el archivo  \textit{travis.yml} que tras la ejecución de las pruebas de código (mediante el comando \texttt{coverage run tests.py}) se ejecute el comando \texttt{codecov} donde se enviará el informe de cobertura a CodeCov. 
 
 \subsection*{Read The Docs}
 \label{subusub:rtd}
 Como ya hemos comentado en el capítulo \ref{chap:Arqui} Read The Docs simplifica y automatiza la documentación de un proyecto desarrollado en Python. La documentación la cual Read The Docs usa para su servicio es la generada por dos herramientas MkDocs o Sphinx. Para PyCardio se ha hecho uso de la herramienta Sphinx. \\
 ¿Cómo trabaja Sphinx? La documentación que esta herramienta genera, lo hace a partir de documentos con lenguaje de marcado \textit{restructuredtext}. Estos ficheros los convierte en formato web (HTML), PDF o epub. \\
-
-
-En nuestro caso, en vez de escribir la documentación de las funcionalidades de dichos módulos directamente en los documentos con el lenguaje de marcado mencionado ,usaremos la función \texttt{autodoc} de Sphinx, donde se generará documentación a partir de los \textit{docstrings} contenidos en el código, pero ¿qué es un \textit{docstring} de una clase, módulo o función?. Una de las prácticas que se debe llevar a cabo para un proyecto es la de tener correctamente detallada y documentada la funcionalidad de este. Para un proyecto Python usualmente se usa \textit{docstring}, que no es más que una cadena de texto que precede el código de una función, clase u objeto. Para nuestro ejemplo en la extracción de código \ref{docstring} observamos la documentación realizada al módulo \texttt{HRV.py} donde se muestra docstring del módulo, de la clase \texttt{HRV} y de la función \texttt{beat\_label\_filter}.
-
-\begin{lstlisting}[language=python,caption=HRV.py,label=docstring]
-""" 
- HRV.py 
- ====================================================================
- docstring of a HRV module
- Calculates from the RR intervals the statistical time domain variables and the geometrical variables to characterize the heart rate variability (HRV).The RR intervals used are all of them previous to valid tachograms according to the conditions evaluated in the characterization of the heart rate turbulence (HRT). 
- """
- class HRV(object):
-    """ docstring of a HRV object """
-    def beat_label_filter(self, beat_labels, numBeatsAfterV = 4):
-        """
-        docstring of a function of HRV class
-        Function that identifies non-normal beats, and filters the rr signal to produce a vector identifying the positions where are non-normal beats.
-
-        Input arguments:
-            numBeatsAfterV <= 4
-        Output arguments:
-            ind_not_N:  has 1 in the position where there is a non-sinusal beat as classified by the label information.
-        """
-\end{lstlisting}
-
-Una vez que tenemos nuestra implementación documentada tal y como se muestra con \textit{docstrings} necesitamos indicar en un documento \textit{restructuredtext} las funciones de las cuales vamos a generar su documentación, ya que Sphinx solo procesará aquellos documentos con dicho lenguaje de marcado. En nuestro caso, vamos a mostrar un caso sencillo en el que para la página principal de la documentación se mostrará la breve descripción\footnote{Dicha descripción es la misma que contiene el README.md del proyecto} del paquete de PyCardio y un enlace a la documentación del módulo HRV del paquete, del cual es el único del que disponemos de su documentación. \\
-Este \texttt{index.rst} (página principal de nuestra documentación) esta compuesto por el código \ref{index}
-\begin{lstlisting}[caption=\texttt{index.rst},label=index]
-Welcome to PyCardio's documentation!
-====================================
-
-Python module to perform Cardiac Signal Analysis, namely:
-  * **ECG analysis**: QRS detection, RR-interval time series extraction, ECG complete delineation
-  * **Heart Rate Variability analysis**: Complete analysis from RR-interval time series:
-    * Preprocessing
-    * Time Domain Analysis
-    * Frequency Domain Analysis
-    * Nonlinear Analysis
-    * Time-Frequency analysis
-  * **Heart Rate Turbulence** analysis
-  * **Atrial Fibrillation** analysis: both in ECG and intracavitary electrograms.
-  * **Ventricular Fibrillation** Analysis
-  * **Arrhythmia** analysis on 24 holter
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Contents:
-
-   HRV
-
-\end{lstlisting}
-En este código observamos aparte de contenido plano, unas directivas, que son funciones del lenguaje \textit{restructuredtext}. La utilizada en esta página principal es \texttt{toctree} donde se indica cuál va a ser el árbol de nuestra documentación, en nuestro ejemplo, indicamos que como máximo sera de un nivel con la opción \texttt{maxdepth} y que tenemos como contenido HRV. Con la opción \texttt{contents}  indicamos que tenemos un contenido y que este es HRV. Sphinx buscará un documento el cual sea de nombre HRV y de lenguaje \textit{restructuredtext}, es decir, \texttt{HRV.rst}, en el cual se incluirá la estructura o contenido para la sección HRV, en este caso, para la página HTML del módulo HRV. \\
-El contenido de \texttt{HRV.rst} es el dado por el código \ref{hrv}, que como vemos hacemos uso de la opción \texttt{autodoc} de sphinx. Para ello, indicamos donde debe hacer el uso de dicha opción con la directiva \texttt{automodule}, indicando de que módulo generamos la documentación. \begin{lstlisting}[caption=\texttt{HRV.rst},label=hrv]
+En nuestro caso, en vez de escribir la documentación de las funcionalidades de dichos módulos directamente en los documentos con el lenguaje de marcado mencionado ,usaremos la función \texttt{autodoc} de Sphinx, donde se generará documentación a partir de los \textit{docstrings} contenidos en el código, pero ¿qué es un \textit{docstring} de una clase, módulo o función?. Una de las prácticas que se debe llevar a cabo para un proyecto es la de tener correctamente detallada y documentada la funcionalidad de este. Para un proyecto Python usualmente se usa \textit{docstring}, que no es más que una cadena de texto que precede el código de una función, clase u objeto. Para nuestro ejemplo en la extracción de código \ref{docstring} observamos la documentación realizada al módulo \texttt{HRV.py} donde se muestra docstring del módulo, de la clase \texttt{HRV} y de la función \texttt{beat\_label\_filter}. \\
+\begin{lstlisting}[caption=\texttt{HRV.rst},label=hrv]
 Module HRV
 ==================
 
@@ -268,9 +198,14 @@ Module HRV
 
 \end{lstlisting}
 
+Una vez que tenemos nuestra implementación documentada tal y como se muestra con \textit{docstrings} necesitamos indicar en un documento \textit{restructuredtext} las funciones de las cuales vamos a generar su documentación, ya que Sphinx solo procesará aquellos documentos con dicho lenguaje de marcado. En nuestro caso, vamos a mostrar un caso sencillo en el que para la página principal de la documentación se mostrará la breve descripción\footnote{Dicha descripción es la misma que contiene el README.md del proyecto} del paquete de PyCardio y un enlace a la documentación del módulo HRV del paquete, del cual es el único del que disponemos de su documentación. \\
+
+Este \texttt{index.rst} (página principal de nuestra documentación) esta compuesto por el código \ref{index}. En este código observamos aparte de contenido plano, unas directivas, que son funciones del lenguaje \textit{restructuredtext}. La utilizada en esta página principal es \texttt{toctree} donde se indica cuál va a ser el árbol de nuestra documentación, en nuestro ejemplo, indicamos que como máximo sera de un nivel con la opción \texttt{maxdepth} y que tenemos como contenido HRV. Con la opción \texttt{contents}  indicamos que tenemos un contenido y que este es HRV. Sphinx buscará un documento el cual sea de nombre HRV y de lenguaje \textit{restructuredtext}, es decir, \texttt{HRV.rst}, en el cual se incluirá la estructura o contenido para la sección HRV, en este caso, para la página HTML del módulo HRV. \\
+El contenido de \texttt{HRV.rst} es el dado por el código \ref{hrv}, que como vemos hacemos uso de la opción \texttt{autodoc} de sphinx. Para ello, indicamos donde debe hacer el uso de dicha opción con la directiva \texttt{automodule}, indicando de que módulo generamos la documentación. \\
+
 Una vez que tenemos escrito el esqueleto de nuestra documentación, mediante la ejecución del Makefile que genera Sphinx obtenemos nuestra documentación sobre HTML.
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \subfloat[Página Principal]{
         \includegraphics[scale=0.3]{img/sphinx_1.png}}

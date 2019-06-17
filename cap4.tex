@@ -111,93 +111,10 @@ Para llevar a cabo esta sección, se ha diseñado un nuevo layout denominado \te
     \item \textbf{Posts: } Aquel contenido que se caracteriza por la fecha en la que se publicó en la web, típicamente una entrada en un blog del sitio web.
 \end{itemize}
 
-\begin{lstlisting}[style=htmlcssjs,caption=Layout Page,label={code:layoutPage}]
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Title -->
-  <title>{{page.title}} | PyCardio</title>
-
-  <!-- Required Meta Tags Always Come First -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-
-  {% if page.url == "/404.html" %}
-  <meta http-equiv="refresh" content="5; url=/">
-  {% endif %}
-
-
-  {% include css.html %}
-  {% include js.html%}
-
-</head>
-
-<body>
-  {% include header.html %}
-  
-  {% include breadc.html %}
-
-  <div class="container g-mt-50 g-mb-60">
-    {{ content }}
-  </div>
-
-  {% include footer.html %}
-
-  {% include script.html%}
-</body>
-\end{lstlisting}
 
 Si observamos la plantilla mencionada, percibimos que para el desarrollo de \textit{About} usamos una variable nueva dónde el contenido se incrustará en  dicha variable del lenguaje de plantilla Liquid denominada \texttt{content}. Al incluir \textit{shortcodes}\footnote{Fragmentos de código utilizadas por los plugins que en este caso se adjuntan con la plantilla Unify adquirida.} de la plantilla Unify el contenido que tendrá nuestro fichero principal de la sección \textit{about} será HTML.
 
-El \textit{shortcode} empleado trata de un elemento de bloque en el que solo se hace uso de los CSS en conjunción con la plantilla. Quedando así tal y como lo muestra el listing \ref{code:about}. 
-\begin{lstlisting}[style=htmlcssjs,caption=index.html de About,label={code:about}]
----
-layout: page
-title: People
----
-<div class="container">
-  <br>
-  <!-- HEADING  MAINTAINERS-->
-  <div class="shortcode-html">
-    <div class="u-heading-v6-2 g-mb-20">
-      <h2 class="h3 u-heading-v6__title g-brd-primary">Maintainers</h2>
-    </div>
-  </div>
-  <!-- END HEADING MAINTAINERS-->
-
-  <!-- TEAM BLOCK -->
-  <div class="row">
-    <div class="col-lg-4 g-mb-30">
-      <!-- Figure -->
-      <figure class="u-shadow-v19 g-bg-white g-rounded-4 g-pa-25">
-        <div class="media g-mb-20">
-          <div class="d-flex g-mr-20">
-            <!-- Figure Image -->
-            <div class="g-brd-around g-brd-3 g-brd-gray-light-v3 rounded-circle">
-              <img class="rounded-circle g-width-50 g-height-50" src="../../assets/img-temp/100x100/img7.jpg" alt="Image Description">
-            </div>
-            <!-- Figure Image -->
-          </div>
-          <div class="media-body">
-            <!-- Figure Info -->
-            <h4 class="h5 g-mb-2"><a href="https://gestion2.urjc.es/pdi/ver/oscar.barquero#tab_1_5">Oscar Barquero</a></h4>
-            <div class="d-block">
-              <i class="g-color-primary g-font-size-default icon-location-pin"></i>
-              <span class="g-color-gray-dark-v4 g-font-size-13">Madrid, ESP</span>
-            </div>
-            <!-- End Figure Info -->
-          </div>
-        </div>
-
-        <p>Data Scientist in biological and biomedical applications</p>
-      </figure>
-      <!-- End Figure -->
-    </div>
-\end{lstlisting}
+El \textit{shortcode} empleado trata de un elemento de bloque en el que solo se hace uso de los CSS en conjunción con la plantilla. Quedando así tal y como lo muestra el listing \ref{code:about}. \\
 
 Antes de continuar probablemente os hayáis preguntado el porqué de otro fichero \texttt{index} si ya habíamos diseñado uno para el Home de nuestra web. Pues bien,  cuando tenemos varias páginas en nuestra página web, lo más eficaz es seguir un orden en los directorios. Por lo tanto si estamos desarrollando la sección \texttt{about}, tengamos en un directorio \texttt{/about/}, todos aquellos contenidos que compondrán esta sección. De manera que, para Jekyll, el fichero en el directorio \texttt{/about/index.html}, será el fichero principal para esa sección.
 
@@ -248,7 +165,7 @@ En este caso el uso que hacemos de la información es el dado por \texttt{\{\{pa
 
 Apartado donde se da a conocer el software desarrollado, para ello esta sección se divide en dos, donde por una parte se trata el paquete con una perspectiva general de su utilidad, de lo que trata y de los módulos que lo componen y por otro lado se da a conocer de todas las funciones que componen PyCardio, es decir, la documentación de funciones, módulos, y clases del software.
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \subfloat[Sección Overview]{
         \includegraphics[width=0.5\textwidth]{img/doc_1.png}
@@ -264,12 +181,9 @@ Apartado donde se da a conocer el software desarrollado, para ello esta sección
 
 
 Para la implementación del contenido que se muestra en la figura \ref{fig:docWeb1} hemos usado la plantilla definida de \texttt{page.html}, por tanto, para su desarrollo lo único que ha hecho falta es escribir el contenido que esta contendrá en HTML. Como ya sabemos, la página mostrada en la figura \ref{fig:docWeb2} es la que se ha implementado en el capítulo \ref{chap:codeManagement} con la tecnología Read The Docs.
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                       TUTORIALS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Tutorials}
 \label{sec:tutoWeb}
 
@@ -277,7 +191,7 @@ Parte de la web centrada  tanto en dar un guión de como empezar a usar el paque
 
 Antes de mostrar el contenido de este apartado es de mencionar que está incompleto debido a que el paquete sigue en fase beta y por tanto la parte de información de como usar sus módulos también. Por ello, se ha implementado el contenido de la parte que muestra como usarlo, y el tutorial del módulo HRV. 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=0.5\textwidth]{img/tutorials_panel.png}
     \caption{Secciones de Tutorials }
@@ -309,33 +223,7 @@ El contenido web de esta subsección de \textit{tutorials} se centra en enseñar
     \label{fig:gettinWeb}
 \end{figure}
 
-Su implementación a diferencia de lo demás visto hasta ahora esta escrita en MarkDown. Para ello, como venimos haciendo, en el Front Matter de nuestro fichero damos un título y referenciamos el layout que se va a usar para mostar el contenido escrito. 
-
-\begin{lstlisting}[language=yaml,caption=getting\_started.md,label={code:gettingMark}]
-  ---
-layout: page
-title: Getting Started
----
-<!-- TUTORIALS EXAMPLE -->
-<!-- TEXT -->
-## TEST TUTORIALS - TITLE
-
-# Aquas nam postquam limes manus
-
-## Nondum furtim dummodo Iunonia
-
-Lorem markdownum longis. Vobis fugiunt restitit vir urbis ipsum sunt circuiere
-sit nec illum frustraque ut.
-
-1. Multa et
-2. An concursum saepe
-3. Sine corpus
-
-Prueba de la variable de entorno de file.path -> {{site.path_assets}}
-
-<!-- Al necesitar reescalarla, tenemos que incluirla mediante HTML -->
-<img alt="example" src="/assets/img/maps/Figure_test.png" width="500" height="200">
-\end{lstlisting}
+Su implementación a diferencia de lo demás visto hasta ahora esta escrita en MarkDown. Para ello, como venimos haciendo, en el Front Matter de nuestro fichero damos un título y referenciamos el layout que se va a usar para mostar el contenido escrito. \\
 
 Si observamos las  últimas líneas del Listing \ref{code:gettingMark} podemos ver que también es posible escribir HTML en nuestro contenido, aunque el archivo sea de tipo MarkDown.
 
@@ -556,26 +444,7 @@ Porción de la web centrada en mostrar todas las publicaciones que se escriben r
 
 La implementación de esta parte sigue el procedimiento de la sección de \textit{release} donde distinguimos el fichero \texttt{index.html} de \texttt{/blog/} que usa el \textit{layout} de \texttt{page.html} y las publicaciones que se redactarán en texto plano que usarán uno nuevo denominado \texttt{blog.html}. Podemos distinguir en el código escrito en \ref{code:blogMD} cómo se asigna la categoría de \textit{blog}. El resultado de la publicación de la porción de código es el dado por \ref{fig:blogExample}.
 
-\begin{lstlisting}[caption=Ejemplo de publicación de Blog,label={code:blogMD}]
----
-layout: blog
-title: HRV is ready!
-author: obarquero
-published: true
-category: [blog]
-permalink: /:categories/:year/:month/:title
----
-We are pleased to report that we launched our first module. HRV.
-
-This class allows to perform a basic Heart Rate Variability Analysis from an RR-Interval time series. It is supposed that a numpy array (n_samples, 1) with RR intervals is available, as well as beat label numpy array vector.
-
-For complete documentation go to [documentation](https://pycardio.readthedocs.io/en/latest/?badge=latest) or if you prefer take a look at our first [tutorial]({{site.url}}/tutorials/hrv.html).
-
-Go Ahead!
-\end{lstlisting}
-
-
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{img/blog_example.png}
     \caption{Ejemplo de publicación para la sección de Blog}
